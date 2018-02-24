@@ -7,3 +7,8 @@
 2.- [Videogames development team](team/team.pdf)
 
 3.- [Videogame engine](engine/engine.pdf)
+
+4.- [Videogame engine architecture](architecture/architecture.pdf)
+
+4.- [Design patterns in videogames](patterns/patterns.pdf)
+
