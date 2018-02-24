@@ -1,0 +1,149 @@
+<?xml version="1.0" standalone="no" ?>
+<svg width="735" height="1235" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <rect x="3" y="3" width="70" height="30" fill="#ffffc8" stroke="#000000" />
+    <rect x="3" y="23" width="730" height="670" fill="#ffffc8" stroke="#000000" />
+    <text x="38" y="17" fill="#000000" font-size="13" font-weight="700" text-anchor="middle">Model</text>
+    <rect x="3" y="943" width="60" height="30" fill="#ffffc8" stroke="#000000" />
+    <rect x="3" y="963" width="730" height="270" fill="#ffffc8" stroke="#000000" />
+    <text x="33" y="957" fill="#000000" font-size="13" font-weight="700" text-anchor="middle">View</text>
+    <rect x="263" y="713" width="100" height="30" fill="#ffffc8" stroke="#000000" />
+    <rect x="263" y="733" width="220" height="190" fill="#ffffc8" stroke="#000000" />
+    <text x="313" y="727" fill="#000000" font-size="13" font-weight="700" text-anchor="middle">Controller</text>
+    <path d="M 123,163 L 123,213" fill="none" stroke="#000000" />
+    <path d="M 131,197 L 123,213 115,197" fill="none" stroke="#000000" />
+    <path d="M 243,293 L 263,293 263,123 293,123" fill="none" stroke="#000000" />
+    <path d="M 277,115 L 293,123 277,131" fill="none" stroke="#000000" />
+    <path d="M 243,293 L 263,293 263,373 293,373" fill="none" stroke="#000000" />
+    <path d="M 277,365 L 293,373 277,381" fill="none" stroke="#000000" />
+    <path d="M 243,293 L 263,293 263,593 293,593" fill="none" stroke="#000000" />
+    <path d="M 277,585 L 293,593 277,601" fill="none" stroke="#000000" />
+    <path d="M 513,603 L 563,603" fill="none" stroke="#000000" />
+    <path d="M 547,595 L 563,603 547,611" fill="none" stroke="#000000" />
+    <path d="M 173,973 L 173,383" fill="none" stroke="#000000" />
+    <path d="M 165,401 L 173,385 181,401" fill="none" stroke="#000000" />
+    <path d="M 643,973 L 643,683" fill="none" stroke="#000000" />
+    <path d="M 635,701 L 643,685 651,701" fill="none" stroke="#000000" />
+    <path d="M 413,1153 L 413,1133 633,1133 633,1103" fill="none" stroke="#000000" />
+    <path d="M 623,1125 L 633,1105 643,1125 Z" fill="#e0e0e0" stroke="#000000" />
+    <path d="M 633,1153 L 633,1103" fill="none" stroke="#000000" />
+    <path d="M 623,1125 L 633,1105 643,1125 Z" fill="#e0e0e0" stroke="#000000" />
+    <path d="M 373,743 L 373,693" fill="none" stroke="#000000" />
+    <path d="M 365,709 L 373,693 381,709" fill="none" stroke="#000000" />
+    <path d="M 373,913 L 373,963" fill="none" stroke="#000000" />
+    <path d="M 381,947 L 373,963 365,947" fill="none" stroke="#000000" />
+    <rect x="13" y="33" width="230" height="132" fill="#c8ffc8" stroke="#000000" />
+    <line x1="13" y1="53" x2="243" y2="53" stroke="#000000" />
+    <line x1="13" y1="139" x2="243" y2="139" stroke="#000000" />
+    <text x="128" y="48" font-size="13" font-weight="700" font-family="Arial" fill="#000000" text-anchor="middle">Player</text>
+    <text x="128" y="65" font-size="11" font-weight="700" font-family="Arial" fill="#808080" text-anchor="middle">Attributes</text>
+    <text x="128" y="151" font-size="11" font-weight="700" font-family="Arial" fill="#808080" text-anchor="middle">Methods</text>
+    <text x="23" y="84" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ Founds : decimal</text>
+    <text x="23" y="104" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ Blueprints : ICollection&lt;Blueprint&gt;</text>
+    <text x="23" y="124" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ OwnedIslands : ICollection&lt;Island&gt;</text>
+    <rect x="13" y="213" width="230" height="172" fill="#c8ffc8" stroke="#000000" />
+    <line x1="13" y1="233" x2="243" y2="233" stroke="#000000" />
+    <line x1="13" y1="359" x2="243" y2="359" stroke="#000000" />
+    <text x="128" y="228" font-size="13" font-weight="700" font-family="Arial" fill="#000000" text-anchor="middle">Island</text>
+    <text x="128" y="245" font-size="11" font-weight="700" font-family="Arial" fill="#808080" text-anchor="middle">Attributes</text>
+    <text x="128" y="371" font-size="11" font-weight="700" font-family="Arial" fill="#808080" text-anchor="middle">Methods</text>
+    <text x="23" y="264" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ Position : Vector3</text>
+    <text x="23" y="284" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ Width : float</text>
+    <text x="23" y="304" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ Length : float</text>
+    <text x="23" y="324" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ HeightField : HeightField</text>
+    <text x="23" y="344" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ SplatMap : SplatMap</text>
+    <rect x="293" y="33" width="230" height="172" fill="#c8ffc8" stroke="#000000" />
+    <line x1="293" y1="53" x2="523" y2="53" stroke="#000000" />
+    <line x1="293" y1="159" x2="523" y2="159" stroke="#000000" />
+    <text x="408" y="48" font-size="13" font-weight="700" font-family="Arial" fill="#000000" text-anchor="middle">HeightField</text>
+    <text x="408" y="65" font-size="11" font-weight="700" font-family="Arial" fill="#808080" text-anchor="middle">Attributes</text>
+    <text x="408" y="171" font-size="11" font-weight="700" font-family="Arial" fill="#808080" text-anchor="middle">Methods</text>
+    <text x="303" y="84" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ Width : int</text>
+    <text x="303" y="104" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ Length : int</text>
+    <text x="303" y="124" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ &lt;&lt;event&gt;&gt; Modified</text>
+    <text x="303" y="144" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ this[x : int, z: int] : float</text>
+    <text x="303" y="190" font-size="13" font-weight="400" font-family="Arial" fill="#000064">+ GetHeightAt(x : float, y : float)</text>
+    <rect x="293" y="253" width="360" height="232" fill="#c8ffc8" stroke="#000000" />
+    <line x1="293" y1="273" x2="653" y2="273" stroke="#000000" />
+    <line x1="293" y1="379" x2="653" y2="379" stroke="#000000" />
+    <text x="473" y="268" font-size="13" font-weight="700" font-family="Arial" fill="#000000" text-anchor="middle">SplatMap</text>
+    <text x="473" y="285" font-size="11" font-weight="700" font-family="Arial" fill="#808080" text-anchor="middle">Attributes</text>
+    <text x="473" y="391" font-size="11" font-weight="700" font-family="Arial" fill="#808080" text-anchor="middle">Methods</text>
+    <text x="303" y="304" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ Width : int</text>
+    <text x="303" y="324" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ Length : int</text>
+    <text x="303" y="344" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ &lt;&lt;event&gt;&gt; Modified</text>
+    <text x="303" y="364" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ this[x : int, z: int] : Color</text>
+    <text x="303" y="410" font-size="13" font-weight="400" font-family="Arial" fill="#000064">+ Fill(weights : Color)</text>
+    <text x="303" y="430" font-size="13" font-weight="400" font-family="Arial" fill="#000064">+ Fill(rectangle : Rectangle, weights : Color)</text>
+    <text x="303" y="450" font-size="13" font-weight="400" font-family="Arial" fill="#000064">+ Paint(brush : float[,], position : Vector2, layer : int)</text>
+    <text x="303" y="470" font-size="13" font-weight="400" font-family="Arial" fill="#000064">+ Scrape(brush : float[,], position : Vector2, amount : float)</text>
+    <rect x="293" y="533" width="220" height="112" fill="#c8ffc8" stroke="#000000" />
+    <line x1="293" y1="573" x2="513" y2="573" stroke="#000000" />
+    <line x1="293" y1="619" x2="513" y2="619" stroke="#000000" />
+    <text x="403" y="568" font-size="13" font-weight="700" font-family="Arial" font-style="italic" fill="#000000" text-anchor="middle">IBuildingManager</text>
+    <text x="403" y="550" font-size="13" font-weight="400" font-family="Arial" fill="#000000" text-anchor="middle">&lt;&lt;interface&gt;&gt;</text>
+    <text x="403" y="585" font-size="11" font-weight="700" font-family="Arial" fill="#808080" text-anchor="middle">Attributes</text>
+    <text x="403" y="631" font-size="11" font-weight="700" font-family="Arial" fill="#808080" text-anchor="middle">Methods</text>
+    <text x="303" y="604" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ Buildings : ICollection&lt;IBuilding&gt;</text>
+    <rect x="563" y="533" width="160" height="152" fill="#c8ffc8" stroke="#000000" />
+    <line x1="563" y1="573" x2="723" y2="573" stroke="#000000" />
+    <line x1="563" y1="659" x2="723" y2="659" stroke="#000000" />
+    <text x="643" y="568" font-size="13" font-weight="700" font-family="Arial" font-style="italic" fill="#000000" text-anchor="middle">IBuilding</text>
+    <text x="643" y="550" font-size="13" font-weight="400" font-family="Arial" fill="#000000" text-anchor="middle">&lt;&lt;interface&gt;&gt;</text>
+    <text x="643" y="585" font-size="11" font-weight="700" font-family="Arial" fill="#808080" text-anchor="middle">Attributes</text>
+    <text x="643" y="671" font-size="11" font-weight="700" font-family="Arial" fill="#808080" text-anchor="middle">Methods</text>
+    <text x="573" y="604" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ Area : Rectangle</text>
+    <text x="573" y="624" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ &lt;&lt;event&gt;&gt; Moved</text>
+    <text x="573" y="644" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ &lt;&lt;event&gt;&gt; Destroyed</text>
+    <rect x="83" y="973" width="180" height="132" fill="#c8ffc8" stroke="#000000" />
+    <line x1="83" y1="993" x2="263" y2="993" stroke="#000000" />
+    <line x1="83" y1="1079" x2="263" y2="1079" stroke="#000000" />
+    <text x="173" y="988" font-size="13" font-weight="700" font-family="Arial" fill="#000000" text-anchor="middle">IslandRenderer</text>
+    <text x="173" y="1005" font-size="11" font-weight="700" font-family="Arial" fill="#808080" text-anchor="middle">Attributes</text>
+    <text x="173" y="1091" font-size="11" font-weight="700" font-family="Arial" fill="#808080" text-anchor="middle">Methods</text>
+    <text x="93" y="1024" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ Island : Island</text>
+    <text x="93" y="1044" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ Content : IContentService</text>
+    <text x="93" y="1064" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ Scene : ISceneService</text>
+    <rect x="543" y="973" width="180" height="132" fill="#c8ffc8" stroke="#000000" />
+    <line x1="543" y1="993" x2="723" y2="993" stroke="#000000" />
+    <line x1="543" y1="1079" x2="723" y2="1079" stroke="#000000" />
+    <text x="633" y="988" font-size="13" font-weight="700" font-family="Arial" fill="#000000" text-anchor="middle">BuildingRenderer</text>
+    <text x="633" y="1005" font-size="11" font-weight="700" font-family="Arial" fill="#808080" text-anchor="middle">Attributes</text>
+    <text x="633" y="1091" font-size="11" font-weight="700" font-family="Arial" fill="#808080" text-anchor="middle">Methods</text>
+    <text x="553" y="1024" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ Building : IBuilding</text>
+    <text x="553" y="1044" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ Content : IContentService</text>
+    <text x="553" y="1064" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ Scene : ISceneService</text>
+    <rect x="323" y="1153" width="170" height="72" fill="#c8ffc8" stroke="#000000" />
+    <line x1="323" y1="1173" x2="493" y2="1173" stroke="#000000" />
+    <line x1="323" y1="1199" x2="493" y2="1199" stroke="#000000" />
+    <text x="408" y="1168" font-size="13" font-weight="700" font-family="Arial" fill="#000000" text-anchor="middle">RadarBuildingRenderer</text>
+    <text x="408" y="1185" font-size="11" font-weight="700" font-family="Arial" fill="#808080" text-anchor="middle">Attributes</text>
+    <text x="408" y="1211" font-size="11" font-weight="700" font-family="Arial" fill="#808080" text-anchor="middle">Methods</text>
+    <rect x="543" y="1153" width="180" height="72" fill="#c8ffc8" stroke="#000000" />
+    <line x1="543" y1="1173" x2="723" y2="1173" stroke="#000000" />
+    <line x1="543" y1="1199" x2="723" y2="1199" stroke="#000000" />
+    <text x="633" y="1168" font-size="13" font-weight="700" font-family="Arial" fill="#000000" text-anchor="middle">ArtilleryBuildingRenderer</text>
+    <text x="633" y="1185" font-size="11" font-weight="700" font-family="Arial" fill="#808080" text-anchor="middle">Attributes</text>
+    <text x="633" y="1211" font-size="11" font-weight="700" font-family="Arial" fill="#808080" text-anchor="middle">Methods</text>
+    <rect x="273" y="743" width="200" height="172" fill="#c8ffc8" stroke="#000000" />
+    <line x1="273" y1="763" x2="473" y2="763" stroke="#000000" />
+    <line x1="273" y1="849" x2="473" y2="849" stroke="#000000" />
+    <text x="373" y="758" font-size="13" font-weight="700" font-family="Arial" fill="#000000" text-anchor="middle">GameLogicController</text>
+    <text x="373" y="775" font-size="11" font-weight="700" font-family="Arial" fill="#808080" text-anchor="middle">Attributes</text>
+    <text x="373" y="861" font-size="11" font-weight="700" font-family="Arial" fill="#808080" text-anchor="middle">Methods</text>
+    <text x="283" y="794" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ Players : ICollection&lt;Player&gt;</text>
+    <text x="283" y="814" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ Islands : ICollection&lt;Island&gt;</text>
+    <text x="283" y="834" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ Units : ICollection&lt;Unit&gt;</text>
+    <text x="283" y="880" font-size="13" font-weight="400" font-family="Arial" fill="#000064">+ Update()</text>
+    <text x="283" y="900" font-size="13" font-weight="400" font-family="Arial" fill="#000064">+ Draw()</text>
+    <text x="375" y="688" font-size="13" font-weight="700" font-family="Arial" fill="#000000" text-anchor="middle"></text>
+    <text x="375" y="978" font-size="13" font-weight="700" font-family="Arial" fill="#000000" text-anchor="middle"></text>
+    <rect x="303" y="973" width="180" height="132" fill="#c8ffc8" stroke="#000000" />
+    <line x1="303" y1="993" x2="483" y2="993" stroke="#000000" />
+    <line x1="303" y1="1079" x2="483" y2="1079" stroke="#000000" />
+    <text x="393" y="988" font-size="13" font-weight="700" font-family="Arial" fill="#000000" text-anchor="middle">WaterRenderer</text>
+    <text x="393" y="1005" font-size="11" font-weight="700" font-family="Arial" fill="#808080" text-anchor="middle">Attributes</text>
+    <text x="393" y="1091" font-size="11" font-weight="700" font-family="Arial" fill="#808080" text-anchor="middle">Methods</text>
+    <text x="313" y="1024" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ Island : Island</text>
+    <text x="313" y="1044" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ Content : IContentService</text>
+    <text x="313" y="1064" font-size="13" font-weight="400" font-family="Arial" fill="#640000">+ Scene : ISceneService</text>
+</svg>
