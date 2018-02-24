@@ -1,0 +1,270 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MUW Presentation
+% LaTeX Template
+% Version 1.0 (27/12/2016)
+%
+% License:
+% CC BY-NC-SA 4.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Created by:
+% Nicolas Ballarini, CeMSIIS, Medical University of Vienna
+% nicoballarini@gmail.com
+% http://statistics.msi.meduniwien.ac.at/
+%
+% Customized for UAH by:
+% David F. Barrero, Departamento de Automática, UAH
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[10pt,compress]{beamer} % Change 10pt to make fonts of a different size
+\mode<presentation>
+
+\usepackage[spanish]{babel}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{etoolbox}
+\usepackage{xcolor}
+\usepackage{xstring}
+\usepackage{listings}
+
+% Introduced by David
+\usepackage{eurosym}
+
+\usetheme{UAH}
+\usecolortheme{UAH}
+\setbeamertemplate{navigation symbols}{} 
+\setbeamertemplate{caption}[numbered]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Presentation Info
+\title[Introduction to videogames]{Introduction to videogames}
+\author{}
+\institute{\asignatura}
+\date{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Descomentar para habilitar barra de navegación superior
+\ponerNavegacion
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Configuración de logotipos en portada
+%% Opacidad de los logotipos
+\newcommand{\opacidad}{1}
+%% Descomentar para habilitar logotipo en pié de página de portada
+\renewcommand{\logoUno}{Images/isg.png}
+%% Descomentar para habilitar logotipo en pié de página de portada
+%\renewcommand{\logoDos}{Images/CCLogo.png}
+%% Descomentar para habilitar logotipo en pié de página de portada
+%\renewcommand{\logoTres}{Images/ALogo.png}
+%% Descomentar para habilitar logotipo en pié de página de portada
+%\renewcommand{\logoCuatro}{Images/ELogo.png}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% FOOTLINE
+%% Comment/Uncomment the following blocks to modify the footline
+%% content in the body slides. 
+
+
+%% Option A: Title and institute
+\footlineA
+%% Option B: Author and institute
+%\footlineB
+%% Option C: Title, Author and institute
+%\footlineC
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Use this block for a blue title slide with modified footline
+{\titlepageBlue
+    \setbeamertemplate{headline}{}
+	\setbeamercolor{frametitle}{bg=black}
+	\setbeamercolor{normal text}{bg=black}
+    \begin{frame}
+        \titlepage
+    \end{frame}
+}
+
+\begin{frame}[plain]{}
+   \begin{block}{Objectives}
+   \begin{itemize}
+   		\item Contextualize game development
+		\item Introduce basic vocabulary
+	\end{itemize}
+	\end{block}
+
+   \begin{block}{Bibliography}
+      \begin{enumerate}
+          \item  \textit{Desarrollo de Videojuegos, Arquitectura del Motor de Videojuegos}. UCLM.
+      \end{enumerate} 
+   \end{block}
+\end{frame}
+
+
+{
+\eliminarNavegacion
+\begin{frame}[shrink]{Table of Contents}
+ \frametitle{Table of Contents}
+ \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+}
+
+\section{Introduction}
+
+\section[Motivation]{Motivation}
+\begin{frame}{Motivation}
+	Why videogames?
+	\begin{itemize}
+		\item They involve all the Computer Science disciplines
+		\item Exciting problems from an intelectual perspective
+		\item Benchmark for AI
+		\item Career opportunities
+		\item They are fun!
+  	\end{itemize}
+\end{frame}
+
+\section[Definition]{Definition}
+\begin{frame}{Definition (I)}
+    \begin{columns}
+ 	   \column{.90\textwidth}
+	   \begin{block}{Vallejo}
+	   A videogame is a \textit{graphical application} in \textit{real-time} with an \textit{interaction} between the user and the game
+	   \end{block}
+	\end{columns}
+	\bigskip
+	Real-time: \textbf{In this context}, it means the need of generating a frame rate\\
+	Interaction: Joystick, keyboard, mouse, body, ...
+\end{frame}
+
+\begin{frame}{Definition (II)}
+	Alternative definitions:
+
+  	\begin{itemize}
+	\item A \textit{play activity} with \textit{rules} that involves \textit{conflict} (I. Scheiber)
+	\item A game has ``ends and means'': an \textit{objective}, an \textit{outcome}, and a \textit{set of rules} to get there (D. Parlett)
+	\item A game is an activity involving \textit{player decisions}, seeking \textit{objectives} within a ``limiting context'' (i.e. \textit{rules}) (C. Abt)
+	%\item System in which players engage in an artificial \textit{conflict}, defined by \textit{rules}, that results in a quantifiable \textit{outcome} (E. Zimmerman)
+	\end{itemize}
+	Highly recommended reading: Raph Koster. \href{http://www.theoryoffun.com/theoryoffun.pdf}{A Theory of Fun}. O'Really, 2nd edition. 2014.
+\end{frame}
+
+\begin{frame}{Definition (III)}
+	\begin{center}
+	A personal perspective
+	\end{center}
+
+	\begin{center}
+	\huge Videogame = \textcolor{blue}{Video} + \alert{game}
+	\end{center}
+
+\end{frame}
+
+\begin{frame}{Definition (IV)}
+    \begin{columns}
+ 	   \column{.70\textwidth}
+		Elements to take into account
+
+ 	 	\begin{itemize}
+		\item Story (Characters, goals, dialogs, etc)
+		\item Graphics (3D models, animations, videos, etc)
+		\item Sound (Music, sound effects, voice, etc)
+		\item Logic (Game rules, programming, etc)
+		\item Interface (\alert{HUD}, user interface, etc)
+		\item \alert{Gameplay} and playability
+		\end{itemize}
+
+ 	   \column{.40\textwidth}
+		\centering\includegraphics[width=0.7\linewidth]{figs/ProtectronCA2}\\
+	\end{columns}
+\end{frame}
+
+\section{Videogames development}
+\begin{frame}{Videogames development (I)}
+	Topics involved in videogames development
+	\begin{itemize}
+		\item Personal computers
+		\item Microprocessors development
+		\item Peripherals (specific for videogames)
+		\item 3D technology
+		\item Internet
+		\item Videogames engine development
+		\item Physics engines
+		\item Graphical engines
+		\item Software engineering
+		\item Artificial Intelligence (AI)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Videogames development (II)}
+	Recent elements involved in videogames development:
+	\begin{itemize}
+		\item Human-machine interfaces
+		\item Social networks
+		\item Mobile technologies
+		\item Tablets
+	\end{itemize}
+\end{frame}
+
+\section[Industry]{Industry}
+\begin{frame}{Industry (I)}
+	Industry involves
+	\begin{itemize}
+		\item Development, distribution, marketing and sales
+		\item This involves software and hardware as well
+	\end{itemize}
+	Videogames generates more business than pictures and music
+	\begin{itemize}
+		\item $57.6$ billion euros in 2009, $91$ in 2016
+		\begin{itemize}
+		\item $41$ mobile gaming, $34$ PCs, $19$ free-to-play
+		\end{itemize}
+		\item Average videogame cost: 7.4 - 9.7M \euro
+			\begin{itemize}
+			\item Consolited franchises
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Industry (II)}
+	\begin{itemize}
+		\item PCs decrease as consoles increase sales
+		\item From mid 80's consoles are the main platform
+		\item Best revenues are in software
+		\begin{itemize}
+		\item Hardware sold at a loss
+		\end{itemize}
+	\end{itemize}
+
+	\begin{center}
+	\includegraphics[width=0.3\linewidth]{figs/ps3.jpeg}
+	\includegraphics[width=0.15\linewidth]{figs/xbox.jpeg}
+	\includegraphics[width=0.2\linewidth]{figs/gameboy}
+	\end{center}
+\end{frame}
+
+\section{History}
+\begin{frame}{Overview of Videogames}{History}
+	We can distinguish the following chronology
+	   	\begin{enumerate}
+		\item Videogames pre-history: Analogic hardware
+		\item 80's: 8 bit (Spectrum, Amstrad, ...)
+		\item 90's: 16 bit (Amiga, Atari, Game Boy, ...)
+		\item 2000 to now: High performance hardware
+	  	\end{enumerate}
+
+	Check out these videos:
+    	\begin{itemize}
+		\item \href{http://www.youtube.com/watch?v=vRvclH7tRvk}{(Video past)}
+		\item \href{http://www.youtube.com/watch?v=9t3TCecduQc}{(Video future)}
+		\item \href{http://www.rtve.es/noticias/historia-videoconsolas/}{(Video suggested)}
+    	\end{itemize}
+\end{frame}
+
+
+
+\end{document}

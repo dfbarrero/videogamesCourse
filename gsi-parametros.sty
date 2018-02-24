@@ -1,0 +1,16 @@
+
+\newcommand{\modo}[1][]{}
+\renewcommand{\modo}{VIDEOJUEGOS} % PONER QUE SE QUIERE COMPILAR AQUI
+
+% Iniciamos variables con valores vacios
+\newcommand{\autor}{}
+\newcommand{\asignatura}{}
+\newcommand{\carrera}{}
+
+% Personalizar a partir de aqui
+\IfStrEq{\modo}{VIDEOJUEGOS}{
+	\renewcommand{\autor}{}
+	\renewcommand{\asignatura}{Videogames Technology}
+	\renewcommand{\carrera}{Asignatura transversal}
+}{}
+
