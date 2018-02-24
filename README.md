@@ -10,5 +10,5 @@
 
 4.- [Videogame engine architecture](architecture/architecture.pdf)
 
-4.- [Design patterns in videogames](patterns/patterns.pdf)
+5.- [Design patterns in videogames](patterns/patterns.pdf)
 
