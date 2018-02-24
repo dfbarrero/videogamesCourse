@@ -202,7 +202,7 @@
 		\item Physics engine
 			\begin{itemize}
 			\item Solid state physics \href{https://www.youtube.com/watch?v=PfezSJB21vk}{(Video 1)} \href{https://www.youtube.com/watch?v=q0xCYm6B9yE}{(Video 2)} \href{https://www.youtube.com/watch?v=Nj9TGIrgGVI}{(Video fails)}\\
-			Havoc, PhysX, Bullet\\
+			Havoc, PhysX, Bullet, ODE\\
 			\item Particle physics \href{https://www.youtube.com/watch?v=x8Fo2slT2WA}{(Video 1)} \href{https://www.youtube.com/watch?v=Jl54WZtm0QE}{(Video 2)}
 			\end{itemize}
 		\item Collisions engine (usually integrated in physics)
@@ -289,7 +289,7 @@
 				\item Collition detection
 				\item Collition handling
 				\item AI subsystem
-					\item Game subsystem
+				\item Game subsystem
 			\end{itemize}
 			\item Most of these subsystems require periodic updates
 			\item The most critical one is the animation system
@@ -356,6 +356,14 @@
 			\item PC games depend on limitations imposed by the OS
 			\item Games use to be multithreaded to exploit multicore machines
 		\end{itemize}
+
+		\begin{block}{Exercise}
+			\begin{enumerate}
+			\item Open the Space Invaders source code available on \\
+			\url{https://github.com/leerob/Space_Invaders/blob/master/spaceinvaders.py}
+			\item Locate the game main loop
+			\end{enumerate}
+		\end{block}
 \end{frame}
 
 \section{Game architectures}
