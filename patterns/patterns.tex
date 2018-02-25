@@ -100,7 +100,7 @@
 
    \begin{block}{Bibliography}
       \begin{enumerate}
-          \item  \textit{Desarrollo de Videojuegos, Arquitectura del Motor de Vieojuegos}. UCLM.
+          \item  \textit{Desarrollo de Videojuegos, Arquitectura del Motor de Vieojuegos}. Capítulo 4. UCLM.
 		  \item Wikipedia
       \end{enumerate} 
    \end{block}
@@ -115,10 +115,10 @@
 \end{frame}
 }
 
-\section{Software engineering applied to videogames}
+\section{Software Engineering in videogames}
 
-\subsection[Software engineering]{Software engineering}
-\begin{frame}{Software engineering applied to videogames}{Software engineering (I)}
+%\subsection[Software engineering]{Software engineering}
+\begin{frame}{Software Engineering in videogames (I)}
     \begin{columns}
  	   \column{.6\textwidth}
 	Game programming is a complex task
@@ -136,13 +136,13 @@
  	   \column{.4\textwidth}
 			\centering\includegraphics[width=\linewidth]{figs/process}\\
 			\centering\includegraphics[width=\linewidth]{figs/ariane}\\
-			\tiny{Source: \url{http://www.cosc.canterbury.ac.nz/csfieldguide/SoftwareEngineering.html}}
+			\tiny{\href{http://www.cosc.canterbury.ac.nz/csfieldguide/SoftwareEngineering.html}{(Source)}}
 	\end{columns}
 	\bigskip
 	\scriptsize{More: \url{http://en.wikipedia.org/wiki/Iterative\_and\_incremental\_development}}
 \end{frame}
 
-\begin{frame}{Software engineering applied to videogames}{Software engineering (II)}
+\begin{frame}{Software Engineering in videogames (II)}
     %\begin{columns}
  	%   \column{.45\textwidth}
 	Many development processes
@@ -157,8 +157,9 @@
 	\normalsize{Design is critical for the videogame lifecycle: Class hierarchy}
 \end{frame}
 
-\subsection[Design pattern definition]{Design pattern definition}
-\begin{frame}{Software engineering applied to videogames}{Design pattern definition (I)}
+\section[Design pattern definition]{Design pattern definition}
+\subsection{Concept}
+\begin{frame}{Design pattern definition}{Concept (I)}
 	Some problems happen frequently
 	\begin{itemize}
 		\item Experience is a valuable asset, but it is not enough
@@ -171,7 +172,7 @@
 	\end{block}
 \end{frame}
 
-\begin{frame}{Software engineering applied to videogames}{Design pattern definition (II)}
+\begin{frame}{Design pattern definition}{Concept (II)}
 		Informal definition: A design pattern is a solution to a design problem
 			\begin{itemize}
 			\item Its utility has been verified by experience
@@ -180,7 +181,7 @@
 	\centering\scriptsize{More: \url{http://en.wikipedia.org/wiki/Software\_design\_pattern}}
 \end{frame}
 
-\begin{frame}{Software engineering applied to videogames}{Design pattern definition (III)}
+\begin{frame}{Design pattern definition}{Concept (III)}
 	Design patterns goals
 	\begin{itemize}
 		\item Provide a portfolio of reusable elements in software design
@@ -197,7 +198,7 @@
 \end{frame}
 
 \subsection[Design pattern structure]{Design pattern structure}
-\begin{frame}{Software engineering applied to videogames}{Design pattern structure}
+\begin{frame}{Design pattern definition}{Design pattern structure}
 	Four components:
 	\begin{enumerate}
 		\item \textbf{Name}. Short name that identifies the pattern
@@ -211,9 +212,9 @@
 	\end{itemize}
 \end{frame}
 
-\section[Design patterns]{Design patterns}
 \subsection[Types of design patterns]{Types of design patterns}
-\begin{frame}{Design patterns}{Types of design patterns}
+
+\begin{frame}{Design pattern definition}{Types of design patterns}
 	Three great groups:
 	\begin{enumerate}
 		\item \textbf{Creational patterns}. Objects and data structures creation
@@ -235,8 +236,9 @@
 	\end{itemize}
 \end{frame}
 
-\subsection[Creational patterns]{Creational patterns}
-\begin{frame}[plain]{Design patterns}{Creational patterns: Singlenton}
+\section[Creational]{Creational patterns}
+\subsection[Singlenton]{Singlenton}
+\begin{frame}[plain]{Creational patterns}{Singlenton}
     \begin{columns}
  	   \column{.6\textwidth}
 	   \begin{block}{Singlenton}
@@ -254,7 +256,8 @@
 	\end{block}
 \end{frame}
 
-\begin{frame}[plain]{Design patterns}{Creational patterns: Factory}
+\subsection[Factory]{Factory}
+\begin{frame}[plain]{Creational}{Factory}
     \begin{columns}
  	   \column{.6\textwidth}
 	   \begin{block}{Factory}
@@ -272,8 +275,9 @@
 	\end{block}
 \end{frame}
 
-\begin{frame}[plain]{Design patterns}{Creational patterns: Abstract factory (I)}
-	   \begin{block}{Abstract factory}
+\subsection[Abstract Factory]{Abstract Factory}
+\begin{frame}[plain]{Creational patterns}{Abstract Factory (I)}
+	   \begin{block}{Abstract Factory}
 			\textbf{Problem}: Create families of new objects\\
 			\textbf{Solution}: Create a hierarchy of factories\\
 			\textbf{Example}: Create human or orc warriors in a RPG game\\
@@ -281,17 +285,18 @@
 		\centering\includegraphics[width=0.8\linewidth]{figs/abstractfactory}\\
 \end{frame}
 
-\begin{frame}{Design patterns}{Creational patterns: Abstract factory (II)}
+\begin{frame}{Creational patterns}{Abstract Factory (II)}
 	\centering\includegraphics[width=0.8\linewidth]{figs/jerarquiajuego}\\
 	\centering RTS game class hierarchy
 \end{frame}
 
-\begin{frame}{Design patterns}{Creational patterns: Abstract factory (III)}
+\begin{frame}{Creational patterns}{Abstract Factory (III)}
 	\centering\includegraphics[width=0.7\linewidth]{figs/abstractfactorygame}\\
 	\centering Example of \textit{abstract factory} applied to a RTS game
 \end{frame}
 
-\begin{frame}{Design patterns}{Creational patterns: Factory method}
+\subsection[Factory Method]{Factory Method}
+\begin{frame}{Creational patterns}{Factory Method}
     \begin{columns}
  	   \column{.5\textwidth}
 	   \begin{block}{Factory Method}
@@ -304,6 +309,7 @@
 	\end{columns}
 \end{frame}
 
+\subsection[Prototype]{Prototype}
 \begin{frame}{Design patterns}{Creational patterns: Prototype}
 	   \begin{block}{Prototype}
 			\textbf{Problem}: Create a large number of objects whose instantiation is heavy\\
@@ -313,9 +319,10 @@
 		\centering\includegraphics[width=0.9\linewidth]{figs/prototype}\\
 \end{frame}
 
-\subsection[Structural patterns]{Structural patterns}
+\section[Structural patterns]{Structural patterns}
+\subsection[MVC]{MVC}
 
-\begin{frame}[plain]{Design patterns}{Structural patterns: MVC (I)}
+\begin{frame}[plain]{Structural patterns}{MVC (I)}
     \begin{columns}
  	   \column{.6\textwidth}
 	   \begin{block}{Model-View-Controller (MVC)}
@@ -338,7 +345,8 @@
 	\centering \scriptsize{Source: \url{http://blog.nuclex-games.com/2010/09/mvc-in-games/}}
 \end{frame}
 
-\begin{frame}{Design patterns}{Structural patterns: Adapter}
+\subsection[Adapter]{Adapter}
+\begin{frame}{Structural patterns}{Adapter}
     \begin{columns}
  	   \column{.6\textwidth}
 	   \begin{block}{Adapter}
@@ -351,7 +359,8 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Design patterns}{Structural patterns: Composite}
+\subsection[Composite]{Composite}
+\begin{frame}{Structural patterns}{Composite}
     \begin{columns}
  	   \column{.6\textwidth}
 	   \begin{block}{Composite}
@@ -364,7 +373,8 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Design patterns}{Structural patterns: Fa\c{c}ade}
+\subsection[Fa\c{c}ade]{Fa\c{c}ade}
+\begin{frame}{Structural patterns}{Fa\c{c}ade}
     \begin{columns}
  	   \column{.5\textwidth}
 	   \begin{block}{Fa\c{c}ade}
@@ -377,9 +387,10 @@
 	\end{columns}
 \end{frame}
 
-\subsection[Behavioral patterns]{Behavioral patterns}
+\section[Behavioral patterns]{Behavioral patterns}
+\subsection[Observer]{Observer}
 
-\begin{frame}{Design patterns}{Behavioral patterns: Observer (I)}
+\begin{frame}{Behavioral patterns}{Observer (I)}
 	   \begin{block}{Observer}
 			\textbf{Problem}: Notify a set of objects when another object changes\\
 			\textbf{Solution}: Link a set of observers to an observed object\\
@@ -389,11 +400,11 @@
 		\centering\includegraphics[width=0.7\linewidth]{figs/observer}
 \end{frame}
 
-\begin{frame}[plain]{Design patterns}{Behavioral patterns: Observer (II)}
+\begin{frame}[plain]{Behavioral patterns}{Observer (II)}
 	\centering\includegraphics[width=0.6\linewidth]{figs/observergame}
 \end{frame}
 
-\begin{frame}{Design patterns}{Behavioral patterns: Observer (III)}
+\begin{frame}{Behavioral patterns}{Observer (III)}
 	\vspace{-0.3cm}
     \begin{block}{DataStore.java}
 	    \vspace{-0.2cm}
@@ -409,7 +420,9 @@
 	\end{block}
 \end{frame}
 
-\begin{frame}{Design patterns}{Behavioral patterns: Strategy (I)}
+\subsection[Strategy]{Strategy}
+
+\begin{frame}{Behavioral patterns}{Strategy (I)}
 	   \begin{block}{Observer}
 			\textbf{Problem}: Choose in execution time which method use from several ones\\
 			\textbf{Solution}: Encapsulate the method in a class\\
@@ -423,7 +436,9 @@
 	\centering\includegraphics[width=0.8\linewidth]{figs/strategygame}
 \end{frame}
 
-\begin{frame}{Design patterns}{Behavioral patterns: State (I)}
+\subsection[State]{State}
+
+\begin{frame}{Behavioral patterns}{State (I)}
     \begin{columns}
  	   \column{.5\textwidth}
 	   \begin{block}{State}
@@ -440,7 +455,9 @@
 			\centering\includegraphics[width=\linewidth]{figs/stategame}
 \end{frame}
 
-\begin{frame}{Design patterns}{Behavioral patterns: Template method (I)}
+\subsection[Template Method]{Template Method}
+
+\begin{frame}{Behavioral patterns}{Template Method (I)}
     \begin{columns}
  	   \column{.5\textwidth}
 	   \begin{block}{Template Method}
@@ -453,215 +470,8 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Design patterns}{Behavioral patterns: Template method (II)}
+\begin{frame}{Behavioral patterns}{Template method (II)}
 			\centering\includegraphics[width=0.6\linewidth]{figs/templategame}
 \end{frame}
-
-\section{Videogame models}
-\subsection{Render loop}
-\begin{frame}{Videogame models}{Render loop (I)}
-    \begin{columns}
- 	   \column{.5\textwidth}
-		\begin{itemize}
-	   	\item The render loop handles visualization and rendering
-	   	\item Objectives in 2D games
-		\begin{itemize}
-			\item Minimize pixels to draw: Draw only those pixels that have changed
-			\item Maximize fps
-		\end{itemize}
-		\end{itemize}
- 	   \column{.5\textwidth}
-	\centering\includegraphics[width=0.8\linewidth]{figs/rendering}\\
-	Render example
- 	\end{columns}
-	\begin{itemize}
-	\item Objectives in 3D games
-		\begin{itemize}
-			\item Camera uses to change everytime: The same technique cannot be used
-			\item Minimize the number of primites to draw in each iteration of the render loop
-		\end{itemize}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Videogame models}{Render loop (II)}
-	    \vspace{-0.2cm}
-    \begin{block}{Render loop}
-	    \vspace{-0.2cm}
-	    \lstinputlisting[language=java, basicstyle=\ttfamily\scriptsize]{code/renderloop.java}
-		\vspace{-0.2cm}
-	\end{block}
-	Info: \url{http://wiki.wxwidgets.org/Making\_a\_render\_loop}
-\end{frame}
-
-
-\subsection{Game loop}
-\begin{frame}{Videogame models}{Game loop (I)}
-	   	The main element in a videogame is the \alert{game loop}
-		\begin{itemize}
-			\item It is the main control structure in the game
-			\item It controls its execution
-			\item It handlers the transitions among states
-			\item The game loop independizes the game execution from the hardware
-		\end{itemize}
-		Classical programs only reacts with user actions
-		\begin{itemize}
-			\item Videogames are always performing an action
-			\item Game loop implements this easely
-			\item The game engine contains the game loop
-		\end{itemize}
-\end{frame}
-
-\begin{frame}{Videogame models}{Game loop (II)}
-		\begin{itemize}
-		   	\item There are many subsystems in a videogame
-			\begin{itemize}
-				\item Rendering engine (render is to generate an image)
-				\item Collition detection
-				\item Collition handling
-				\item AI subsystem
-					\item Game subsystem
-			\end{itemize}
-			\item Most of these subsystems require periodic updates
-			\item The most critical one is the animation system
-			\begin{itemize}
-				\item Frequency: 30 or 60 Hz
-				\item Syncronized with the rendering subsystem
-				\item Objective: Provide a good fps rate to generate a realistic experience
-			\end{itemize}
-			\item Not all the components are so strict, for instance, AI
-		\end{itemize}
-\end{frame}
-
-\begin{frame}{Videogame models}{Game loop (III)}
-	\begin{itemize}
-	   	\item There are several ways to implement the game loop
-	   	\item The easiest one is to have several loops within the game loop
-		\begin{itemize}
-			\item Render loop
-			\item AI loop
-			\item Multimedia loop
-			\item Iteration loop
-		\end{itemize}
-	\end{itemize}
-
-    \begin{columns}
- 	   \column{.4\textwidth}
-    \begin{block}{Basic game loop}
-	    \vspace{-0.2cm}
-	    \lstinputlisting[language=java, basicstyle=\ttfamily\scriptsize]{code/gameloop1.java}
-		\vspace{-0.2cm}
-	\end{block}
-   \column{.6\textwidth}
-    \begin{block}{Game loop}
-	    \vspace{-0.2cm}
-	    \lstinputlisting[language=java, basicstyle=\ttfamily\scriptsize]{code/gameloop2.java}
-		\vspace{-0.2cm}
-	\end{block}
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Videogame models}{Game loop (IV)}
-	    \vspace{-0.3cm}
-    \begin{columns}
- 	   \column{.7\textwidth}
-    \begin{block}{}
-	    \vspace{-0.2cm}
-	    \lstinputlisting[language=c, basicstyle=\ttfamily\scriptsize]{code/pong.c}
-		\vspace{-0.2cm}
-	\end{block}
-   \column{.3\textwidth}
-   	Pong game loop example
-	\centering\includegraphics[width=\linewidth]{figs/pong.jpeg}
-	\end{columns}
-\end{frame}
-
-\begin{frame}[plain]{Videogame models}{Game loop (V)}
-	\centering\includegraphics[width=\linewidth]{figs/gameloops}
-\end{frame}
-
-\begin{frame}{Videogame models}{Game loop (VI)}
-	    The game loop depends on the platform
-		\begin{itemize}
-			\item DOS games and some consoles are designed to exploit computational resources
-			\item PC games depend on limitations imposed by the OS
-			\item Games use to be multithreaded to exploit multicore machines
-		\end{itemize}
-\end{frame}
-
-\section{Game architectures}
-\subsection{Game architectures}
-
-\begin{frame}{Game architectures}{Game architectures}
-    Game loop can be implemented in different ways
-	\begin{itemize}
-		\item Architectures based on callbacks
-		\item Architectures based on events
-		\item Architectures based on state machines
-	\end{itemize}
-	Most of them implement one or more control loops
-\end{frame}
-
-\subsection{Callbacks}
-\begin{frame}{Game architectures}{Callbacks (I)}
-	\begin{itemize}
-		\item \textbf{Callbacks}: Code that is executed to handle an event
-		\begin{itemize}
-			\item Function or object
-			\item Callbacks are used to ``fill'' source code
-		\end{itemize}
-		\item Related term: \textbf{framework}
-		\begin{itemize}
-			\item Application partially completed that the developer has to complete
-		\end{itemize}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Videogame models}{Callbacks (II)}
-	\vspace{-0.3cm}
-    \begin{columns}
- 	   	\column{.9\textwidth}
-    		\begin{block}{}
-	    	\vspace{-0.2cm}
-	    	\lstinputlisting[language=c, basicstyle=\ttfamily\scriptsize]{code/callback.c}
-			\vspace{-0.2cm}
-			\end{block}
-	\end{columns}
-\end{frame}
-
-\subsection{Events}
-\begin{frame}{Game architectures}{Events}
-	\begin{itemize}
-		\item An event represents a change in the game state
-		\item Two types
-		\begin{itemize}
-			\item \textbf{External}: Generated by the interactions\\Example, The player press a key or moves the joystick
-			\item \textbf{Internal}: Generated by the game logic\\Example, NPC respawn
-		\end{itemize}
-		\item Most game engines include an event subsystem
-		\begin{itemize}
-			\item Closely related to the \textit{Observer} pattern
-		\end{itemize}
-
-	\end{itemize}
-\end{frame}
-
-\subsection{State machine}
-\begin{frame}{Game architectures}{State machine}
-	\vspace{-0.3cm}
-	A game goes through a number of \alert{states}
-		\begin{itemize}
-			\item Introduction
-			\item Main menu
-			\item Game
-			\item Game over
-		\end{itemize}
-	\textbf{State machine}: A set of states and transitions
-	\vspace{0.3cm}
-	\includegraphics[width=0.7\linewidth]{figs/states}\\
-	\vspace{-0.2cm}
-	Warning: State machines play a mayor role in game AI
-\end{frame}
-
-
 
 \end{document}
