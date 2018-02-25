@@ -2,7 +2,7 @@
 
 ## Contents
 
-1.- [Introduction to Videogames](introduction/introduction.pdf)
+1.- [Introduction to videogames](introduction/introduction.pdf)
 
 2.- [Videogames development team](team/team.pdf)
 
