@@ -2,15 +2,15 @@
 
 ## Contents
 
-1.- [Introduction to videogames](introduction/introduction.pdf)
+1.- [Introduction to videogames](introduction/)
 
-2.- [Videogames development team](team/team.pdf)
+2.- [Videogames development team](team/)
 
-3.- [Videogame engine](engine/engine.pdf)
+3.- [Videogame engine](engine/)
 
-4.- [Videogame engine architecture](architecture/architecture.pdf)
+4.- [Videogame engine architecture](architecture/)
 
-5.- [Design patterns in videogames](patterns/patterns.pdf)
+5.- [Design patterns in videogames](patterns/)
 
 ## Compilation
 
