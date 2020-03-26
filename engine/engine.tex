@@ -122,8 +122,8 @@
 	\begin{itemize}
 	\item \textbf{Environment}: 2D or 3D world - simple or complex
 	\item \textbf{Entities}: Hero, soccer teams, zombies, armies
-	\item There are \textbf{rules} for the iteration entities-environment
-	\item Two key terms in videogames
+	\item There are \textbf{rules} for the iteration entities-environment (\alert{physics})
+	\item Some key terms in videogames
 	\begin{itemize}
 		\item \alert{Game state}: Data about entities and environment
 		\item \alert{Game mechanics}: Rules to interact with the game
@@ -206,6 +206,16 @@
 		\vspace{-0.2cm}
 		\lstinputlisting[language=java, basicstyle=\ttfamily\scriptsize]{code/SlickLoop.java}
 	\end{block}
+\end{frame}
+
+\begin{frame}[plain]{Game concept}{Main loop (III): Main game loop with Arcade}
+	\vspace{-0.2cm}
+	\begin{block}{}
+		\vspace{-0.2cm}
+		\lstinputlisting[language=Python, basicstyle=\ttfamily\scriptsize]{code/arcade.py}
+	\end{block}
+
+	\href{https://github.com/pvcraven/arcade/blob/master/arcade/application.py\#L36}{(Source code)}
 \end{frame}
 
 \subsection[Frame rate]{Frame rate}
