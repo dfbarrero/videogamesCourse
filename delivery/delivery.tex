@@ -1,0 +1,213 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MUW Presentation
+% LaTeX Template
+% Version 1.0 (27/12/2016)
+%
+% License:
+% CC BY-NC-SA 4.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Created by:
+% Nicolas Ballarini, CeMSIIS, Medical University of Vienna
+% nicoballarini@gmail.com
+% http://statistics.msi.meduniwien.ac.at/
+%
+% Customized for UAH by:
+% David F. Barrero, Departamento de Automática, UAH
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[10pt,compress]{beamer} % Change 10pt to make fonts of a different size
+\mode<presentation>
+
+\usepackage[spanish]{babel}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{etoolbox}
+\usepackage{xcolor}
+\usepackage{xstring}
+\usepackage{listings}
+
+% Introduced by David
+\usepackage{eurosym}
+
+\usetheme{UAH}
+\usecolortheme{UAH}
+\setbeamertemplate{navigation symbols}{} 
+\setbeamertemplate{caption}[numbered]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Presentation Info
+\title[Videogame delivery notes]{Videogame project delivery notes}
+\author{\asignatura\\\carrera}
+\institute{}
+\date{Departamento de Automática}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Descomentar para habilitar barra de navegación superior
+%\setNavigation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Configuración de logotipos en portada
+%% Opacidad de los logotipos
+\newcommand{\opacidad}{1}
+%% Descomentar para habilitar logotipo en pié de página de portada
+\renewcommand{\logoUno}{Images/isg.png}
+%% Descomentar para habilitar logotipo en pié de página de portada
+%\renewcommand{\logoDos}{Images/CCLogo.png}
+%% Descomentar para habilitar logotipo en pié de página de portada
+%\renewcommand{\logoTres}{Images/ALogo.png}
+%% Descomentar para habilitar logotipo en pié de página de portada
+%\renewcommand{\logoCuatro}{Images/ELogo.png}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% FOOTLINE
+%% Comment/Uncomment the following blocks to modify the footline
+%% content in the body slides. 
+
+
+%% Option A: Title and institute
+\footlineA
+%% Option B: Author and institute
+%\footlineB
+%% Option C: Title, Author and institute
+%\footlineC
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Use this block for a blue title slide with modified footline
+{\titlepageBlue
+    \begin{frame}
+        \titlepage
+    \end{frame}
+}
+
+\begin{frame}[plain]{}
+   \begin{block}{Objectives}
+   \begin{itemize}
+        \item Clarify how to deliver the videogame project
+		\item Point out some practical issues
+	\end{itemize}
+	\end{block}
+
+   \begin{block}{Bibliography}
+   		None
+   \end{block}
+\end{frame}
+
+%{
+%\disableNavigation{white}
+%\begin{frame}[shrink]{Table of Contents}
+% \frametitle{Table of Contents}
+% \tableofcontents
+  % You might wish to add the option [pausesections]
+%\end{frame}
+%}
+
+
+\begin{frame}{Project deliverables}
+	\begin{block}{Project deliverables}
+	\begin{itemize}
+	\item Videogame source code
+	\item Design document: How the game will be
+	\item Project report: What has been done
+	\end{itemize}
+	\end{block}
+
+	\bigskip
+	
+	Delivery method $\rightarrow$ GitHub
+	\begin{itemize}
+	\item Source code in the repository
+	\item Documentation in a web site
+		\begin{itemize}
+		\item Host the web site in GitHub
+		\item You are allowed to use any technology ...
+		\item ... however I recommend Jekyll
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Evaluation procedure}
+	After the examan (date to be determined yet), the instructor will
+	\begin{enumerate}
+	\item Fork all the repositories
+	\item Download the project from GitHub
+	\item Try to execute the project
+	\item Read the documentatoin and source code
+	\item Observe GitHub activity
+	\item Set individual and group califications
+	\end{enumerate}
+
+	Evaluation platform:
+	\begin{itemize}
+	\item MacBook Pro with MacOS X Yosemite
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Evaluation criteria}
+	\begin{itemize}	
+	\item Technical quality (group)
+	\item Game design (group)
+	\item Documentation quality (group)
+	\item Teamwork (individual)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Source code structure}
+	Recommended source code structure
+	\begin{itemize}
+	\item \texttt{src/} or \texttt{<project name>}: Source code
+	\item \texttt{docs/}: Documentation
+	\item \texttt{tests/}: Unitary tests
+	\item \texttt{dist/}: Distribution
+	\item \texttt{resources/}:
+		\begin{itemize}
+		\item \texttt{resources/sprites}:
+		\item \texttt{resources/maps}
+		\item \texttt{resources/music}
+		\item \texttt{resources/sound}
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Typical problems}
+    \begin{columns}
+ 	   \column{.50\textwidth}
+		\begin{alertblock}{Paths}
+		Use relative paths, ALWAYS
+		\end{alertblock}
+
+   	 	\column{.50\textwidth}
+		\begin{alertblock}{Path separator}
+		Use proper path separator
+		\end{alertblock}
+    	\end{columns}
+
+		\bigskip
+
+		Windows style:
+		\begin{itemize}
+		\item \texttt{resources\textbackslash sprites\textbackslash alien.png}
+		\end{itemize}
+
+		Unix style (Linux and MacOS):
+		\begin{itemize}
+		\item \texttt{resources/sprites/alien.png}
+		\end{itemize}
+
+		Python trick: \texttt{os.path.sep}
+		\begin{itemize}
+			\item \texttt{spritePath = 'resources' + os.path.sep + 'sprites'}
+		\end{itemize}
+\end{frame}
+
+\begin{frame}{Last remarks}
+	Python app deployment: \url{https://wiki.python.org/moin/deployment}
+\end{frame}
+
+\end{document}
