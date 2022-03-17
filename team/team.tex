@@ -93,6 +93,7 @@
    \begin{itemize}
         \item Understand the roles in game development
         \item First contact with the main game development problems
+        \item Understand game design
 		\item Introduce basic vocabulary
 	\end{itemize}
 	\end{block}
@@ -151,7 +152,7 @@
 	\begin{itemize}
 	\item They design the videogame structure
 		\begin{itemize}
-		\item Story, sequence of chapters, game rules, goals, characters, write dialogs, hint system, etc
+		\item Story, sequence of chapters, game mechanics, goals, characters, write dialogs, hint system, etc
 		\end{itemize}
 	\item Key concept: \alert{Level designer}
 	\item It works coordinated with the engineering team
@@ -164,6 +165,12 @@
 		\item General languages: LUA, Python, Ruby
 		\item Specific languages: LSL, AngelScript, GameMonkey, Io, Pawn, Squerrel, etc
 		\end{itemize}
+    \item Tools for level design
+        \begin{itemize}
+            \item Ad-hoc tools
+            \item Integrated in the game engine (Unreal, Unity, etc)
+            \item Specialized tools: Tiled
+        \end{itemize}
 	\end{itemize}
 	\href{http://www.youtube.com/watch?v=KoEGyk6amq0}{(Video 1)} \href{http://www.youtube.com/watch?v=ELKi3hJkSwE}{(Video 2)}
 \end{frame}
@@ -225,8 +232,31 @@
     \end{columns}
 \end{frame}
 
-\begin{frame}{Design team (IV)}{Design document}
-	Design document
+\subsection{Narrative}
+\begin{frame}{Design team (IV)}{Narrative: Three acts}
+   \begin{block}{Traditional three-act structure}
+   \begin{itemize}
+       \item Act I: Setup (\textit{introducción})
+       \item Act II: Confrontation (\textit{nudo})
+       \item Act III: Resolution (\textit{desenlace})
+   \end{itemize}
+   \end{block}
+\end{frame}
+
+\begin{frame}{Design team (V)}{Narrative: The hero's journey}
+    \begin{columns}
+ 	   \column{.5\textwidth}
+	\centering \includegraphics[width=\linewidth]{figs/heroe}
+ 	   \column{.5\textwidth}
+	\centering \includegraphics[width=\linewidth]{figs/actos}
+    \end{columns}
+	\centering \href{https://primerborrador.com/viaje-del-heroe/}{\tiny{(Source)}}\\
+    \flushleft \href{https://www.youtube.com/watch?v=d1Zxt28ff-E}{(Video)}
+\end{frame}
+
+\subsection{Design document}
+\begin{frame}{Design team (VI)}{Design document}
+	Game design document (or \alert{GDD})
 	\begin{itemize}
 		\item Describes how the game is going to be
 		\item Part of the creative process
@@ -346,6 +376,7 @@
 				\item Bug tracking software: Redmine, Jira, Bugzilla, ...
 			\end{itemize}
 	\end{itemize}
+    \href{https://www.youtube.com/watch?v=eVb_hgMeSDM}{(Fallout 4)}\\
 	\href{http://en.wikipedia.org/wiki/Game\_testing}{(More info)}
 \end{frame}
 
