@@ -123,17 +123,17 @@
 	Delivery method $\rightarrow$ GitHub
 	\begin{itemize}
 	\item Source code in the repository
-	\item Documentation in a web site
-		\begin{itemize}
-		\item Host the web site in GitHub
-		\item You are allowed to use any technology ...
-		\item ... however I recommend Jekyll
-		\end{itemize}
+	\item Documentation also in the repository
+		%\begin{itemize}
+		%\item Host the web site in GitHub
+		%\item You are allowed to use any technology ...
+		%\item ... however I recommend Jekyll
+		%\end{itemize}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Evaluation procedure}
-	After the examan (date to be determined yet), the instructor will
+	After the examan, the instructor will
 	\begin{enumerate}
 	\item Fork all the repositories
 	\item Download the project from GitHub
@@ -145,16 +145,25 @@
 
 	Evaluation platform:
 	\begin{itemize}
-	\item MacBook Pro with MacOS X Yosemite
+	\item PC with Ubuntu
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Evaluation criteria}
 	\begin{itemize}	
-	\item Technical quality (group)
-	\item Game design (group)
-	\item Documentation quality (group)
-	\item Teamwork (individual)
+	\item Technical quality (group) - 20\%
+	    \begin{itemize}
+	    \item $0$ if the videogame does not properly execute
+	    \end{itemize}
+	\item Game design (group) - 20\%
+	    \begin{itemize}
+	    \item Game originality will have a big impact in this criteria
+	    \end{itemize}
+	\item Documentation quality (group) - 10\%
+	\item Teamwork (individual) - 20\%
+	    \begin{itemize}
+	    \item Activity in GitHub and coevaluatoin will have a big impact in this criteria
+	    \end{itemize}
 	\end{itemize}
 \end{frame}
 
@@ -163,19 +172,37 @@
 	\begin{itemize}
 	\item \texttt{src/} or \texttt{<project name>}: Source code
 	\item \texttt{docs/}: Documentation
+		\begin{itemize}
+		\item \texttt{docs/gdd.md}: Game Design Document
+		\item \texttt{docs/memoria.md}: Project memory
+		\item \texttt{docs/minutas.md}: Meetings minutes
+		\end{itemize}
 	\item \texttt{tests/}: Unitary tests
 	\item \texttt{dist/}: Distribution
-	\item \texttt{resources/}:
+	\item \texttt{assets/}:
 		\begin{itemize}
-		\item \texttt{resources/sprites}:
-		\item \texttt{resources/maps}
-		\item \texttt{resources/music}
-		\item \texttt{resources/sound}
+		\item \texttt{assets/sprites}:
+		\item \texttt{assets/maps}
+		\item \texttt{assets/music}
+		\item \texttt{assets/sound}
 		\end{itemize}
 	\end{itemize}
+   In general, always try to keep your code neat and nice
 \end{frame}
 
-\begin{frame}{Typical problems}
+%\begin{frame}{Memory contents}
+%	\begin{enumerate}
+%	\item Team members and roles. Do not include missing people
+%	\item How the team has been organized
+%	\item What degree of the GDD has been accomplished
+%	\item Explain why the GDD has not been fully accomplished, if it applies
+ %   \item Technical aspects of the project you want to be considered
+  %  \item Any additional information that the instructor should know
+%	\end{enumerate}
+ %   Remember CCC: context, content, conclussions
+%\end{frame}
+
+\begin{frame}[fragile]{Typical problems (I)}
     \begin{columns}
  	   \column{.50\textwidth}
 		\begin{alertblock}{Paths}
@@ -186,28 +213,51 @@
 		\begin{alertblock}{Path separator}
 		Use proper path separator
 		\end{alertblock}
-    	\end{columns}
+   	\end{columns}
 
-		\bigskip
+	\bigskip
 
-		Windows style:
-		\begin{itemize}
-		\item \texttt{resources\textbackslash sprites\textbackslash alien.png}
-		\end{itemize}
+	Windows style:
+	\begin{itemize}
+	\item \texttt{resources\textbackslash sprites\textbackslash alien.png}
+	\end{itemize}
 
-		Unix style (Linux and MacOS):
-		\begin{itemize}
-		\item \texttt{resources/sprites/alien.png}
-		\end{itemize}
+	Unix style (Linux and MacOS):
+	\begin{itemize}
+	\item \texttt{resources/sprites/alien.png}
+	\end{itemize}
 
-		Python trick: \texttt{os.path.sep}
-		\begin{itemize}
-			\item \texttt{spritePath = 'resources' + os.path.sep + 'sprites'}
-		\end{itemize}
+	Python trick: \texttt{os.path.sep}
+	\begin{itemize}
+		\item \texttt{spritePath = 'resources' + os.path.sep + 'sprites'}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Typical problems (II)}
+    Extra trick:
+    \begin{itemize}
+        \item Any relative path depends on the working directory
+        \item Solution: change working directory
+    \end{itemize}
+
+    \begin{block}{}
+    \begin{verbatim}
+file_path = os.path.dirname(os.path.abspath(__file__))
+os.chdir(file_path)
+\end{verbatim}
+\end{block}
+
+    Not everybody has a RTX 3090TI ...
+    \begin{itemize}
+        \item Use a reasonable resolution
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Last remarks}
-	Remember to test the game properly \\
+	Remember to test the game properly ...
+	    \begin{itemize}
+		    \item ... and ideally using an issue tracker
+	    \end{itemize}
 	\bigskip
 	Python app deployment: \url{https://wiki.python.org/moin/deployment}
 \end{frame}
