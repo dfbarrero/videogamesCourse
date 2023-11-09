@@ -18,7 +18,7 @@
 - Entender cómo se identifica el directorio raíz del proyecto.
   
 ## Ciclo de vida del videojuego
-- Entender, agrandes rasgos, el proceso de inicialización del juego. La función *load_map()* es especialmente delicada e interesante, así que échala un vistazo por encima y la miraremos con más detenimiento después.
+- Entender, a grandes rasgos, el proceso de inicialización del juego. La función *load_map()* es especialmente delicada e interesante, así que échala un vistazo por encima y la miraremos con más detenimiento después.
 - Identificar qué hace la función *arcade.resources.add_resource_handle()* presente en el archivo *__main__.py*. Busca en la documentación de Arcade o en el propio código fuente si es necesario.
 - Entender cómo se realizan las transiciones entre vistas.
 - En la vista del juego hay un modo depuración, encuentra la manera de activarlo.
@@ -54,3 +54,6 @@ Volvamos a la función *load_map()*, en el archivo *load_game_map.py*:
 ## UI
 - Localiza el código encargado de mostrar el inventario.
 - Entiende la vista que muestra un menú de usuario.
+
+## Más generadidades
+- Entiende, a grades rasgos, los métodos *on_draw()* y *on_update()* de la vista del juego.
