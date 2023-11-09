@@ -14,7 +14,8 @@
 
 ## Assignments
 
-- [Proyecto de videojuego (2022/23)](assignments/proyecto.md)
+- Ejemplo de tareas [GitHub](assignments/proyecto.md) [HackMD](https://hackmd.io/@dfbarrero/proyecto-101)
+- Toma de contacto con la plantilla [GitHub](assignments/proyecto.md) [HackMD](https://hackmd.io/@dfbarrero/proyecto-101)
 
 ## Compilation
 
