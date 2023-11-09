@@ -1,3 +1,8 @@
+---
+title: Tareas
+tags: Videojuegos
+---
+
 # Tecnología de Videojuegos: Tareas
 
 ## Generales
