@@ -9,17 +9,21 @@
   - Código fuente.
   - Recursos.
 - Entender la función de los archivos y directorios ocultos del directorio raíz. Buscar en Google en caso necesario.
-- Identificar punto de entrada al juego.
-- Localizar las constantes y configuración del juego.
   
 ### Generalidades
+- Identificar punto de entrada al juego.
+- Localizar las constantes y configuración del juego.
 - Entender cómo se gestionan las dependencias del juego (uso de una biblioteca externa no vista en clase).
-- Entender cómo se identifica la raíz del proyecto.
+- Entender cómo se identifica el directorio raíz del proyecto.
   
 ### Ciclo de vida del videojuego
-- Entender, agrandes rasgos, el proceso de inicialización del juego.
+- Entender, agrandes rasgos, el proceso de inicialización del juego. La función *load_map()* es especialmente delicada e interesante, así que échala un vistazo por encima y la miraremos con más detenimiento después.
+- Identificar qué hace la función *arcade.resources.add_resource_handle()* presente en el archivo *__main__.py*. Busca en la documentación de Arcade o en el propio código fuente si es necesario.
+- Entender cómo se realizan las transiciones entre vistas.
+
 ### Gestión de niveles
-### Gestión de recursos
+- Entender cómo se realizan las transiciones entre mapas.
+  
 ### Integración con editor de niveles
 
 ## Tareas
