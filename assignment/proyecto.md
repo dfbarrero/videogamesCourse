@@ -44,6 +44,7 @@ Volvamos a la función *load_map()*, en el archivo *load_game_map.py*:
 
 ## NPCs
 - Localiza las clases que implementan a los NPCs y al personaje del juego.
+- Explica la relación entre los NPCs y el archivo JSON que guarda parte de sus propiedades (mira en la función *load_map()* y el contenido de los propios archivos JSON).
 - Entiende a grandes rasgos, la implementación de los NPCs y del personaje.
 
 ## Mecánicas del juego
@@ -55,5 +56,5 @@ Volvamos a la función *load_map()*, en el archivo *load_game_map.py*:
 - Localiza el código encargado de mostrar el inventario.
 - Entiende la vista que muestra un menú de usuario.
 
-## Más generadidades
+## Más generalidades
 - Entiende, a grades rasgos, los métodos *on_draw()* y *on_update()* de la vista del juego.
