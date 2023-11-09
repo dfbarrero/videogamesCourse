@@ -1,7 +1,7 @@
 # Proyecto de Tecnología de Videojuegos
 
 ## Familiarización con el código dado
-- Clonar el respositorio e instalar las dependencias del juego.
+- Clonar el [respositorio](https://github.com/dfbarrero/community-rpg) e instalar las dependencias del juego.
 - Jugar al juego identificando las mecánicas.
   
 ### Estructura del código fuente
