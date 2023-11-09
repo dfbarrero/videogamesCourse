@@ -1,5 +1,4 @@
-# Proyecto de Tecnología de Videojuegos
-# Toma de contacto con la plantilla
+# Tecnología de Videojuegos: Toma de contacto con la plantilla
 
 ## Tareas iniciales
 - Clonar el [respositorio](https://github.com/dfbarrero/community-rpg) con PyCharm.
