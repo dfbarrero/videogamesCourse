@@ -14,8 +14,8 @@
 
 ## Assignments
 
-- Ejemplo de tareas [[GitHub](assignments/proyecto.md), [HackMD](https://hackmd.io/@dfbarrero/proyecto-101)]
-- Toma de contacto con la plantilla [[GitHub](assignments/proyecto.md), [HackMD](https://hackmd.io/@dfbarrero/proyecto-101)]
+- Ejemplo de tareas [[GitHub](assignment/proyecto.md), [HackMD](https://hackmd.io/@dfbarrero/tareas)]
+- Toma de contacto con la plantilla [[GitHub](assignment/proyecto.md), [HackMD](https://hackmd.io/@dfbarrero/proyecto-101)]
 
 ## Compilation
 
