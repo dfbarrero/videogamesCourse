@@ -3,7 +3,9 @@ title: Tareas
 tags: Videojuegos
 ---
 
-# Tecnología de Videojuegos: Tareas
+# Ejemplos de tareas
+
+A continuación se muestra un ejemplo de tareas a implementar durante el desarrollo del proyecto. En función del videojuego que se vaya a desarrollar, puede ser necesario agregar nuevas tareas, eliminar tareas, o dividir una de estas tareas en varias.
 
 ## Generales
 - Agregar música ambiental.
