@@ -1,7 +1,8 @@
 # Proyecto de Tecnología de Videojuegos
 
 ## Familiarización con el código dado
-- Clonar el [respositorio](https://github.com/dfbarrero/community-rpg) e instalar las dependencias del juego.
+- Clonar el [respositorio](https://github.com/dfbarrero/community-rpg) con PyCharm.
+- Instalar las dependencias del juego en un ambiente virtual.
 - Jugar al juego identificando las mecánicas.
   
 ### Estructura del código fuente
@@ -20,6 +21,7 @@
 - Entender, agrandes rasgos, el proceso de inicialización del juego. La función *load_map()* es especialmente delicada e interesante, así que échala un vistazo por encima y la miraremos con más detenimiento después.
 - Identificar qué hace la función *arcade.resources.add_resource_handle()* presente en el archivo *__main__.py*. Busca en la documentación de Arcade o en el propio código fuente si es necesario.
 - Entender cómo se realizan las transiciones entre vistas.
+- En la vista del juego hay un modo depuración, encuentra la manera de activarlo.
 
 ### Gestión de niveles
 - Entender cómo se realizan las transiciones entre mapas.
