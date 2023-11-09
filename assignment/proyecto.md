@@ -1,5 +1,5 @@
 ---
-tags: Práctica Videojuegos
+tags: Videojuegos
 ---
 
 # Tecnología de Videojuegos: Toma de contacto con la plantilla
