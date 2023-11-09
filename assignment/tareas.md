@@ -1,5 +1,4 @@
-# Tareas 
-# Proyecto Tecnología de Videojuegos
+# Tecnología de Videojuegos: Tareas
 
 ## Generales
 - Agregar música ambiental.
