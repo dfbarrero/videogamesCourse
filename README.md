@@ -2,15 +2,17 @@
 
 ## Contents
 
-1.- [Introduction to videogames](introduction/)
+1.- [Python for videogames](python/)
 
-2.- [Videogames development team](team/)
+2.- [Introduction to videogames](introduction/)
 
-3.- [Videogame engine](engine/)
+3.- [Videogames development team](team/)
 
-4.- [Videogame engine architecture](architecture/)
+4.- [Videogame engine](engine/)
 
-5.- [Design patterns in videogames](patterns/)
+5.- [Videogame engine architecture](architecture/)
+
+6.- [Design patterns in videogames](patterns/)
 
 ## Assignments
 
