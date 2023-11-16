@@ -357,9 +357,10 @@ $ pip install Pillow
 \end{verbatim}
 	\vspace{-0.2cm}
 \end{exampleblock}
+    List of dependences in \texttt{requirements.txt}
 \end{frame}
 
-\begin{frame}[fragile]{Packages}{Installing packages (I)}
+\begin{frame}[fragile]{Packages}{Installing packages (II)}
 	    \includegraphics[width=0.8\linewidth]{figs/packages}
 \end{frame}
 
@@ -456,7 +457,27 @@ $ pip install Pillow
 \section{Virtual environments}
 
 \begin{frame}{Virtual environments}
-	TODO
+	\begin{columns}
+ 	   \column{0.50\textwidth}
+            Versioning is problematic
+            \begin{itemize}
+                \item Python version (2.x vr. 3.x)
+                \item Packages version
+            \end{itemize}
+            Solution: \alert{virtual environment}
+            \begin{itemize}
+                \item Self-contained directory with a Python installation
+                \item Particular version of Python and packages
+            \end{itemize}
+        	Different solutions
+            \begin{itemize}
+                \item venv
+                \item conda
+            \end{itemize}
+            Great tool with \texttt{requirements.txt}
+ 	   \column{0.50\textwidth}
+	        \includegraphics[width=\linewidth]{figs/venv.png}\\
+	\end{columns}
 \end{frame}
 
 \section{Arcade}
