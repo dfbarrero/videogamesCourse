@@ -25,6 +25,9 @@
 \usepackage{xcolor}
 \usepackage{xstring}
 \usepackage{listings}
+
+% Custom pñackages
+\usepackage{multicol}
 \usepackage{tikz}
 \usetikzlibrary{matrix,chains,positioning,decorations.pathreplacing,arrows,shapes}
 
@@ -100,8 +103,14 @@
 {
 \disableNavigation{white}
 \begin{frame}[shrink]{Table of Contents}
- \frametitle{Table of Contents}
- \tableofcontents
+
+ 	\frametitle{Table of Contents}
+  	\begin{multicols}{2}
+  		\tableofcontents
+    \end{multicols}
+
+ %\frametitle{Table of Contents}
+ %\tableofcontents
   % You might wish to add the option [pausesections]
 \end{frame}
 }
@@ -323,7 +332,7 @@ $ python3 fibo2.py 50
 \end{frame}
 
 \subsection{Installing packages}
-\begin{frame}[fragile]{Packages}{Installing packages}
+\begin{frame}[fragile]{Packages}{Installing packages (I)}
 	Command-line automatic tool: \texttt{pip} (sometimes \texttt{pip3})
 		\begin{itemize}
 			\item Very similar to \texttt{apt-get} in Linux
@@ -348,6 +357,10 @@ $ pip install Pillow
 \end{verbatim}
 	\vspace{-0.2cm}
 \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{Packages}{Installing packages (I)}
+	    \includegraphics[width=0.8\linewidth]{figs/packages}
 \end{frame}
 
 \section{Other cool code examples}
@@ -385,20 +398,7 @@ $ pip install Pillow
 	\centering \tiny{\href{http://www.pythonforbeginners.com/gui/how-to-use-pillow}{(Source)}}
 \end{frame}
 
-\subsection{Example 3: List a directory contents}
-\begin{frame}{Cool code examples}{Example 3: List a directory contents}
-		\vspace{-0.2cm}
-		\begin{block}{dir.py}
-		\vspace{-0.2cm}
-		\lstinputlisting{code/dir.py}
-		\vspace{-0.2cm}
-		\end{block}
-
-		\vspace{-0.2cm}
-	\centering \tiny{\href{http://www.pythonforbeginners.com/code-snippets-source-code/having-fun-with-os-walk-in-python/}{(Source)}}
-\end{frame}
-
-\subsection{Example 4: Send an email with Gmail}
+\subsection{Example 3: Send an email with Gmail}
 \begin{frame}{Cool code examples}{Example 4: Send an email with Gmail}
 	\begin{columns}
  	   \column{1.1\textwidth}
@@ -412,7 +412,7 @@ $ pip install Pillow
 	\centering \tiny{\href{http://www.pythonforbeginners.com/code-snippets-source-code/using-python-to-send-email/}{(Source)}}
 \end{frame}
 
-\begin{frame}{Modules}{Example 5: Plot}
+\begin{frame}{Modules}{Example 4: Plot}
 	\begin{columns}
  	   \column{.60\textwidth}
 
@@ -430,7 +430,7 @@ $ pip install Pillow
 		\vspace{-0.2cm}
 \end{frame}
 
-\begin{frame}{Modules}{Example 6: Arcade}
+\begin{frame}{Modules}{Example 5: Arcade}
 	\begin{columns}
  	   \column{0.80\textwidth}
 
