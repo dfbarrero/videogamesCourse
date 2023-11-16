@@ -483,7 +483,75 @@ $ pip install Pillow
 \section{Arcade}
 \subsection{Introduction}
 
-\begin{frame}{Arcade}{Introduction}
-	TODO
+\begin{frame}{Arcade}{Introduction (I)}
+	\begin{columns}
+ 	   \column{0.50\textwidth}
+            Arcade is an easy-to-use 2D motor engine
+            \begin{itemize}
+                \item Based on Python
+                \item More or less painless game development
+                \item Didactic
+                \item Free software
+            \end{itemize}
+
+        	Requires
+            \begin{itemize}
+                \item Python 3.6+
+                \item OpenGL capable hardware
+            \end{itemize}
+
+            Dependences
+            \begin{itemize}
+                \item Pyglet - Mutimedia library for Python
+            \end{itemize}
+
+ 	   \column{0.50\textwidth}
+            \includegraphics[width=\linewidth]{figs/arcade-logo}
+	\end{columns}
 \end{frame}
+
+\begin{frame}{Arcade}{Introduction (II)}
+    \href{http://arcade.academy}{(Arcade web site)}
+\end{frame}
+
+\subsection{Open a Window}
+\begin{frame}{Arcade}{Open a Window (I)}
+	\begin{columns}
+ 	   \column{0.80\textwidth}
+		\vspace{-0.2cm}
+		\begin{exampleblock}{arcade.py}
+		\vspace{-0.2cm}
+		\lstinputlisting[numbers=left]{code/arcade.py}
+		\vspace{-0.2cm}
+		\end{exampleblock}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Arcade}{Open a Window (II)}
+	\centering \includegraphics[width=0.5\linewidth]{figs/window.png}
+\end{frame}
+
+\subsection{Drawing setup}
+\begin{frame}{Arcade}{Open a Window (I)}
+	\begin{columns}
+ 	   \column{0.80\textwidth}
+		\vspace{-0.2cm}
+		\begin{exampleblock}{drawing.py}
+		\vspace{-0.2cm}
+		\lstinputlisting[numbers=left]{code/drawing.py}
+		\vspace{-0.2cm}
+		\end{exampleblock}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Arcade}{Open a Window (II)}
+	\centering \includegraphics[width=0.5\linewidth]{figs/smile.png}
+    \bigskip
+
+    \href{https://api.arcade.academy/en/latest/examples/happy_face.html}{(Source code)}
+\end{frame}
+
+
+
+
 \end{document}
