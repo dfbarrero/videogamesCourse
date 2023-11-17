@@ -38,7 +38,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Presentation Info
-\title[Python]{Python for Videogames}
+\title[Python for videogames]{Python for videogames}
 \author{\asignatura\\\carrera}
 \institute{}
 \date{Departamento de Automática}
@@ -94,9 +94,17 @@
 	\begin{block}{Objectives}
 		\begin{enumerate}
 		\item Understand the relevance to use modules and packages.
-		\item Be able to install some widely used Python packages% about  geospatial software.
-		\item Be able to apply some modules and packages of both Python Standard Library% and others Python Geospatial Libraries.
+		\item Install some widely used Python packages.
+		\item First contact with Arcade.
 		\end{enumerate}
+	\end{block}
+
+	\begin{block}{Bibliography}
+		\begin{itemize}
+			\item The Python Tutorial. \textit{Chapter 6: Modules}. \href{https://docs.python.org/3/tutorial/modules.html}{(Link)}
+			\item Paul Vincent Craven. \textit{Easy 2D game creation with Arcade}. \href{https://speakerdeck.com/pycon2018/paul-vincent-craven-easy-2d-game-creation-with-arcade}{(Link)}
+			\item Paul Vincent Craven. \textit{Learn to Program with Arcade}. \href{https://learn.arcade.academy/en/latest/}{(Link)}
+		\end{itemize}
 	\end{block}
 \end{frame}
 
@@ -107,7 +115,7 @@
  	\frametitle{Table of Contents}
   	\begin{multicols}{2}
   		\tableofcontents
-    \end{multicols}
+    	\end{multicols}
 
  %\frametitle{Table of Contents}
  %\tableofcontents
@@ -461,7 +469,7 @@ $ pip install Pillow
  	   \column{0.50\textwidth}
             Versioning is problematic
             \begin{itemize}
-                \item Python version (2.x vr. 3.x)
+                \item Python version (2.x, 3.x)
                 \item Packages version
             \end{itemize}
             Solution: \alert{virtual environment}
@@ -483,11 +491,12 @@ $ pip install Pillow
 \section{Arcade}
 \subsection{Introduction}
 
-\begin{frame}{Arcade}{Introduction (I)}
+\begin{frame}{Arcade}{Introduction}
 	\begin{columns}
- 	   \column{0.50\textwidth}
-            Arcade is an easy-to-use 2D motor engine
+ 	   \column{0.60\textwidth}
+		Arcade is an easy-to-use 2D motor engine (i.e. a Python package)
             \begin{itemize}
+		\item Created by Paul Vincent Craven
                 \item Based on Python
                 \item More or less painless game development
                 \item Didactic
@@ -505,13 +514,11 @@ $ pip install Pillow
                 \item Pyglet - Mutimedia library for Python
             \end{itemize}
 
- 	   \column{0.50\textwidth}
-            \includegraphics[width=\linewidth]{figs/arcade-logo}
+ 	   \column{0.30\textwidth}
+            \includegraphics[width=\linewidth]{figs/arcade-logo}\\
+    		\href{http://arcade.academy}{(Arcade web site)}
+ 	   \column{0.10\textwidth}
 	\end{columns}
-\end{frame}
-
-\begin{frame}{Arcade}{Introduction (II)}
-    \href{http://arcade.academy}{(Arcade web site)}
 \end{frame}
 
 \subsection{Open a Window}
@@ -532,7 +539,7 @@ $ pip install Pillow
 \end{frame}
 
 \subsection{Drawing setup}
-\begin{frame}{Arcade}{Open a Window (I)}
+\begin{frame}{Arcade}{Drawing setup (I)}
 	\begin{columns}
  	   \column{0.80\textwidth}
 		\vspace{-0.2cm}
@@ -544,14 +551,87 @@ $ pip install Pillow
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Arcade}{Open a Window (II)}
+\begin{frame}{Arcade}{Drawing setup (II)}
 	\centering \includegraphics[width=0.5\linewidth]{figs/smile.png}
     \bigskip
 
     \href{https://api.arcade.academy/en/latest/examples/happy_face.html}{(Source code)}
 \end{frame}
 
+\subsection{Drawing}
+\begin{frame}{Arcade}{Drawing (I)}
+	\begin{columns}
+ 	   \column{\textwidth}
+		\vspace{-0.2cm}
+		\begin{exampleblock}{smile.py}
+		\vspace{-0.2cm}
+		\lstinputlisting[numbers=left]{code/smile.py}
+		\vspace{-0.2cm}
+		\end{exampleblock}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Arcade}{Drawing (II)}
+	\centering \includegraphics[width=0.5\linewidth]{figs/smile.png}
+    \bigskip
+
+    \href{https://api.arcade.academy/en/latest/examples/happy_face.html}{(Source code)}
+\end{frame}
+
+\subsection{Drawing primitives}
+\begin{frame}{Arcade}{Drawing primitives (I)}
+	\centering \includegraphics[width=0.7\linewidth]{figs/primitives.png} \\
+    \bigskip
+
+    \href{https://api.arcade.academy/en/latest/examples/drawing_primitives.html}{(Source code)}
+\end{frame}
+
+\begin{frame}[shrink]{Arcade}{Drawing primitives (II)}
+  	\begin{multicols}{2}
+		\texttt{draw\_rectangle\_filled()}\\	
+		\texttt{draw\_rectangle\_outline()}\\
+		\texttt{draw\_lrtb\_rectangle\_filled()}\\
+		\texttt{draw\_lrtb\_rectangle\_outline()}\\
+		\texttt{draw\_xywh\_rectangle\_filled()}\\
+		\texttt{draw\_xywh\_rectangle\_outline()}\\
+		\texttt{ }\\
+		\texttt{draw\_polygon\_filled()}\\
+		\texttt{draw\_polygon\_outline()}\\
+		\texttt{ }\\
+		\texttt{load\_texture()}\\
+		\texttt{draw\_texture\_rectangle()}\\
+		\texttt{draw\_xywh\_rectangle\_textured()}\\
+		\texttt{ }\\
+		\texttt{draw\_triangle\_filled()}\\
+		\texttt{draw\_triangle\_outline()}\\
+		\texttt{ }\\
+		\texttt{draw\_arc\_filled()}\\
+		\texttt{draw\_arc\_outline()}\\
+		\texttt{ }\\
+		\texttt{draw\_circle\_filled()}\\
+		\texttt{draw\_circle\_outline()}\\
+		\texttt{ }\\
+		\texttt{draw\_ellipse\_filled()}\\
+		\texttt{draw\_ellipse\_outline()}\\
+		\texttt{ }\\
+		\texttt{draw\_line()}\\
+		\texttt{draw\_line\_strip()}\\
+		\texttt{draw\_lines()}\\
+		\texttt{ }\\
+		\texttt{draw\_point()}\\
+		\texttt{draw\_points()}
+	\end{multicols}
+\end{frame}
+
+\subsection{Colors}
+\begin{frame}{Arcade}{Colors}
+	How can I know which colors has Arcade available?
+	\begin{itemize}
+		\item The reference API is your friend!
+		\item \href{https://api.arcade.academy/en/latest/arcade.color.html}{(\texttt{arcade.color} reference documentation)}
+	\end{itemize}
 
 
+\end{frame}
 
 \end{document}
