@@ -1,0 +1,581 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% MUW Presentation
+% LaTeX Template
+% Version 1.0 (27/12/2016)
+%
+% License:
+% CC BY-NC-SA 4.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Created by:
+% Nicolas Ballarini, CeMSIIS, Medical University of Vienna
+% nicoballarini@gmail.com
+% http://statistics.msi.meduniwien.ac.at/
+%
+% Customized for UAH by:
+% David F. Barrero, Departamento de Automática, UAH
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[10pt,compress]{beamer} % Change 10pt to make fonts of a different size
+\mode<presentation>
+
+\usepackage[spanish]{babel}
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage{etoolbox}
+\usepackage{xcolor}
+\usepackage{xstring}
+\usepackage{multicol}
+\usepackage{listings}
+\usepackage{tikz}
+\usetikzlibrary{matrix,chains,positioning,decorations.pathreplacing,arrows,shapes}
+
+\usetheme{UAH}
+\usecolortheme{UAH}
+\setbeamertemplate{navigation symbols}{} 
+\setbeamertemplate{caption}[numbered]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Presentation Info
+\title[More Python for Videogames]{More Python for Videogames}
+\author{\asignatura\\\carrera}
+\institute{}
+\date{Departamento de Automática}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Descomentar para habilitar barra de navegación superior
+\setNavigation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Configuración de logotipos en portada
+%% Opacidad de los logotipos
+\newcommand{\opacidad}{1}
+%% Descomentar para habilitar logotipo en pié de página de portada
+%\renewcommand{\logoUno}{Images/isg.png}
+%% Descomentar para habilitar logotipo en pié de página de portada
+%\renewcommand{\logoDos}{Images/CCLogo.png}
+%% Descomentar para habilitar logotipo en pié de página de portada
+\renewcommand{\logoTres}{Images/ALogo.png}
+%% Descomentar para habilitar logotipo en pié de página de portada
+%\renewcommand{\logoCuatro}{Images/ELogo.png}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% FOOTLINE
+%% Comment/Uncomment the following blocks to modify the footline
+%% content in the body slides. 
+
+
+%% Option A: Title and institute
+\footlineA
+%% Option B: Author and institute
+%\footlineB
+%% Option C: Title, Author and institute
+%\footlineC
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Use this block for a blue title slide with modified footline
+{\titlepageBlue
+    \begin{frame}
+        \titlepage
+    \end{frame}
+}
+
+\institute{\asignatura}
+
+\begin{frame}[plain]{}
+	\begin{block}{Objectives}
+		\begin{enumerate}
+		\item Being able to manipulate files in Python.
+		\item Being able to understand the usefulness of Python serialization (\textit{pickles} and JSON).
+		\item Being able to handle exceptions.
+%		\item Introduce decorators
+		\end{enumerate}
+	\end{block}
+
+	\begin{block}{Bibliography}
+		\begin{itemize}
+			\item The Python Tutorial. \textit{Section 7.2: Reading and writing files}. \href{https://docs.python.org/3/tutorial/inputoutput.html\#reading-and-writing-files}{(Link)}
+			\item The Python Tutorial. \textit{Chapter 8: Errors and Exceptions}. \href{https://docs.python.org/3/tutorial/errors.html}{(Link)}
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+{
+\disableNavigation{white}
+\begin{frame}[shrink]{Table of Contents}
+
+ 	\frametitle{Table of Contents}
+  	\begin{multicols}{2}
+  		\tableofcontents
+    	\end{multicols}
+
+ %\frametitle{Table of Contents}
+ %\tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+}
+
+
+\section{Reading and writing files}
+
+\subsection{Path}
+
+\begin{frame}[fragile]{Reading and writing files}{Path}
+	\alert{Path}: A string that identifies a file in a file system
+	\begin{itemize}
+		\item On Linux, the path is denoted by: \\
+\begin{verbatim}
+path = '/tmp/prueba.txt'
+\end{verbatim}
+		\item On Windows, the path is denoted by: \\
+\begin{verbatim}
+path = 'C:\Windows\Temp'
+\end{verbatim}
+		And it is represented  in Python by:\\
+\begin{verbatim}
+path = 'C:\\Windows\\Temp'
+\end{verbatim}
+		But by also using \textit{raw string}:
+\begin{verbatim}
+    path = r'C:\Windows\Temp'
+\end{verbatim}
+\end{itemize}
+\end{frame}
+
+\subsection{Opening files}
+\begin{frame}[fragile]{Reading and writing files}{Opening files}
+	\begin{itemize}
+	\item \small{All file operations are made through a \textit{file object}.}
+	\item \small{A file is a sequence of bytes. But \ldots, it's often useful to treat it as a sequence of lines.} % solución muy parecida a la de C
+	\item \small{First of all: Call the \texttt{open()} function.}
+	\end{itemize}
+
+	\begin{block}{The \texttt{open()} function}
+\begin{verbatim}
+open(filename[, mode])
+\end{verbatim}
+	\vspace{-0.2cm}
+	\textbf{Description}: The function returns an object file.\\
+	\vspace{-0.2cm}
+	\begin{itemize}
+	\item \textit{filename}: String with the file name.
+	\item \textit{mode}: Characters describing how the file will be used:
+		\begin{itemize}
+		\item \textit{r}: Reading mode, \textit{w}: Writing mode,  \textit{+}:  Reading/Writing mode. % lectura por defecto. W: borra el contenido anterior, r+: lectura y escritura; a: append
+		\item \textit{b}: Binary mode, \textit{a}: Appending mode.
+		\end{itemize}
+	\end{itemize}
+	\end{block}
+	\small{\alert{Remember}: Always, always, always close the file: \texttt{f.close()}}
+\end{frame}
+
+\subsection{Methods of file objects}
+\begin{frame}[fragile]{Methods of file objects}{Reading files (I)}
+	\begin{block}{The \texttt{read()} function}
+\begin{verbatim}
+f.read([size])
+\end{verbatim}
+
+	\vspace{-0.5cm}
+	\begin{itemize}
+	\item \textit{size}: The number of bytes to be read from the file.
+	\item Return value: The bytes read in string.
+	\end{itemize}
+	\end{block}
+\textbf{Option 1}: Read the entire file (\texttt{f.read()})
+\begin{verbatim}
+>>> f = open("/tmp/file", 'r+')
+>>> f.read()
+'This is the entire file.\\n'
+>>> f.read()
+''
+>>> f.close()
+\end{verbatim}
+	
+\end{frame}
+
+\begin{frame}[fragile]{Methods of file objects}{Reading files (II)}
+	
+
+	\textbf{Option 2}: Read a single line (\texttt{f.readline()})
+\begin{verbatim}
+>>> f = open("/tmp/file2", 'r+')
+>>> f.readline()
+'This is the first line of the file.\n'
+>>> f.readline()
+'This is the second line of the file\n'
+>>> f.readline()
+''
+>>> f.close()
+\end{verbatim}
+
+\end{frame}
+
+\begin{frame}[fragile]{Methods of file objects}{Reading files (III)}
+	\textbf{Option 3}: Read lines as list (\texttt{f.readlines()})
+\begin{verbatim}
+>>> f = open("/tmp/file2", 'r+')
+>>> f.readlines()
+['This is the first line of the file.\n',
+'This is the second line of the file\n']
+>>> f.close()
+\end{verbatim}
+
+	\textbf{Option 4}: Read in a loop
+\begin{verbatim}
+f = open("/tmp/file2", 'r+')
+for line in f:
+    print(line, end='')
+f.close()
+\end{verbatim}
+\end{frame}
+
+
+\begin{frame}[fragile]{Methods of file objects}{Writing files (I)}
+	\begin{block}{The \texttt{write()} function}
+\begin{verbatim}
+f.write(string)
+\end{verbatim}
+
+	\vspace{-0.5cm}
+	\begin{itemize}
+	\item \textit{string}: String to write in file.
+	\item Return value: The number of written bytes.
+	\end{itemize}
+	\end{block}
+
+	\textbf{Example 1}: Write a line
+	 % si el archivo se crea con modo w+: se sobrescribe lo que hubiera al estar ya creado.
+	 % no se lee luego nada porque el puntero está posicionado al final y no hay más.
+	\begin{verbatim}
+>>> f = open("/tmp/file", 'w+')
+>>> f.write('This is a test\n')
+15
+>>> f.read()
+'' 
+>>> f.close()
+\end{verbatim}
+
+
+\end{frame}
+
+\begin{frame}[fragile]{Methods of file objects}{Writing files (II)}
+	
+
+	\textbf{Example 2}: Write a number % se tiene que pasar a string el número
+\begin{verbatim}
+>>> f = open("/tmp/file", 'w+')
+>>> f.write(str(42))
+2
+>>> f.close()
+\end{verbatim}
+\end{frame}
+
+\subsection{Useful methods}
+\begin{frame}[fragile]{Others file management methods}{Useful methods}
+
+	\begin{tabular}{c|l}\hline
+  	\sc Method & \sc Description  \\\hline
+  	\texttt{f.tell()} & Returns the pointer's position \\
+  	\texttt{f.seek(n)} & Moves the pointer \texttt{n} bytes \\
+  	\texttt{f.close()} & Closes a file. Use it always! \\\hline
+  	\end{tabular}
+
+\begin{verbatim}
+>>> f = open("/tmp/file", 'rb+')
+>>> f.write(b'0123456789abcdef')
+16
+>>> f.seek(5)
+5
+>>> f.read(1)
+b'5'
+\end{verbatim}
+\end{frame}
+% que hagan: obtener el número de bytes de un archivo, el archivo es muy, muy largo: léalo no completo sino en fragmentos de 64 bytes, leer de línea en línea (lo más frecuente), 
+% o todas las líneas de una vez, bucles sobre, directamente, las líneas del archivo. Escribir usando write y writelines (porporcionar finales de línea adecuadamente). Copia de un archivo (del todo o por líneas), de 1024 en 1024, 
+
+% CADENA UNICODE!
+\subsection{Examples}
+\begin{frame}[fragile]{Example 1}{}
+	\begin{block}{Calculating the average of characters per line of file \texttt{example.txt}}
+	\vspace{-0.2cm}
+	\lstinputlisting[basicstyle=\scriptsize, numbers=left]{code/char_average_line.py}
+	\vspace{-0.2cm}
+	\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Example 2}{}
+	\begin{block}{Reading a line each time}
+	\vspace{-0.2cm}
+	\lstinputlisting[basicstyle=\scriptsize, numbers=left]{code/cierreautomatico.py}
+	\vspace{-0.2cm}
+	\end{block}
+	\begin{columns}
+	\column{.40\textwidth}
+	\begin{block}{names.txt}
+	\lstinputlisting[basicstyle=\scriptsize, numbers=left]{code/nombres.txt}
+	\end{block}
+	\column{.50\textwidth}
+	\begin{block}{Output}
+	\lstinputlisting[basicstyle=\scriptsize]{code/output.txt}
+	\end{block}
+	\end{columns}
+	
+\end{frame}
+
+\section{Serialization}
+\subsection{The pickle module}
+
+\begin{frame}[fragile]{Serialization}{The \texttt{pickle} module: Introduction}
+	\begin{itemize}
+		\item What happens if we need to store complex data structures?
+		\begin{itemize}
+			\item Think about lists, dictionaries or even objects ...
+			\item The \texttt{pickle} module comes to help.
+		\end{itemize}
+		\item \textit{Pickling}: Transform an object to string representation.
+		\item \textit{Unpickling}: Reconstruct an object from its string representation.
+		\item Given an object \texttt{x} and a file object \texttt{f}.
+	\end{itemize}
+\begin{verbatim}
+>>> pickle.dump(x, f)
+>>> x = pickle.load(f)
+\end{verbatim}
+\end{frame}
+% byte of p. 93 -- cPickle más rápido
+
+\begin{frame}[fragile]{Serialization}{The \texttt{pickle} module: Examples}
+	\begin{exampleblock}{Save a list  to a file}
+	\vspace{-0.2cm}
+	\lstinputlisting[numbers=left]{code/pickle_example_list_dump.py}
+	\vspace{-0.2cm}
+	\end{exampleblock}
+
+	\begin{exampleblock}{Load a list from a file}
+	\vspace{-0.2cm}
+	\lstinputlisting[numbers=left]{code/pickle_example_list_load.py}
+	\vspace{-0.2cm}
+	\end{exampleblock}
+\end{frame}
+
+\subsection{The JSON module}
+
+\begin{frame}[fragile]{Serialization}{The \texttt{JSON} module: Introduction}
+	\begin{columns}
+ 	  \column{.40\textwidth}
+		JSON: \textit{JavaScript Object Notation}
+		\begin{itemize}
+		\item Data format for hierarchical data
+        	\item Created in 2001 for stateless client-server communication
+	        \item Text-based
+		\item Interoperable
+	        \item Complex data structures
+		\end{itemize}
+
+ 	  \column{.60\textwidth}
+        \begin{exampleblock}{filename.json}
+		\begin{lstlisting}[basicstyle=\scriptsize]
+{
+  "firstName": "John",
+  "isAlive": true,
+  "age": 27,
+  "address": {
+    "streetAddress": "21 2nd Street",
+    "city": "New York",
+    "state": "NY",
+  },
+  "phoneNumbers": [ "111", "333" ]
+}
+\end{lstlisting}
+        \end{exampleblock}
+	\end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Serialization}{The \texttt{JSON} module: Examples}
+	\begin{exampleblock}{Save a list to a file}
+	\vspace{-0.2cm}
+	\lstinputlisting[numbers=left]{code/json_example_list_dump.py}
+	\vspace{-0.2cm}
+	\end{exampleblock}
+
+	\begin{exampleblock}{Load a list from a file}
+	\vspace{-0.2cm}
+	\lstinputlisting[numbers=left]{code/json_example_list_load.py}
+	\vspace{-0.2cm}
+	\end{exampleblock}
+\end{frame}
+
+\section{Exceptions}
+\subsection{Motivation}
+
+\begin{frame}[fragile]{Exceptions}{Motivation}
+	Errors happen
+	\begin{itemize}
+		\item We need a mechanism to handle errors
+	    \item Some errors happen before execution (\textit{syntax errors})
+
+		\item Others are only detected in execution (\textit{runtime errors})
+        \begin{itemize}
+        \item We need tools to handle errors: Exceptions
+        \end{itemize}
+    \end{itemize}
+\begin{verbatim}
+>>> while True print('Hello world')
+  File "<stdin>", line 1
+    while True print('Hello world')
+                   ^
+  SyntaxError: invalid syntax
+\end{verbatim}
+
+\begin{verbatim}
+>>> int("hola")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: invalid literal for int() with base 10: 'hola'
+\end{verbatim}
+\end{frame}
+
+\subsection{Definition}
+
+\begin{frame}[fragile]{Exceptions}{Exception definition (I)}
+	\alert{Exception}: An error that disrupts the normal execution flow
+	\begin{itemize}
+		\item File not found, division by zero, invalid argument, etc
+		\item Code cannot be executed
+		\item Elegant solution to handle errors
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Exceptions}{Exception definition (II)}
+    \begin{columns}
+ 	   \column{.50\textwidth}
+		\centering Call stack
+		\centering \includegraphics[width=0.8\linewidth]{figs/exceptions-callstack.png}
+
+  	\column{.50\textwidth}
+		\textit{Call stack}: Sequence of invoked methods
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Exceptions}{Exception definition (III)}
+    \begin{columns}
+ 	   \column{.60\textwidth}
+		\centering Exception handling
+		\includegraphics[width=0.8\linewidth]{figs/exceptions-errorOccurs.png}
+
+  	\column{.60\textwidth}
+		When an error happens ...
+		\begin{enumerate}
+		\item Code execution is stopped
+		\item An exception is thrown
+		\item The interpreter goes back in the call stack
+		\item When the interpreter finds an exception handler, it is executed
+		\end{enumerate}
+		The exception handler catches the exception, the program finishes otherwise
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Exceptions}{Exception definition (IV)}
+	\lstinputlisting{code/stack.txt}
+\end{frame}
+
+\subsection{Handling exceptions}
+\begin{frame}{Exceptions}{Handling exceptions (I)}
+	Handling an exception requires a try-except statement
+	\begin{itemize}
+		\item \texttt{try}: Encloses the vulnerable code
+		\item \texttt{catch}: Code that handles the exception
+	\end{itemize}
+
+    \begin{columns}
+ 	   \column{.60\textwidth}
+	\begin{block}{try-catch statement}
+	\vspace{-0.2cm}
+		\lstinputlisting{code/try.py}
+	\vspace{-0.2cm}
+	\end{block}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Exceptions}{Handling exceptions (II)}
+    \begin{columns}
+ 	   \column{.90\textwidth}
+	\begin{exampleblock}{try-catch example}
+	\vspace{-0.2cm}
+		\lstinputlisting[numbers=left]{code/try-example.py}
+	\vspace{-0.2cm}
+	\end{exampleblock}
+	\end{columns}
+	\bigskip
+	The exception type contains the error
+\end{frame}
+
+\begin{frame}{Exceptions}{Handling exceptions (III)}
+	\vspace{-0.2cm}
+    \begin{columns}
+ 	   \column{.90\textwidth}
+	\begin{exampleblock}{try-catch example}
+	\vspace{-0.2cm}
+		\lstinputlisting[numbers=left]{code/try-example2.py}
+	\vspace{-0.2cm}
+	\end{exampleblock}
+	\end{columns}
+	\bigskip
+	New Python elements
+		\begin{itemize}
+		\item Raise
+        \item Exception as object
+		\end{itemize}
+\end{frame}
+
+\subsection{Clean-up actions}
+\begin{frame}{Exceptions}{Clean-up actions}
+	\vspace{-0.2cm}
+	Sometimes we need to execute code under all circumstances
+	\begin{itemize}
+		\item Typically clean-up actions: Close files, database connections, sockets, etc
+		\item The \textbf{finally} clause solves this problem
+	\end{itemize}
+
+	\vspace{-0.2cm}
+    \begin{columns}
+ 	   \column{.60\textwidth}
+	\begin{exampleblock}{Example}
+	\vspace{-0.2cm}
+		\lstinputlisting[numbers=left]{code/try-finally.py}
+	\vspace{-0.2cm}
+	\end{exampleblock}
+
+	\end{columns}
+\end{frame}
+
+%\section{Decorators}
+%\begin{frame}{Decorators}
+
+%	TODO
+%	\vspace{-0.2cm}
+%	Sometimes we need to execute code under all circumstances
+%	\begin{itemize}
+%		\item Typically clean-up actions: Close files, database connections, sockets, etc
+%		\item The \textbf{finally} clause solves this problem
+%	\end{itemize}
+
+%	\vspace{-0.2cm}
+%    \begin{columns}
+% 	   \column{.60\textwidth}
+%	\begin{exampleblock}{Example}
+%	\vspace{-0.2cm}
+%		\lstinputlisting[numbers=left]{code/try-finally.py}
+%	\vspace{-0.2cm}
+%	\end{exampleblock}
+
+%	\end{columns}
+%\end{frame}
+
+\end{document}

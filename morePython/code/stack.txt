@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "r2p2.py", line 57, in <module>
+    start_simulation(args.scenario)
+  File "r2p2.py", line 41, in start_simulation
+    u.load_simulation(config)
+  File "/home/david/repositorios/r2p2/r2p2/utils.py", line 175, in load_simulation
+    with open(json_file, 'r') as fp:
+FileNotFoundError: [Errno 2] No such file or directory: 'foo.json'
