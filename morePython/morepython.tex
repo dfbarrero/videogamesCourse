@@ -150,33 +150,37 @@ path = 'C:\\Windows\\Temp'
 
 \subsection{Opening files}
 \begin{frame}[fragile]{Reading and writing files}{Opening files}
-	\begin{itemize}
-	\item \small{All file operations are made through a \textit{file object}.}
-	\item \small{A file is a sequence of bytes. But \ldots, it's often useful to treat it as a sequence of lines.} % solución muy parecida a la de C
-	\item \small{First of all: Call the \texttt{open()} function.}
-	\end{itemize}
+	All file operations are made through a \textit{file object}
+		\begin{itemize}
+		\item \small{First of all: Call the \texttt{open()} function}
+		\end{itemize}
 
-	\begin{block}{The \texttt{open()} function}
+	\begin{block}{\texttt{The open() function}}
 \begin{verbatim}
 open(filename[, mode])
 \end{verbatim}
 	\vspace{-0.2cm}
-	\textbf{Description}: The function returns an object file.\\
+	\textbf{Description}: The function returns an object file\\
 	\vspace{-0.2cm}
 	\begin{itemize}
-	\item \textit{filename}: String with the file name.
-	\item \textit{mode}: Characters describing how the file will be used:
+	\item \textit{filename}: String with the file name
+	\item \textit{mode}: Characters describing how the file will be used
 		\begin{itemize}
 		\item \textit{r}: Reading mode, \textit{w}: Writing mode,  \textit{+}:  Reading/Writing mode. % lectura por defecto. W: borra el contenido anterior, r+: lectura y escritura; a: append
-		\item \textit{b}: Binary mode, \textit{a}: Appending mode.
+		\item \textit{b}: Binary mode, \textit{a}: Appending mode
 		\end{itemize}
 	\end{itemize}
 	\end{block}
-	\small{\alert{Remember}: Always, always, always close the file: \texttt{f.close()}}
+
+	\smallskip
+
+	\begin{alertblock}{}
+	Always, always, always close the file: \texttt{f.close()}
+	\end{alertblock}
 \end{frame}
 
-\subsection{Methods of file objects}
-\begin{frame}[fragile]{Methods of file objects}{Reading files (I)}
+\subsection{Reading files}
+\begin{frame}[fragile]{Reading files (I)}
 	\begin{block}{The \texttt{read()} function}
 \begin{verbatim}
 f.read([size])
@@ -200,9 +204,7 @@ f.read([size])
 	
 \end{frame}
 
-\begin{frame}[fragile]{Methods of file objects}{Reading files (II)}
-	
-
+\begin{frame}[fragile]{Reading files (II)}
 	\textbf{Option 2}: Read a single line (\texttt{f.readline()})
 \begin{verbatim}
 >>> f = open("/tmp/file2", 'r+')
@@ -217,7 +219,7 @@ f.read([size])
 
 \end{frame}
 
-\begin{frame}[fragile]{Methods of file objects}{Reading files (III)}
+\begin{frame}[fragile]{Reading files (III)}
 	\textbf{Option 3}: Read lines as list (\texttt{f.readlines()})
 \begin{verbatim}
 >>> f = open("/tmp/file2", 'r+')
@@ -236,8 +238,9 @@ f.close()
 \end{verbatim}
 \end{frame}
 
+\subsection{Writing files}
 
-\begin{frame}[fragile]{Methods of file objects}{Writing files (I)}
+\begin{frame}[fragile]{Writing files (I)}
 	\begin{block}{The \texttt{write()} function}
 \begin{verbatim}
 f.write(string)
@@ -265,7 +268,7 @@ f.write(string)
 
 \end{frame}
 
-\begin{frame}[fragile]{Methods of file objects}{Writing files (II)}
+\begin{frame}[fragile]{Writing files (II)}
 	
 
 	\textbf{Example 2}: Write a number % se tiene que pasar a string el número
@@ -278,7 +281,7 @@ f.write(string)
 \end{frame}
 
 \subsection{Useful methods}
-\begin{frame}[fragile]{Others file management methods}{Useful methods}
+\begin{frame}[fragile]{Useful methods}
 
 	\begin{tabular}{c|l}\hline
   	\sc Method & \sc Description  \\\hline
@@ -303,28 +306,29 @@ b'5'
 % CADENA UNICODE!
 \subsection{Examples}
 \begin{frame}[fragile]{Example 1}{}
-	\begin{block}{Calculating the average of characters per line of file \texttt{example.txt}}
+	\begin{exampleblock}{Calculating the average of characters per line of file \texttt{example.txt}}
 	\vspace{-0.2cm}
-	\lstinputlisting[basicstyle=\scriptsize, numbers=left]{code/char_average_line.py}
+	\lstinputlisting[numbers=left]{code/char_average_line.py}
 	\vspace{-0.2cm}
-	\end{block}
+	\end{exampleblock}
 \end{frame}
 
 \begin{frame}[fragile]{Example 2}{}
-	\begin{block}{Reading a line each time}
+	\begin{exampleblock}{Reading a line each time}
 	\vspace{-0.2cm}
-	\lstinputlisting[basicstyle=\scriptsize, numbers=left]{code/cierreautomatico.py}
+	\lstinputlisting[numbers=left]{code/cierreautomatico.py}
 	\vspace{-0.2cm}
-	\end{block}
+	\end{exampleblock}
+
 	\begin{columns}
 	\column{.40\textwidth}
-	\begin{block}{names.txt}
+	\begin{exampleblock}{names.txt}
 	\lstinputlisting[basicstyle=\scriptsize, numbers=left]{code/nombres.txt}
-	\end{block}
+	\end{exampleblock}
 	\column{.50\textwidth}
-	\begin{block}{Output}
+	\begin{exampleblock}{Output}
 	\lstinputlisting[basicstyle=\scriptsize]{code/output.txt}
-	\end{block}
+	\end{exampleblock}
 	\end{columns}
 	
 \end{frame}
@@ -341,7 +345,7 @@ b'5'
 		\end{itemize}
 		\item \textit{Pickling}: Transform an object to string representation.
 		\item \textit{Unpickling}: Reconstruct an object from its string representation.
-		\item Given an object \texttt{x} and a file object \texttt{f}.
+		\item Given an object \texttt{x} and a file object \texttt{f} ...
 	\end{itemize}
 \begin{verbatim}
 >>> pickle.dump(x, f)
@@ -374,7 +378,7 @@ b'5'
 		\item Data format for hierarchical data
         	\item Created in 2001 for stateless client-server communication
 	        \item Text-based
-		\item Interoperable
+		\item Interoperable (pickles only for Python)
 	        \item Complex data structures
 		\end{itemize}
 
@@ -425,6 +429,9 @@ b'5'
         \item We need tools to handle errors: Exceptions
         \end{itemize}
     \end{itemize}
+
+	\small
+
 \begin{verbatim}
 >>> while True print('Hello world')
   File "<stdin>", line 1
