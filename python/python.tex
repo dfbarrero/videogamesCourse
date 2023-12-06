@@ -136,7 +136,7 @@
 \section{Modules}
 
 \subsection{Using modules}
-\begin{frame}{Using modules}{Creation and Implementation}
+\begin{frame}[fragile]{Using modules}{Creation and Implementation}
 	\vspace{-0.2cm}
 	A module is just a Python script with \texttt{.py} extension
 	\vspace{-0.2cm}
@@ -149,7 +149,7 @@
 \end{frame}
 
 \begin{frame}[fragile]{Using modules}{How do I use them? (I)}
-	\begin{block}{}
+	\begin{exampleblock}{}
 	\begin{verbatim}
 >>> import fibo
 >>> fibo.fib(1000)
@@ -163,7 +163,7 @@
 1 1 2 3 5 13 21 34 55 89
 \end{verbatim}
 	\vspace{-0.2cm}
-	\end{block}
+	\end{exampleblock}
 \end{frame}
 
 \begin{frame}[fragile]{Using modules}{How do I use them?  (II)}
@@ -249,6 +249,26 @@ $ python3 fibo2.py 50
     \end{columns}
 \end{frame}
 
+\begin{frame}[fragile]{Executing modules}{Modules as scripts (III)}
+	The file \texttt{\_\_main\_\_.py} is an alternative entry point in a module
+		\begin{itemize}
+			\item Usefull in command line mode and IDEs
+		\end{itemize}
+
+	\begin{columns}
+ 	   \column{0.5\textwidth}
+	\begin{exampleblock}{}
+	\vspace{-0.2cm}
+	\begin{verbatim}
+(In Linux console)
+$ python3 -m mymodule
+\end{verbatim}
+	\vspace{-0.2cm}
+	\end{exampleblock}
+	\end{columns}
+
+\end{frame}
+
 \subsection{Content of a module}
 
 \begin{frame}[fragile]{Content of a module}{The dir() function}
@@ -298,26 +318,25 @@ $ python3 fibo2.py 50
 \end{frame}
 
 \subsection{Importing a package}
-\begin{frame}{Packages}{Importing a package (I)}
-	\centering{\alert{Ways to use a package}}\\
-	\bigskip
-	\begin{flushleft}
-	Import an individual module
-		\begin{itemize}
-		\item \texttt{import sound.effects.echo}
-		\item Use function as \texttt{sound.effects.echo.echofilter(input, output)}
-		\end{itemize}
+\begin{frame}[fragile]{Packages}{Importing a package (I)}
+	Importing an individual module
+	\begin{verbatim}
+import sound.effects.echo
+sound.effects.echo.echofilter(input, output)
+\end{verbatim}
+
 	Alternative way to import an individual module
-		\begin{itemize}
-		\item \texttt{from sound.effects import echo}
-		\item Use function as \texttt{echo.echofilter(input, output)}
-		\end{itemize}
+	\begin{verbatim}
+from sound.effects import echo
+echo.echofilter(input, output)
+\end{verbatim}
+
 	Alternative way to import an individual module
-		\begin{itemize}
-		\item \texttt{from sound.effects.echo import echofilter}
-		\item Use function as \texttt{echofilter(input, output)}
-		\end{itemize}
-	\end{flushleft}
+	\begin{verbatim}
+from sound.effects.echo import echofilter
+echofilter(input, output)
+\end{verbatim}
+
 \end{frame}
 
 \begin{frame}{Packages}{Importing a package (II)}
@@ -332,11 +351,11 @@ $ python3 fibo2.py 50
 		\item \texttt{\_\_all\_\_} contains modules to be imported
 		\end{itemize}
 
-	\begin{block}{sounds/effects/\_\_init\_\_.py}
+	\begin{exampleblock}{sounds/effects/\_\_init\_\_.py}
 	\vspace{-0.2cm}
 	\lstinputlisting{code/package.py}
 	\vspace{-0.2cm}
-	\end{block}
+	\end{exampleblock}
 \end{frame}
 
 \subsection{Installing packages}
@@ -372,96 +391,6 @@ $ pip install Pillow
 	    \includegraphics[width=0.8\linewidth]{figs/packages}
 \end{frame}
 
-\section{Other cool code examples}
-
-\subsection{Example 1: Open a web browser}
-\begin{frame}{Cool code examples}{Example 1: Open a web browser}
-	\vspace{-0.2cm}
-	\begin{block}{browser.py}
-	\vspace{-0.2cm}
-	\lstinputlisting{code/brower.py}
-	\vspace{-0.2cm}
-	\end{block}
-\end{frame}
-
-\subsection{Example 2: Create a thumbnail}
-\begin{frame}[plain]{Cool code examples}{Example 2: Create a thumbnail}
-	\begin{columns}
- 	   \column{.60\textwidth}
-
-		\vspace{-0.2cm}
-		\begin{block}{thumbnail.py}
-		\vspace{-0.2cm}
-		\lstinputlisting{code/thumbnail.py}
-		\vspace{-0.2cm}
-		\end{block}
-
-		
-
-  		\column{.50\textwidth}
-		\vspace{-0.2cm}
-		\centering \includegraphics[width=\linewidth]{figs/africa.jpg}\\
-	 	\texttt{africa.jpg}
-	\end{columns}
-		\vspace{-0.2cm}
-	\centering \tiny{\href{http://www.pythonforbeginners.com/gui/how-to-use-pillow}{(Source)}}
-\end{frame}
-
-\subsection{Example 3: Send an email with Gmail}
-\begin{frame}{Cool code examples}{Example 4: Send an email with Gmail}
-	\begin{columns}
- 	   \column{1.1\textwidth}
-		\vspace{-0.2cm}
-		\begin{block}{gmail.py}
-		\vspace{-0.2cm}
-		\lstinputlisting{code/gmail.py}
-		\end{block}
-	\end{columns}
-
-	\centering \tiny{\href{http://www.pythonforbeginners.com/code-snippets-source-code/using-python-to-send-email/}{(Source)}}
-\end{frame}
-
-\begin{frame}{Modules}{Example 4: Plot}
-	\begin{columns}
- 	   \column{.60\textwidth}
-
-		\vspace{-0.2cm}
-		\begin{exampleblock}{plot.py}
-		\vspace{-0.2cm}
-		\lstinputlisting{code/plot.py}
-		\vspace{-0.2cm}
-		\end{exampleblock}
-
-  		\column{.50\textwidth}
-		\vspace{-0.2cm}
-		\centering \includegraphics[width=\linewidth]{figs/plot.png}\\
-	\end{columns}
-		\vspace{-0.2cm}
-\end{frame}
-
-\begin{frame}{Modules}{Example 5: Arcade}
-	\begin{columns}
- 	   \column{0.80\textwidth}
-
-		\vspace{-0.2cm}
-		\begin{exampleblock}{arcade.py}
-		\vspace{-0.2cm}
-		\lstinputlisting{code/arcade.py}
-		\vspace{-0.2cm}
-		\end{exampleblock}
-
-  		\column{.40\textwidth}
-		\vspace{-0.2cm}
-		\centering \includegraphics[width=\linewidth]{figs/window.png}\\
-		\vspace{-0.2cm}
-	\end{columns}
-
-	\begin{itemize}
-		\item \href{https://api.arcade.academy/en/latest/arcade.html}{(API documentation)}
-		\item \href{https://github.com/pythonarcade/arcade/tree/development}{(Arcade source code)}
-	\end{itemize}
-\end{frame}
-
 \section{Virtual environments}
 
 \begin{frame}{Virtual environments}
@@ -482,10 +411,100 @@ $ pip install Pillow
                 \item venv
                 \item conda
             \end{itemize}
-            Great tool with \texttt{requirements.txt}
+		Great tool with \texttt{requirements.txt} or \texttt{setuptools}
  	   \column{0.50\textwidth}
 	        \includegraphics[width=\linewidth]{figs/venv.png}\\
 	\end{columns}
+\end{frame}
+
+\section{Other cool code examples}
+
+\subsection{Example 1: Open a web browser}
+\begin{frame}{Cool code examples}{Example 1: Open a web browser}
+	\vspace{-0.2cm}
+	\begin{exampleblock}{browser.py}
+	\vspace{-0.2cm}
+	\lstinputlisting[numbers=left]{code/brower.py}
+	\vspace{-0.2cm}
+	\end{exampleblock}
+\end{frame}
+
+\subsection{Example 2: Create a thumbnail}
+\begin{frame}[plain]{Cool code examples}{Example 2: Create a thumbnail}
+	\begin{columns}
+ 	   \column{.60\textwidth}
+
+		\vspace{-0.2cm}
+		\begin{exampleblock}{thumbnail.py}
+		\vspace{-0.2cm}
+		\lstinputlisting[numbers=left]{code/thumbnail.py}
+		\vspace{-0.2cm}
+		\end{exampleblock}
+
+		
+
+  		\column{.50\textwidth}
+		\vspace{-0.2cm}
+		\centering \includegraphics[width=\linewidth]{figs/africa.jpg}\\
+	 	\texttt{africa.jpg}
+	\end{columns}
+		\vspace{-0.2cm}
+	\centering \tiny{\href{http://www.pythonforbeginners.com/gui/how-to-use-pillow}{(Source)}}
+\end{frame}
+
+\subsection{Example 3: Send an email with Gmail}
+\begin{frame}{Cool code examples}{Example 3: Send an email with Gmail}
+	\begin{columns}
+ 	   \column{1.1\textwidth}
+		\vspace{-0.2cm}
+		\begin{exampleblock}{gmail.py}
+		\vspace{-0.2cm}
+		\lstinputlisting[numbers=left]{code/gmail.py}
+		\end{exampleblock}
+	\end{columns}
+
+	\centering \tiny{\href{http://www.pythonforbeginners.com/code-snippets-source-code/using-python-to-send-email/}{(Source)}}
+\end{frame}
+
+\begin{frame}{Modules}{Example 4: Plot}
+	\begin{columns}
+ 	   \column{.60\textwidth}
+
+		\vspace{-0.2cm}
+		\begin{exampleblock}{plot.py}
+		\vspace{-0.2cm}
+		\lstinputlisting[numbers=left]{code/plot.py}
+		\vspace{-0.2cm}
+		\end{exampleblock}
+
+  		\column{.50\textwidth}
+		\vspace{-0.2cm}
+		\centering \includegraphics[width=\linewidth]{figs/plot.png}\\
+	\end{columns}
+		\vspace{-0.2cm}
+\end{frame}
+
+\begin{frame}{Modules}{Example 5: Arcade}
+	\begin{columns}
+ 	   \column{0.60\textwidth}
+
+		\vspace{-0.2cm}
+		\begin{exampleblock}{arcade.py}
+		\vspace{-0.2cm}
+		\lstinputlisting[numbers=left]{code/arcade.py}
+		\vspace{-0.2cm}
+		\end{exampleblock}
+
+  		\column{.40\textwidth}
+		\vspace{-0.2cm}
+		\centering \includegraphics[width=\linewidth]{figs/window.png}\\
+		\vspace{-0.2cm}
+	\end{columns}
+
+	\begin{itemize}
+		\item \href{https://api.arcade.academy/en/latest/arcade.html}{(API documentation)}
+		\item \href{https://github.com/pythonarcade/arcade/tree/development}{(Arcade source code)}
+	\end{itemize}
 \end{frame}
 
 \section{Arcade}
@@ -534,12 +553,8 @@ $ pip install Pillow
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Arcade}{Open a Window (II)}
-	\centering \includegraphics[width=0.5\linewidth]{figs/window.png}
-\end{frame}
-
 \subsection{Drawing setup}
-\begin{frame}{Arcade}{Drawing setup (I)}
+\begin{frame}{Arcade}{Drawing setup}
 	\begin{columns}
  	   \column{0.80\textwidth}
 		\vspace{-0.2cm}
@@ -551,15 +566,16 @@ $ pip install Pillow
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Arcade}{Drawing setup (II)}
+\subsection{Drawing}
+
+\begin{frame}{Arcade}{Drawing (I)}
 	\centering \includegraphics[width=0.5\linewidth]{figs/smile.png}
     \bigskip
 
     \href{https://api.arcade.academy/en/latest/examples/happy_face.html}{(Source code)}
 \end{frame}
 
-\subsection{Drawing}
-\begin{frame}{Arcade}{Drawing (I)}
+\begin{frame}{Arcade}{Drawing (II)}
 	\begin{columns}
  	   \column{\textwidth}
 		\vspace{-0.2cm}
@@ -571,14 +587,8 @@ $ pip install Pillow
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Arcade}{Drawing (II)}
-	\centering \includegraphics[width=0.5\linewidth]{figs/smile.png}
-    \bigskip
-
-    \href{https://api.arcade.academy/en/latest/examples/happy_face.html}{(Source code)}
-\end{frame}
-
 \subsection{Drawing primitives}
+
 \begin{frame}{Arcade}{Drawing primitives (I)}
 	\centering \includegraphics[width=0.7\linewidth]{figs/primitives.png} \\
     \bigskip
