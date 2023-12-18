@@ -4,15 +4,19 @@
 
 1.- [Python for videogames](python/)
 
-2.- [Introduction to videogames](introduction/)
+2.- [More Python for videogames](morePython/)
 
-3.- [Videogames development team](team/)
+3.- [OOP in Arcade](oop-arcade/)
 
-4.- [Videogame engine](engine/)
+4.- [Introduction to videogames](introduction/)
 
-5.- [Videogame engine architecture](architecture/)
+5.- [Videogames development team](team/)
 
-6.- [Design patterns in videogames](patterns/)
+6.- [Videogame engine](engine/)
+
+7.- [Videogame engine architecture](architecture/)
+
+8.- [Design patterns in videogames](patterns/)
 
 ## Assignments
 
