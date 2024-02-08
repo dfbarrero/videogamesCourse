@@ -213,6 +213,7 @@
 \end{frame}
 
 \begin{frame}[shrink,plain,fragile]{Executing modules}{Modules as scripts (II)}
+
     \small
 	\vspace{-0.3cm}
 	\begin{exampleblock}{fibo2.py}
@@ -220,6 +221,10 @@
 	\lstinputlisting[numbers=left]{code/fibo2.py}
 	\vspace{-0.2cm}
 	\end{exampleblock}
+
+    \medskip
+    \normalsize{\texttt{\_\_main\_\_} is a special variable set to the module's name}\\
+    \medskip
 
 	\vspace{-0.5cm}
 	\begin{columns}
@@ -252,7 +257,7 @@ $ python3 fibo2.py 50
 \begin{frame}[fragile]{Executing modules}{Modules as scripts (III)}
 	The file \texttt{\_\_main\_\_.py} is an alternative entry point in a module
 		\begin{itemize}
-			\item Usefull in command line mode and IDEs
+			\item Useful in command line mode and IDEs
 		\end{itemize}
 
 	\begin{columns}
@@ -267,16 +272,22 @@ $ python3 -m mymodule
 	\end{exampleblock}
 	\end{columns}
 
+    \medskip
+    IDEs allow the configuration of multiple entry points\\
+    \smallskip
+	    \includegraphics[width=0.8\linewidth]{figs/main-configuration}
 \end{frame}
 
 \subsection{Content of a module}
 
 \begin{frame}[fragile]{Content of a module}{The dir() function}
-	Very usefull to get an insight to a module
+	\texttt{dir()}: Built-in function that returns the names defined in a module
 	\begin{itemize}
-		\item It returns the names defined in a module
 		\item Without arguments, it returns your names
 	\end{itemize}
+
+    \smallskip
+
 	\begin{exampleblock}{}
 	\begin{verbatim}
 >>> import fibo, sys
@@ -306,14 +317,14 @@ $ python3 -m mymodule
 			\item Make life easier in big proyects
 			\item The name \texttt{A.B} designates a submodule \texttt{B} in a package named \texttt{A}
 			\end{itemize}
-		Must contain a \texttt{\_\_init\_\_.py} file in the root directory
+		Must contain an \texttt{\_\_init\_\_.py} file in the root directory
 			\begin{itemize}
 			\item Executed when the package is imported for the first time
 			\end{itemize}
 \end{frame}
 
 \begin{frame}[shrink,plain]{Packages}{Package concept (II)}
-	\centering \textit{Sound module structure}
+	\centering \textit{Sound module structure}\\
 	\lstinputlisting{code/module.txt}
 \end{frame}
 
@@ -384,7 +395,7 @@ $ pip install Pillow
 \end{verbatim}
 	\vspace{-0.2cm}
 \end{exampleblock}
-    List of dependences in \texttt{requirements.txt}
+    %List of dependences in \texttt{requirements.txt}
 \end{frame}
 
 \begin{frame}[fragile]{Packages}{Installing packages (II)}
@@ -393,7 +404,7 @@ $ pip install Pillow
 
 \section{Virtual environments}
 
-\begin{frame}{Virtual environments}
+\begin{frame}{Virtual environments (I)}
 	\begin{columns}
  	   \column{0.50\textwidth}
             Versioning is problematic
@@ -415,6 +426,12 @@ $ pip install Pillow
  	   \column{0.50\textwidth}
 	        \includegraphics[width=\linewidth]{figs/venv.png}\\
 	\end{columns}
+\end{frame}
+
+\begin{frame}{Virtual environments (II)}
+    \centering
+	\includegraphics[width=\linewidth]{figs/requirements}\\
+    \tiny{\href{https://github.com/pythonarcade/arcade/blob/development/doc/get_started/install/images/requirements.png}{(Source)}}
 \end{frame}
 
 \section{Other cool code examples}
@@ -466,6 +483,7 @@ $ pip install Pillow
 	\centering \tiny{\href{http://www.pythonforbeginners.com/code-snippets-source-code/using-python-to-send-email/}{(Source)}}
 \end{frame}
 
+\subsection{Example 4: Plot}
 \begin{frame}{Modules}{Example 4: Plot}
 	\begin{columns}
  	   \column{.60\textwidth}
@@ -484,6 +502,7 @@ $ pip install Pillow
 		\vspace{-0.2cm}
 \end{frame}
 
+\subsection{Example 5: Arcade}
 \begin{frame}{Modules}{Example 5: Arcade}
 	\begin{columns}
  	   \column{0.60\textwidth}
