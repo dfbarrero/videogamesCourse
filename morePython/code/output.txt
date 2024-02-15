@@ -1,5 +1,5 @@
-1         Juan
-2         Laura
-3         Pablo
-4         Enrique
-5         Javier
+1: Juan
+2: Laura
+3: Pablo
+4: Enrique
+5: Javier

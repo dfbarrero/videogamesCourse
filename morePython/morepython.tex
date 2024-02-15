@@ -92,7 +92,7 @@
 	\begin{block}{Objectives}
 		\begin{enumerate}
 		\item Being able to manipulate files in Python.
-		\item Being able to understand the usefulness of Python serialization (\textit{pickles} and JSON).
+		\item Understand and apply Python serialization (\textit{pickles} and JSON).
 		\item Being able to handle exceptions.
 %		\item Introduce decorators
 		\end{enumerate}
@@ -127,13 +127,18 @@
 \subsection{Path}
 
 \begin{frame}[fragile]{Reading and writing files}{Path}
-	\alert{Path}: A string that identifies a file in a file system
-	\begin{itemize}
-		\item On Linux, the path is denoted by: \\
+    \begin{block}{Path}
+	A string that identifies a file in a file system
+    \end{block}
+
+	\begin{columns}
+ 	  \column{.50\textwidth}
+		On \textbf{Linux}, the path is denoted by: \\
 \begin{verbatim}
 path = '/tmp/prueba.txt'
 \end{verbatim}
-		\item On Windows, the path is denoted by: \\
+ 	  \column{.50\textwidth}
+		On \textbf{Windows}, the path is denoted by: \\
 \begin{verbatim}
 path = 'C:\Windows\Temp'
 \end{verbatim}
@@ -143,9 +148,9 @@ path = 'C:\\Windows\\Temp'
 \end{verbatim}
 		But by also using \textit{raw string}:
 \begin{verbatim}
-    path = r'C:\Windows\Temp'
+path = r'C:\Windows\Temp'
 \end{verbatim}
-\end{itemize}
+	\end{columns}
 \end{frame}
 
 \subsection{Opening files}
@@ -155,12 +160,13 @@ path = 'C:\\Windows\\Temp'
 		\item \small{First of all: Call the \texttt{open()} function}
 		\end{itemize}
 
-	\begin{block}{\texttt{The open() function}}
+	\begin{block}{\texttt{open()}}
+	\vspace{-0.2cm}
 \begin{verbatim}
 open(filename[, mode])
 \end{verbatim}
 	\vspace{-0.2cm}
-	\textbf{Description}: The function returns an object file\\
+	Return: An object file\\
 	\vspace{-0.2cm}
 	\begin{itemize}
 	\item \textit{filename}: String with the file name
@@ -182,14 +188,15 @@ open(filename[, mode])
 \subsection{Reading files}
 \begin{frame}[fragile]{Reading files (I)}
 	\begin{block}{The \texttt{read()} function}
+	\vspace{-0.2cm}
 \begin{verbatim}
 f.read([size])
 \end{verbatim}
 
-	\vspace{-0.5cm}
+	\vspace{-0.2cm}
+	Return: the specified number of bytes
 	\begin{itemize}
-	\item \textit{size}: The number of bytes to be read from the file.
-	\item Return value: The bytes read in string.
+	\item \textit{size}: The number of bytes to be read from the file. Default reads the whole file
 	\end{itemize}
 	\end{block}
 \textbf{Option 1}: Read the entire file (\texttt{f.read()})
@@ -242,14 +249,15 @@ f.close()
 
 \begin{frame}[fragile]{Writing files (I)}
 	\begin{block}{The \texttt{write()} function}
+	\vspace{-0.2cm}
 \begin{verbatim}
 f.write(string)
 \end{verbatim}
 
-	\vspace{-0.5cm}
+	\vspace{-0.2cm}
+	Return: Number of written bytes
 	\begin{itemize}
-	\item \textit{string}: String to write in file.
-	\item Return value: The number of written bytes.
+	\item \textit{string}: String to write
 	\end{itemize}
 	\end{block}
 
@@ -298,6 +306,7 @@ f.write(string)
 5
 >>> f.read(1)
 b'5'
+>>> f.close()
 \end{verbatim}
 \end{frame}
 % que hagan: obtener el número de bytes de un archivo, el archivo es muy, muy largo: léalo no completo sino en fragmentos de 64 bytes, leer de línea en línea (lo más frecuente), 
@@ -348,7 +357,7 @@ b'5'
 		\item Given an object \texttt{x} and a file object \texttt{f} ...
 	\end{itemize}
 \begin{verbatim}
->>> pickle.dump(x, f)
+>>> pickle.dump(x, f) 
 >>> x = pickle.load(f)
 \end{verbatim}
 \end{frame}
@@ -426,7 +435,7 @@ b'5'
 
 		\item Others are only detected in execution (\textit{runtime errors})
         \begin{itemize}
-        \item We need tools to handle errors: Exceptions
+        \item We need tools to handle errors: \alert{Exceptions}
         \end{itemize}
     \end{itemize}
 
