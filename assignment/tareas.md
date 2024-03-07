@@ -11,21 +11,25 @@ A continuación se muestra un ejemplo de tareas a implementar durante el desarro
 - Agregar música ambiental.
 - Reordenar los estados del juego.
 ## Diseño
-- Definir secuencia de niveles.
+- Crear historia.
+- Diseñar personajes.
 - Diseñar las mecánicas.
+- Definir la física.
+- Definir secuencia de niveles.
 ## Lógica del juego
 - Diseñar secuencia de niveles.
 - Implementar las mecánicas.
+- Implementar la física.
 - Integración de niveles en el videojuego.
 - Agregar efectos de sonido.
+- Integración de niveles.
 ## Arte
 - Localizar o crear las hojas de sprites.
 - Localizar o crear música ambiental.
 - Localizar o crear efectos de sonido.
 - Crear arte del menú de inicio.
 - Crear arte del resto de pantallas.
-- Diseño de niveles.
-- Implementación de los niveles.
+- Crear niveles.
 ## Interfaz de usuario
 - Implementar menú de incio.
 - Implementar vista de arranque.
@@ -33,9 +37,11 @@ A continuación se muestra un ejemplo de tareas a implementar durante el desarro
 - Implementar vista de batalla.
 - Implementar vista de inventario.
 - Implementar vista de configuración.
+- Implementar otras vistas.
 ## Control de calidad
 - Definir un programa de pruebas.
 - Ejecutar el programa de pruebas.
 ## Documentación
-- Crear documento de diseño.
-- Crear memoria del proyecto.
+- Redactar documento de diseño.
+- Redactar memoria del proyecto.
+- Redactar instrucciones.
