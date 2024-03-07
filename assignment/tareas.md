@@ -17,18 +17,16 @@ A continuación se muestra un ejemplo de tareas a implementar durante el desarro
 - Definir la física.
 - Definir secuencia de niveles.
 ## Lógica del juego
-- Diseñar secuencia de niveles.
 - Implementar las mecánicas.
 - Implementar la física.
-- Integración de niveles en el videojuego.
+- Integración de los niveles.
 - Agregar efectos de sonido.
-- Integración de niveles.
 ## Arte
 - Localizar o crear las hojas de sprites.
 - Localizar o crear música ambiental.
 - Localizar o crear efectos de sonido.
 - Crear arte del menú de inicio.
-- Crear arte del resto de pantallas.
+- Crear arte del resto de vistas.
 - Crear niveles.
 ## Interfaz de usuario
 - Implementar menú de incio.
