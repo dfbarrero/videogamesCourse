@@ -115,6 +115,7 @@
 	\item Videogame source code
 	\item Design document: How the game will be
 	\item Project report: What has been done
+    \item Instructions
 	\end{itemize}
 	\end{block}
 
@@ -137,8 +138,9 @@
 	\begin{enumerate}
 	\item Fork all the repositories
 	\item Download the project from GitHub
+    \item Read instructions
 	\item Try to execute the project
-	\item Read the documentatoin and source code
+	\item Read the documentation and source code
 	\item Inspect GitHub activity
 	\item Set individual and group califications
 	\end{enumerate}
@@ -153,7 +155,7 @@
 	\begin{itemize}	
 	\item Technical quality (group) - 20\%
 	    \begin{itemize}
-	    \item $0$ if the videogame does not properly execute
+	    \item $0$ if the videogame does not execute properly
 	    \end{itemize}
 	\item Game design (group) - 20\%
 	    \begin{itemize}
@@ -162,7 +164,7 @@
 	\item Documentation quality (group) - 10\%
 	\item Teamwork (individual) - 20\%
 	    \begin{itemize}
-	    \item Activity in GitHub and coevaluatoin will have a big impact in this criteria
+	    \item Activity in GitHub and coevaluation will have a big impact in this criteria
 	    \end{itemize}
 	\end{itemize}
 \end{frame}
@@ -175,30 +177,32 @@
 		\begin{itemize}
 		\item \texttt{docs/gdd.md}: Game Design Document
 		\item \texttt{docs/memoria.md}: Project memory
-		\item \texttt{docs/minutas.md}: Meetings minutes
+		%\item \texttt{docs/minutas.md}: Meetings minutes
 		\end{itemize}
-	\item \texttt{tests/}: Unitary tests
-	\item \texttt{dist/}: Distribution
-	\item \texttt{assets/}:
+	\item \texttt{tests/}: Unitary tests (not used in our project)
+	\item \texttt{dist/}: Distribution (not used in our project)
+	\item \texttt{resources/}:
 		\begin{itemize}
-		\item \texttt{assets/sprites}:
-		\item \texttt{assets/maps}
-		\item \texttt{assets/music}
-		\item \texttt{assets/sound}
+		\item \texttt{resources/characters}:
+		\item \texttt{resources/data}:
+		\item \texttt{resources/maps}
+		\item \texttt{resources/tilesets}
+		\item \texttt{resources/sounds}
 		\end{itemize}
+    \item \texttt{README.md}: Instructions
 	\end{itemize}
    In general, always try to keep your code neat and nice
 \end{frame}
 
 \begin{frame}{Memory contents}
-	\begin{enumerate}
+	\begin{itemize}
 	\item Team members and roles. Do not include missing people
 	\item How the team has been organized
-	\item What degree of the GDD has been accomplished
+	\item Degree of the GDD that has been accomplished
 	\item Explain why the GDD has not been fully accomplished, if it applies
-    \item Technical aspects of the project you want to be considered
+    \item \textbf{Technical aspects of the project you want to be considered}
     \item Any additional information that the instructor should know
-	\end{enumerate}
+	\end{itemize}
     Remember CCC: context, content, conclussions
 \end{frame}
 
@@ -231,6 +235,13 @@
 	\begin{itemize}
 		\item \texttt{spritePath = 'resources' + os.path.sep + 'sprites'}
 	\end{itemize}
+
+    \begin{columns}
+ 	   \column{.70\textwidth}
+		\begin{alertblock}{}
+	    Linux is case sensitive! Use capital letters in paths with care
+		\end{alertblock}
+   	\end{columns}
 \end{frame}
 
 \begin{frame}[fragile]{Typical problems (II)}
@@ -251,6 +262,16 @@ os.chdir(file_path)
     \begin{itemize}
         \item Use a reasonable resolution
     \end{itemize}
+
+    Not all the files have been included in the repository
+    \begin{itemize}
+        \item Proper testing should avoid this risk
+    \end{itemize}
+
+    The only branch that will be considered for evaluation is 'master'
+    \begin{itemize}
+        \item Your code in that branch must be fully operational
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Last remarks}
@@ -260,6 +281,25 @@ os.chdir(file_path)
 	    \end{itemize}
 	\bigskip
 	Python app deployment: \url{https://wiki.python.org/moin/deployment}
+\end{frame}
+
+\begin{frame}{Game presentation}
+    One presentation per group
+    \begin{itemize}
+        \item 5-7 minutes per group
+        \item Use any resource at will
+    \end{itemize}
+
+    \bigskip
+
+    \begin{columns}
+ 	   \column{.30\textwidth}
+		\begin{block}{CCC}
+		\textbf{C}ontext\\
+		\textbf{C}ontent\\
+		\textbf{C}onclussions
+		\end{block}
+   	\end{columns}
 \end{frame}
 
 \end{document}
