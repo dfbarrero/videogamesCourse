@@ -1,0 +1,4 @@
+arcade==2.6.17
+seaborn>=0.12
+numpy
+pandas

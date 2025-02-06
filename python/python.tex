@@ -93,9 +93,10 @@
 \begin{frame}[plain]{}
 	\begin{block}{Objectives}
 		\begin{enumerate}
-		\item Understand the relevance to use modules and packages.
-		\item Install some widely used Python packages.
 		\item First contact with Arcade.
+		\item Understand modules and packages.
+        \item Basic package management.
+		\item Introduce virtual environments.
 		\end{enumerate}
 	\end{block}
 
@@ -134,9 +135,9 @@
 \end{frame}
 
 \section{Modules}
+\subsection{Creation}
 
-\subsection{Using modules}
-\begin{frame}[fragile]{Using modules}{Creation and Implementation}
+\begin{frame}[fragile]{Modules}{Creation}
 	\vspace{-0.2cm}
 	A module is just a Python script with \texttt{.py} extension
 	\vspace{-0.2cm}
@@ -148,7 +149,9 @@
 	\end{exampleblock}
 \end{frame}
 
-\begin{frame}[fragile]{Using modules}{How do I use them? (I)}
+\subsection{Using modules}
+
+\begin{frame}[fragile]{Modules}{Using modules (I)}
 	\begin{exampleblock}{}
 	\begin{verbatim}
 >>> import fibo
@@ -166,7 +169,7 @@
 	\end{exampleblock}
 \end{frame}
 
-\begin{frame}[fragile]{Using modules}{How do I use them?  (II)}
+\begin{frame}[fragile]{Modules}{Using modules (II)}
 	A module can import other modules
 		\begin{itemize}
 		\item Name conflicts may arise: Each module has a symbol table
@@ -188,21 +191,23 @@
 	\end{exampleblock}
 \end{frame}
 
-\begin{frame}[fragile]{Using modules}{How do I use them?  (III)}
+\subsection{Using modules: Example}
+
+\begin{frame}[fragile]{Modules}{Using modules: Example}
 	\vspace{-0.2cm}
-	\begin{block}{List zip file contents (file.zip must exist. Open in read mode)}
+	\begin{exampleblock}{List zip file contents (file.zip must exist. Open in read mode)}
 	\vspace{-0.2cm}
 	\lstinputlisting[numbers=left]{code/zip.py}
 	\vspace{-0.2cm}
-	\end{block}
+	\end{exampleblock}
 	
 	\vspace{-0.2cm}
 	\centering \footnotesize{Several examples here: \url{http://pymotw.com/2/PyMOTW-1.132.pdf}}
 \end{frame}
 
-\subsection{Executing modules}
+\subsection{Modules as scripts}
 
-\begin{frame}{Executing modules}{Modules as scripts (I)}
+\begin{frame}{Modules}{Modules as scripts (I)}
 	When a module is imported, its statements are executed
 		\begin{itemize}
 		\item It declares functions, classes, variables ...
@@ -212,7 +217,7 @@
 	Very useful to use modules as programs and libraries
 \end{frame}
 
-\begin{frame}[shrink,plain,fragile]{Executing modules}{Modules as scripts (II)}
+\begin{frame}[shrink,plain,fragile]{Modules}{Modules as scripts (II)}
 
     \small
 	\vspace{-0.3cm}
@@ -223,7 +228,7 @@
 	\end{exampleblock}
 
     \medskip
-    \normalsize{\texttt{\_\_main\_\_} is a special variable set to the module's name}\\
+    \normalsize{\texttt{\_\_name\_\_} is a special variable set to the module's name}\\
     \medskip
 
 	\vspace{-0.5cm}
@@ -254,33 +259,10 @@ $ python3 fibo2.py 50
     \end{columns}
 \end{frame}
 
-\begin{frame}[fragile]{Executing modules}{Modules as scripts (III)}
-	The file \texttt{\_\_main\_\_.py} is an alternative entry point in a module
-		\begin{itemize}
-			\item Useful in command line mode and IDEs
-		\end{itemize}
 
-	\begin{columns}
- 	   \column{0.5\textwidth}
-	\begin{exampleblock}{}
-	\vspace{-0.2cm}
-	\begin{verbatim}
-(In Linux console)
-$ python3 -m mymodule
-\end{verbatim}
-	\vspace{-0.2cm}
-	\end{exampleblock}
-	\end{columns}
+\subsection{The \texttt{dir()} function}
 
-    \medskip
-    IDEs allow the configuration of multiple entry points\\
-    \smallskip
-	    \includegraphics[width=0.8\linewidth]{figs/main-configuration}
-\end{frame}
-
-\subsection{Content of a module}
-
-\begin{frame}[fragile]{Content of a module}{The dir() function}
+\begin{frame}[fragile]{Module}{The dir() function}
 	\texttt{dir()}: Built-in function that returns the names defined in a module
 	\begin{itemize}
 		\item Without arguments, it returns your names
@@ -358,8 +340,8 @@ echofilter(input, output)
 		\end{itemize}
 	There is a convention to avoid waste of resources
 		\begin{itemize}
-		\item There may be a variable \texttt{\_\_all\_\_} defined in \texttt{\_\_init\_\_}
-		\item \texttt{\_\_all\_\_} contains modules to be imported
+		\item There may be a list \texttt{\_\_all\_\_} defined in \texttt{\_\_init\_\_.py}
+		\item \texttt{\_\_all\_\_} contains the modules to be imported
 		\end{itemize}
 
 	\begin{exampleblock}{sounds/effects/\_\_init\_\_.py}
@@ -368,6 +350,33 @@ echofilter(input, output)
 	\vspace{-0.2cm}
 	\end{exampleblock}
 \end{frame}
+
+\subsection{The \texttt{\_\_main\_\_.py} file}
+
+\begin{frame}[fragile]{Modules}{The \texttt{\_\_main\_\_.py} file}
+	The file \texttt{\_\_main\_\_.py} is an alternative entry point in a package
+		\begin{itemize}
+			\item Useful in command line mode and IDEs
+		\end{itemize}
+
+	\begin{columns}
+ 	   \column{0.5\textwidth}
+	\begin{exampleblock}{}
+	\vspace{-0.2cm}
+	\begin{verbatim}
+(In Linux console)
+$ python3 -m mymodule
+\end{verbatim}
+	\vspace{-0.2cm}
+	\end{exampleblock}
+	\end{columns}
+
+    \medskip
+    IDEs allow the configuration of multiple entry points\\
+    \smallskip
+	    \includegraphics[width=0.8\linewidth]{figs/main-configuration}
+\end{frame}
+
 
 \subsection{Installing packages}
 \begin{frame}[fragile]{Packages}{Installing packages (I)}
@@ -381,6 +390,7 @@ echofilter(input, output)
 	\begin{verbatim}
 $ python -m pip install SomePackage
 \end{verbatim}
+
 or
 	\begin{verbatim}
 $ pip install SomePackage
@@ -402,9 +412,41 @@ $ pip install Pillow
 	    \includegraphics[width=0.8\linewidth]{figs/packages}
 \end{frame}
 
+\subsection{\texttt{requirements.txt}}
+
+\begin{frame}[fragile]{Packages}{\texttt{requirements.txt} (I)}
+	We need a tool to automatize our dependences: \texttt{requirements.txt}
+		\begin{itemize}
+		\item Plain text file with dependences
+		\item Can use fixed or minimum version
+		\end{itemize}
+	\texttt{requirements.txt} can be used by different tools
+		\begin{itemize}
+		\item \texttt{pip install -r requirements.txt}
+		\end{itemize}
+
+
+	\begin{columns}
+ 	   \column{0.4\textwidth}
+	\begin{exampleblock}{requirements.txt}
+	\vspace{-0.2cm}
+	\lstinputlisting{code/requirements.txt}
+	\vspace{-0.2cm}
+	\end{exampleblock}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Packages}{\texttt{requirements.txt} (II)}
+    \centering
+	\includegraphics[width=0.7\linewidth]{figs/requirements}\\
+    \centering \tiny{\href{https://github.com/pythonarcade/arcade/blob/development/doc/get_started/install/images/requirements.png}{(Source)}}
+\end{frame}
+
+
+
 \section{Virtual environments}
 
-\begin{frame}{Virtual environments (I)}
+\begin{frame}{Virtual environments}
 	\begin{columns}
  	   \column{0.50\textwidth}
             Versioning is problematic
@@ -417,21 +459,12 @@ $ pip install Pillow
                 \item Self-contained directory with a Python installation
                 \item Particular version of Python and packages
             \end{itemize}
-        	Different solutions
-            \begin{itemize}
-                \item venv
-                \item conda
-            \end{itemize}
-		Great tool with \texttt{requirements.txt} or \texttt{setuptools}
+        	Different solutions: venv and conda
  	   \column{0.50\textwidth}
 	        \includegraphics[width=\linewidth]{figs/venv.png}\\
 	\end{columns}
-\end{frame}
-
-\begin{frame}{Virtual environments (II)}
-    \centering
-	\includegraphics[width=\linewidth]{figs/requirements}\\
-    \tiny{\href{https://github.com/pythonarcade/arcade/blob/development/doc/get_started/install/images/requirements.png}{(Source)}}
+    \bigskip
+	\centering Great tool with \texttt{requirements.txt}!!!
 \end{frame}
 
 \section{Other cool code examples}
@@ -521,7 +554,7 @@ $ pip install Pillow
 	\end{columns}
 
 	\begin{itemize}
-		\item \href{https://api.arcade.academy/en/latest/arcade.html}{(API documentation)}
+		\item \href{https://api.arcade.academy/en/latest/api_docs/arcade.html}{(API documentation)}
 		\item \href{https://github.com/pythonarcade/arcade/tree/development}{(Arcade source code)}
 	\end{itemize}
 \end{frame}
@@ -657,10 +690,18 @@ $ pip install Pillow
 	How can I know which colors has Arcade available?
 	\begin{itemize}
 		\item The reference API is your friend!
-		\item \href{https://api.arcade.academy/en/latest/arcade.color.html}{(\texttt{arcade.color} reference documentation)}
+		\item \href{https://api.arcade.academy/en/2.6.17/arcade.color.html}{(\texttt{arcade.color} reference documentation)}
 	\end{itemize}
-
-
 \end{frame}
+
+\subsection{RGB}
+\begin{frame}{Arcade}{Colors: RGB}
+	\centering \includegraphics[width=0.5\linewidth]{figs/rgb.png}
+    \bigskip
+
+    \href{https://www.freestylersupport.com/wiki/tutorial:sequences_ideas:rainbow_tutorial}{(Source code)}
+\end{frame}
+
+
 
 \end{document}
