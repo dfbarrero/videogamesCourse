@@ -1,4 +1,4 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % MUW Presentation
 % LaTeX Template
 % Version 1.0 (27/12/2016)
@@ -169,11 +169,13 @@ open(filename[, mode])
 	Return: An object file\\
 	\vspace{-0.2cm}
 	\begin{itemize}
-	\item \textit{filename}: String with the file name
+	\item \textit{filename}: Path
 	\item \textit{mode}: Characters describing how the file will be used
 		\begin{itemize}
-		\item \textit{r}: Reading mode, \textit{w}: Writing mode,  \textit{+}:  Reading/Writing mode. % lectura por defecto. W: borra el contenido anterior, r+: lectura y escritura; a: append
-		\item \textit{b}: Binary mode, \textit{a}: Appending mode
+		\item \textit{r}: Read mode, \textit{w}: Write mode % lectura por defecto. W: borra el contenido anterior, r+: lectura y escritura; a: append
+        \item \textit{r+}: r/w mode, no truncation; \textit{w+}: r/w mode, truncation
+        \item \textit{a}: Write, appending mode
+		\item \textit{b}: Binary mode, text mode by default
 		\end{itemize}
 	\end{itemize}
 	\end{block}
@@ -201,7 +203,7 @@ f.read([size])
 	\end{block}
 \textbf{Option 1}: Read the entire file (\texttt{f.read()})
 \begin{verbatim}
->>> f = open("/tmp/file", 'r+')
+>>> f = open("/tmp/file", 'r')
 >>> f.read()
 'This is the entire file.\\n'
 >>> f.read()
@@ -214,7 +216,7 @@ f.read([size])
 \begin{frame}[fragile]{Reading files (II)}
 	\textbf{Option 2}: Read a single line (\texttt{f.readline()})
 \begin{verbatim}
->>> f = open("/tmp/file2", 'r+')
+>>> f = open("/tmp/file2", 'r')
 >>> f.readline()
 'This is the first line of the file.\n'
 >>> f.readline()
@@ -229,7 +231,7 @@ f.read([size])
 \begin{frame}[fragile]{Reading files (III)}
 	\textbf{Option 3}: Read lines as list (\texttt{f.readlines()})
 \begin{verbatim}
->>> f = open("/tmp/file2", 'r+')
+>>> f = open("/tmp/file2", 'r')
 >>> f.readlines()
 ['This is the first line of the file.\n',
 'This is the second line of the file\n']
@@ -238,11 +240,19 @@ f.read([size])
 
 	\textbf{Option 4}: Read in a loop
 \begin{verbatim}
-f = open("/tmp/file2", 'r+')
+f = open("/tmp/file2", 'r')
 for line in f:
     print(line, end='')
 f.close()
 \end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Example}{}
+	\begin{exampleblock}{Calculating the average of characters per line of file \texttt{example.txt}}
+	\vspace{-0.2cm}
+	\lstinputlisting[numbers=left]{code/char_average_line.py}
+	\vspace{-0.2cm}
+	\end{exampleblock}
 \end{frame}
 
 \subsection{Writing files}
@@ -272,7 +282,6 @@ f.write(string)
 '' 
 >>> f.close()
 \end{verbatim}
-
 
 \end{frame}
 
@@ -313,16 +322,62 @@ b'5'
 % o todas las líneas de una vez, bucles sobre, directamente, las líneas del archivo. Escribir usando write y writelines (porporcionar finales de línea adecuadamente). Copia de un archivo (del todo o por líneas), de 1024 en 1024, 
 
 % CADENA UNICODE!
-\subsection{Examples}
-\begin{frame}[fragile]{Example 1}{}
-	\begin{exampleblock}{Calculating the average of characters per line of file \texttt{example.txt}}
+\subsection{With}
+
+\begin{frame}[fragile]{\texttt{With} (I)}
+	\begin{columns}
+	\column{.6\textwidth}
+	\begin{block}{The \texttt{with} clause}
 	\vspace{-0.2cm}
-	\lstinputlisting[numbers=left]{code/char_average_line.py}
+\begin{verbatim}
+with open(path, mode) as file:
+    ...
+\end{verbatim}
+	\end{block}
+
+	\column{.4\textwidth}
+
+	It simplifies file operations
+	\begin{itemize}
+	\item No need to close files
+    \item Better exception handling
+	\end{itemize}
+    \end{columns}
+
+    
+	\begin{columns}
+	\column{.45\textwidth}
+	\begin{exampleblock}{}
+	\begin{verbatim}
+f = open('file')
+print(f.read())
+f.close()
+\end{verbatim}
+    \end{exampleblock}
+
+	\column{.05\textwidth}
+    $\Rightarrow$
+
+	\column{.50\textwidth}
+	\begin{exampleblock}{}
+	\begin{verbatim}
+with open('file') as file:
+    print(file.read())
+\end{verbatim}
+    \end{exampleblock}
+
+    \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{Example 1}
+	\begin{exampleblock}{Hello, world}
+	\vspace{-0.2cm}
+	\lstinputlisting[numbers=left]{code/hello-with.py}
 	\vspace{-0.2cm}
 	\end{exampleblock}
 \end{frame}
 
-\begin{frame}[fragile]{Example 2}{}
+\begin{frame}[fragile]{Example 2}
 	\begin{exampleblock}{Reading a line each time}
 	\vspace{-0.2cm}
 	\lstinputlisting[numbers=left]{code/cierreautomatico.py}
@@ -331,10 +386,12 @@ b'5'
 
 	\begin{columns}
 	\column{.40\textwidth}
+    \centering $\Uparrow$
 	\begin{exampleblock}{names.txt}
 	\lstinputlisting[basicstyle=\scriptsize, numbers=left]{code/nombres.txt}
 	\end{exampleblock}
 	\column{.50\textwidth}
+    \centering $\Downarrow$
 	\begin{exampleblock}{Output}
 	\lstinputlisting[basicstyle=\scriptsize]{code/output.txt}
 	\end{exampleblock}
@@ -343,19 +400,35 @@ b'5'
 \end{frame}
 
 \section{Serialization}
-\subsection{The pickle module}
 
-\begin{frame}[fragile]{Serialization}{The \texttt{pickle} module: Introduction}
-	\begin{itemize}
-		\item What happens if we need to store complex data structures?
+\begin{frame}[fragile]{Serialization}{Introduction}
+    What happens if we need to store complex data structures?
 		\begin{itemize}
 			\item Think about lists, dictionaries or even objects ...
-			\item The \texttt{pickle} module comes to help.
 		\end{itemize}
-		\item \textit{Pickling}: Transform an object to string representation.
-		\item \textit{Unpickling}: Reconstruct an object from its string representation.
-		\item Given an object \texttt{x} and a file object \texttt{f} ...
+    What happens if we need to transmit complex data structures?
+
+	\begin{columns}
+	\column{.6\textwidth}
+	\begin{block}{Serialization}
+    Converting a data object into a sequence of bytes
+	\end{block}
+    \end{columns}
+
+    \bigskip
+
+    We can easily store and even transmit sequences of bytes
+	\begin{itemize}
+		\item There are several serialization technologies: Pickles, JSON, XML, ...
 	\end{itemize}
+    We can also reconstruct our original data
+
+\end{frame}
+
+\subsection{The pickle module}
+
+\begin{frame}[fragile]{Serialization}{The \texttt{pickle} module}
+	Given an object \texttt{x} and a file object \texttt{f} ...
 \begin{verbatim}
 >>> pickle.dump(x, f) 
 >>> x = pickle.load(f)
@@ -363,7 +436,7 @@ b'5'
 \end{frame}
 % byte of p. 93 -- cPickle más rápido
 
-\begin{frame}[fragile]{Serialization}{The \texttt{pickle} module: Examples}
+\begin{frame}[plain]{Serialization}{The \texttt{pickle} module: Examples}
 	\begin{exampleblock}{Save a list  to a file}
 	\vspace{-0.2cm}
 	\lstinputlisting[numbers=left]{code/pickle_example_list_dump.py}
@@ -433,14 +506,6 @@ b'5'
 		\item We need a mechanism to handle errors
 	    \item Some errors happen before execution (\textit{syntax errors})
 
-		\item Others are only detected in execution (\textit{runtime errors})
-        \begin{itemize}
-        \item We need tools to handle errors: \alert{Exceptions}
-        \end{itemize}
-    \end{itemize}
-
-	\small
-
 \begin{verbatim}
 >>> while True print('Hello world')
   File "<stdin>", line 1
@@ -449,12 +514,17 @@ b'5'
   SyntaxError: invalid syntax
 \end{verbatim}
 
+		\item Others are only detected in execution (\textit{runtime errors})
+
 \begin{verbatim}
 >>> int("hola")
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 ValueError: invalid literal for int() with base 10: 'hola'
 \end{verbatim}
+
+    \end{itemize}
+    $\Rightarrow$We need tools to handle errors: \alert{Exceptions}
 \end{frame}
 
 \subsection{Definition}
