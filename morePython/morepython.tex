@@ -172,7 +172,7 @@ open(filename[, mode])
 	\item \textit{filename}: Path
 	\item \textit{mode}: Characters describing how the file will be used
 		\begin{itemize}
-		\item \textit{r}: Read mode, \textit{w}: Write mode % lectura por defecto. W: borra el contenido anterior, r+: lectura y escritura; a: append
+		\item \textit{r}: Read mode, \textit{w}: Write mode (overwrites file)% lectura por defecto. W: borra el contenido anterior, r+: lectura y escritura; a: append
         \item \textit{r+}: r/w mode, no truncation; \textit{w+}: r/w mode, truncation
         \item \textit{a}: Write, appending mode
 		\item \textit{b}: Binary mode, text mode by default
@@ -183,7 +183,7 @@ open(filename[, mode])
 	\smallskip
 
 	\begin{alertblock}{}
-	Always, always, always close the file: \texttt{f.close()}
+	Always, always, always close the file: \texttt{f.close()} (unless in a \texttt{with} clause)
 	\end{alertblock}
 \end{frame}
 
@@ -369,7 +369,7 @@ with open('file') as file:
     \end{columns}
 \end{frame}
 
-\begin{frame}[fragile]{Example 1}
+\begin{frame}[fragile]{With (II)}
 	\begin{exampleblock}{Hello, world}
 	\vspace{-0.2cm}
 	\lstinputlisting[numbers=left]{code/hello-with.py}
@@ -377,7 +377,7 @@ with open('file') as file:
 	\end{exampleblock}
 \end{frame}
 
-\begin{frame}[fragile]{Example 2}
+\begin{frame}[fragile]{With (III)}
 	\begin{exampleblock}{Reading a line each time}
 	\vspace{-0.2cm}
 	\lstinputlisting[numbers=left]{code/cierreautomatico.py}
@@ -417,11 +417,11 @@ with open('file') as file:
 
     \bigskip
 
-    We can easily store and even transmit sequences of bytes
+    We can easily store and even transmit sequences of bytes ...
 	\begin{itemize}
-		\item There are several serialization technologies: Pickles, JSON, XML, ...
+        \item ... and also reconstruct our original data
 	\end{itemize}
-    We can also reconstruct our original data
+	There are several serialization technologies: Pickles, JSON, XML, ...
 
 \end{frame}
 
@@ -576,12 +576,12 @@ ValueError: invalid literal for int() with base 10: 'hola'
 	Handling an exception requires a try-except statement
 	\begin{itemize}
 		\item \texttt{try}: Encloses the vulnerable code
-		\item \texttt{catch}: Code that handles the exception
+		\item \texttt{except}: Code that handles the exception (\textit{catch} in Java/C++)
 	\end{itemize}
 
     \begin{columns}
  	   \column{.60\textwidth}
-	\begin{block}{try-catch statement}
+	\begin{block}{try-except statement}
 	\vspace{-0.2cm}
 		\lstinputlisting{code/try.py}
 	\vspace{-0.2cm}
@@ -592,7 +592,7 @@ ValueError: invalid literal for int() with base 10: 'hola'
 \begin{frame}{Exceptions}{Handling exceptions (II)}
     \begin{columns}
  	   \column{.90\textwidth}
-	\begin{exampleblock}{try-catch example}
+	\begin{exampleblock}{try-except example}
 	\vspace{-0.2cm}
 		\lstinputlisting[numbers=left]{code/try-example.py}
 	\vspace{-0.2cm}
@@ -606,7 +606,7 @@ ValueError: invalid literal for int() with base 10: 'hola'
 	\vspace{-0.2cm}
     \begin{columns}
  	   \column{.90\textwidth}
-	\begin{exampleblock}{try-catch example}
+	\begin{exampleblock}{try-except example}
 	\vspace{-0.2cm}
 		\lstinputlisting[numbers=left]{code/try-example2.py}
 	\vspace{-0.2cm}
