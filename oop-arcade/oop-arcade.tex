@@ -134,10 +134,6 @@
 		\item More features than structured API
 		\item Easy to use API
 	\end{itemize}
-	Remember: use the reference documentation
-	\begin{itemize}
-		\item \href{https://api.arcade.academy/en/latest/api/window.html}{(\texttt{arcade.Window} reference)}
-	\end{itemize}
 \end{frame}
 
 \begin{frame}{The \texttt{Window} class}{Introduction (II)}
@@ -164,6 +160,14 @@
 		\lstinputlisting{code/window-init.py}
 		\vspace{-0.2cm}
 	\end{block}	
+
+    Remember to use reference documentation
+	\begin{itemize}
+		\item \href{https://api.arcade.academy/en/2.6.17/api/window.html\#arcade.Window}{(\texttt{arcade.Window} reference)}
+        \item $\frac{1}{0.016666666666666666} = 60 Hz$
+        \item Antialiasing: Smoothing transitions between colors and shapes
+	\end{itemize}
+
 \end{frame}
 
 \subsection{Main methods and attributes}
@@ -236,6 +240,11 @@
 \end{frame}
 
 \begin{frame}[plain]{The \texttt{Window} class}{User control methods: Examples}
+	\begin{exampleblock}{Capturing a key}
+		\vspace{-0.2cm}
+		\lstinputlisting[numbers=left]{code/key.py}
+		\vspace{-0.2cm}
+	\end{exampleblock}
 
 	\begin{exampleblock}{Capturing a mouse click}
 		\vspace{-0.2cm}
@@ -243,12 +252,7 @@
 		\vspace{-0.2cm}
 	\end{exampleblock}
 
-	\begin{exampleblock}{Capturing a key}
-		\vspace{-0.2cm}
-		\lstinputlisting[numbers=left]{code/key.py}
-		\vspace{-0.2cm}
-	\end{exampleblock}
-	\href{https://api.arcade.academy/en/latest/arcade.key.html}{(More info about keys)}
+	\href{https://api.arcade.academy/en/2.6.17/arcade.key.html}{(More info about keys)}
 \end{frame}
 
 \subsection{Other methods}
@@ -262,7 +266,7 @@
 		\item \footnotesize{\texttt{close()}}. 
 		\item \footnotesize{\texttt{get\_location()}}. 
 		\item \footnotesize{\texttt{maximize()} and \texttt{minimize()}}. 
-		\item \footnotesize{\texttt{set\_fullscreen(fullscreen: bool = True, screen: Optional[arcade.application.Window] = None, mode: Optional[pyglet.canvas.base.ScreenMode] = None, width: Optional[float] = None, height: Optional[float] = None)}}. 
+		\item \footnotesize{\texttt{set\_fullscreen(fullscreen: bool = True)}}. 
 		\item \footnotesize{\texttt{set\_location(x, y)}}. 
 		\item \footnotesize{\texttt{set\_viewport(left: float, right: float, bottom: float, top: float)}}. Set the coordinates we can see
 		\end{itemize}
@@ -316,7 +320,7 @@
 	\bigskip
 
 	\normalsize
-	\href{https://api.arcade.academy/en/stable/examples/sprite\_move\_joystick.html}{(Interesting example)}
+	\href{https://api.arcade.academy/en/2.6.17/examples/sprite\_move\_joystick.html}{(Interesting example)}
 
 \end{frame}
 
@@ -680,18 +684,26 @@ def on_update(self, delta_time):
 \begin{frame}{Sprite}{The \texttt{Sprite} class (IV)}
     Sprites in Arcade implement \alert{collision detection} and handling
 
-    \bigskip
+	\begin{columns}
+ 	   \column{.5\textwidth}
+		\includegraphics[width=\linewidth]{figs/collision}\\
+		%\vspace{-0.3cm}\tiny \href{https://stackoverflow.com/questions/46268139/2d-collision-detection-without-axis-alignment}{(Source)}
+	\end{columns}
+
+ 
+
+    Three values for \texttt{hit\_box\_algoritm}: `None`, `Simple` and `Detailed`
 
     \begin{columns}
  	   \column{.3\textwidth}
 		\includegraphics[width=\linewidth]{figs/hitbox-none}\\
-		\centering hit\_box\_algorithm = 'None'
+		\centering None'
 	   \column{.3\textwidth}
 		\includegraphics[width=\linewidth]{figs/hitbox-simple}\\
-		\centering hit\_box\_algorithm = 'Simple'
+		\centering 'Simple'
 	   \column{.3\textwidth}
 		\includegraphics[width=\linewidth]{figs/hitbox-detailed}\\
-		\centering hit\_box\_algorithm = 'Detailed'
+		\centering 'Detailed'
     \end{columns}
 \end{frame}
 
@@ -702,13 +714,12 @@ def on_update(self, delta_time):
  	   \column{.5\textwidth}
 			\centering \textbf{Methods}
 		\begin{itemize}
-		\item \footnotesize{\texttt{on\_update()}}. 
 		\item \footnotesize{\texttt{on\_update(delta\_time: float = 0.016)}}. 
 		\item \footnotesize{\texttt{draw()}}. 
 		\item \footnotesize{\texttt{append\_texture(Texture: arcade.texture.Texture}}. \\ Appends a new texture (image)
+		\item \footnotesize{\texttt{set\_texture(texture\_no: int)}}. \\
+		\item \footnotesize{\texttt{update\_animation(delta\_time: float = 0.016))}}. \\
 		\item \footnotesize{\texttt{set\_position(center\_x: float, center\_y: float)}}. \\
-		\item \footnotesize{\texttt{set\_texture(texture\_no: int))}}. \\
-		\item \footnotesize{\texttt{stop()}} 
 		\item \footnotesize{\texttt{turn\_left(theta: float = 90.0)}} 
 		\item \footnotesize{\texttt{turn\_right(theta: float = 90.0)}} 
 		\item \footnotesize{\texttt{stop()}} 
@@ -726,7 +737,7 @@ def on_update(self, delta_time):
 		\item \footnotesize{visible: bool}. 
 		\end{itemize}
 			\vfill
-	\href{https://api.arcade.academy/en/latest/api/sprites.html}{(Reference documentation)}
+	    \href{https://api.arcade.academy/en/2.6.17/api/sprites.html\#arcade-sprite}{(Reference documentation)}
     	\end{columns}
 	\end{block}	
 
@@ -734,7 +745,7 @@ def on_update(self, delta_time):
 
 \subsection{Examples}
 
-\begin{frame}[fragile]{Sprite}{The \texttt{Sprite} class: Examples}
+\begin{frame}[fragile]{Sprites}{The \texttt{Sprite} class: Examples}
 	\begin{exampleblock}{}
 	\lstinputlisting[numbers=left]{code/visible.py}
 	\end{exampleblock}
@@ -742,21 +753,13 @@ def on_update(self, delta_time):
 
 \subsection{Collision detection}
 
-\begin{frame}{The \texttt{Window} class}{Collision detection}
-	\alert{Collision detection} is a key concept in game programming
-
-	\begin{columns}
- 	   \column{.5\textwidth}
-		\includegraphics[width=\linewidth]{figs/collision}\\
-		\tiny \href{https://stackoverflow.com/questions/46268139/2d-collision-detection-without-axis-alignment}{(Source)}
-	\end{columns}
-
+\begin{frame}{Sprites}{Collision detection}
 	\begin{block}{Collision detection methods}
 	%	\vspace{-0.15cm}
 		\begin{itemize}
-		\item \footnotesize{\texttt{collides\_with\_list(sprite\_list: SpriteList) $\rightarrow$ bool}} 
 		\item \footnotesize{\texttt{collides\_with\_point(point: Union[Tuple[float, float], List[float]]) $\rightarrow$ bool}} 
 		\item \footnotesize{\texttt{draw\_hit\_box()}}. 
+		\item \footnotesize{\texttt{collides\_with\_list(sprite\_list: SpriteList) $\rightarrow$ bool}} 
 		\end{itemize}
 	%	\vspace{-0.2cm}
 	\end{block}	
@@ -782,9 +785,9 @@ def on_update(self, delta_time):
       \end{class}
     \end{tikzpicture}
 	\begin{itemize}
-		\item \href{https://api.arcade.academy/en/latest/api/sprites.html#arcade-spritecircle}{(SpriteCircle documentation)}
-		\item \href{https://api.arcade.academy/en/latest/api/sprites.html#arcade-spritesolidcolor}{(SpriteSolidColor documentation)}
-		\item \href{https://api.arcade.academy/en/latest/api/sprites.html#arcade-spriteanimatedtimebasedsprite}{(SpriteAnimatedTimeBasedSprite documentation)}
+		\item \href{https://api.arcade.academy/en/2.6.17/api/sprites.html\#arcade-spritecircle}{(SpriteCircle documentation)}
+		\item \href{https://api.arcade.academy/en/2.6.17/api/sprites.html\#arcade-spritesolidcolor}{(SpriteSolidColor documentation)}
+		\item \href{https://api.arcade.academy/en/2.6.17/api/sprites.html\#arcade-animatedtimebasedsprite}{(SpriteAnimatedTimeBasedSprite documentation)}
 	\end{itemize}
 \end{frame}
 
@@ -869,7 +872,7 @@ def on_update(self, delta_time):
 	    \texttt{ arcade.Sprite(":resources:images/items/coinGold.png") }
     \end{exampleblock}
 
-    \href{https://api.arcade.academy/en/latest/resources.html}{(List of resources)}\\
+    \href{https://api.arcade.academy/en/2.6.17/resources.html\?highlight=resources}{(List of resources)}\\
     \href{https://github.com/pythonarcade/arcade/tree/development/arcade/resources/assets}{(Arcade source code)}
 \end{frame}
 
