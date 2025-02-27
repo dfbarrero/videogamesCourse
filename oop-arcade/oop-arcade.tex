@@ -229,7 +229,7 @@
 	\begin{block}{User control methods}
 	%	\vspace{-0.15cm}
 		\begin{itemize}
-		\item \footnotesize{\texttt{on\_key\_press(key)}} Called when the user presses key.
+		\item \footnotesize{\texttt{on\_key\_press(symbol: int, modifiers: int)}} Called when the user presses key.
 		\item \footnotesize{\texttt{on\_key\_release(symbol: int, modifiers: int)}}. Called when the user presses key.
 		\item \footnotesize{\texttt{on\_mouse\_press(x: float, y: float, button: int, modifiers: int)}}. Called when the user presses a mouse button.
 		\item \footnotesize{\texttt{on\_mouse\_release(x: float, y: float, button: int, modifiers: int)}}.  Called when the user releases a mouse button.
@@ -825,7 +825,7 @@ def on_update(self, delta_time):
         }
     \end{exampleblock}
 
-    Functional example in \href{https://gist.github.com/dfbarrero/83294a5ea218ca866b68558d4d64ba46}{(example)}
+    %Functional example in \href{https://gist.github.com/dfbarrero/83294a5ea218ca866b68558d4d64ba46}{(example)}
 \end{frame}
 
 \subsection{Locating sprites}
