@@ -1,34 +1,42 @@
 ---
-title: Tareas
+title: Planificación del proyecto
 tags: Videojuegos
 ---
 
-# Ejemplos de tareas
+# Planificación del proyecto
 
 A continuación se muestra un ejemplo de tareas a implementar durante el desarrollo del proyecto. En función del videojuego que se vaya a desarrollar, puede ser necesario agregar nuevas tareas, eliminar tareas, o dividir una de estas tareas en varias.
 
-## Generales
+:::info
+Las tareas deben ser, siempre, *concretas*, *medibles* y *alcanzables*.
+:::
+
+El jefe de proyecto debe asignar las tareas a través de *GitHub Issues*.
+
+## Ejemplos de tareas
+
+### Generales
 - Agregar música ambiental.
 - Reordenar los estados del juego.
-## Diseño
+### Diseño
 - Crear historia.
 - Diseñar personajes.
 - Diseñar las mecánicas.
 - Definir la física.
 - Definir secuencia de niveles.
-## Lógica del juego
+### Lógica del juego
 - Implementar las mecánicas.
 - Implementar la física.
 - Integración de los niveles.
 - Agregar efectos de sonido.
-## Arte
+### Arte
 - Localizar o crear las hojas de sprites.
 - Localizar o crear música ambiental.
 - Localizar o crear efectos de sonido.
 - Crear arte del menú de inicio.
 - Crear arte del resto de vistas.
 - Crear niveles.
-## Interfaz de usuario
+### Interfaz de usuario
 - Implementar menú de incio.
 - Implementar vista de arranque.
 - Implementar vista de ayuda.
@@ -36,10 +44,10 @@ A continuación se muestra un ejemplo de tareas a implementar durante el desarro
 - Implementar vista de inventario.
 - Implementar vista de configuración.
 - Implementar otras vistas.
-## Control de calidad
+### Control de calidad
 - Definir un programa de pruebas.
 - Ejecutar el programa de pruebas.
-## Documentación
+### Documentación
 - Redactar documento de diseño.
 - Redactar memoria del proyecto.
 - Redactar instrucciones.
