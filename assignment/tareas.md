@@ -13,9 +13,11 @@ En función del videojuego concreto que se vaya a desarrollar, será necesario a
 Las tareas deben ser, siempre, *concretas*, *medibles* y *alcanzables*.
 :::
 
-El jefe de proyecto debe asignar las tareas a través de *GitHub Issues*.
+El jefe de proyecto debe asignar las tareas a través de *GitHub Issues*, cada entrada en esta clase de herramientas se la llama **ticket**. El jefe de proyecto asignará una tarea a una y solo una persona responsable de ejecutarla.
 
->[!note]Cada tarea debe tener un único responsable.
+Por otra parte, los tickets en *GitHub Issues* deberían, en todo momento, reflejar el estado de la tarea, y particularmente si la tarea está finalizada o no. Por lo tanto, al terminar de ejecutar una tarea, ésta debería cerrarse.
+
+En desarrollo de software se suele utilizar la misma herramienta tanto para la gestión de tareas como para seguimiento de los *bugs*. Los testeadores, al encontrar un bug, deberían crear un ticket para informar sobre el bug y hacer un seguimiento del mismo. En equipos grandes típicamente el jefe de proyecto va a asignar un desarrollador para solucionar el bug.
 
 ## Ejemplos de tareas
 
