@@ -2,6 +2,8 @@
 
 ## Contents
 
+0.- [Git and GitHub](git/)
+
 1.- [Python for videogames](python/)
 
 2.- [More Python for videogames](morePython/)
