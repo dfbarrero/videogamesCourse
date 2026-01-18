@@ -1,0 +1,44 @@
+%\documentclass[border=10pt]{standalone}
+%\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning,fit,backgrounds}
+
+%\begin{document}
+
+\definecolor{azulUAH}{RGB}{0,70,173}
+\definecolor{grisUAH}{RGB}{199,194,186}
+  \definecolor{oroUAH}{RGB}{211,191,150}
+
+\begin{tikzpicture}[
+    node distance=1.5cm,
+    box/.style={rectangle, draw, fill=azulUAH!10, text width=3cm, text centered, minimum height=1cm, rounded corners},
+    container/.style={rectangle, draw, dashed, inner sep=0.5cm},
+    arrow/.style={->, >=stealth, thick}
+]
+
+% Remote Repository
+\node[box, fill=cyan!20] (remote) {Remote Repository};
+
+% Working Directory
+\node[box, below=3cm of remote, xshift=-4cm, fill=yellow!20] (wd) {Working Directory\\\textit{Your actual files}};
+
+% Staging Area
+\node[box, right=3cm of wd, fill=pink!20, text width=4cm] (stage) {Staging Area\\\textit{Files ready to commit}};
+
+% Local Repository
+\node[box, right=3cm of stage, fill=green!20] (localrepo) {Local Repository\\\textit{.git directory}};
+
+
+% Arrows
+	%\draw[arrow] (wd.north east) -- node[above] {git add} (stage.north west);
+	\draw[arrow] ([yshift=0.2cm]wd.east) to[out=45, in=135,looseness=0.6] node[above] {git add} ([yshift=0.2cm]stage.west);
+\draw[arrow] (stage) -- node[above] {git commit} (localrepo);
+\draw[arrow] (localrepo) to[out=90,in=0] node[right,yshift=0.25cm] {git push} (remote);
+\draw[arrow] (remote) to[out=310,in=100] node[left,yshift=-0.25cm] {git fetch} (localrepo);
+\draw[arrow] (remote) to[out=225,in=90] node[left,xshift=-0.3cm] {git pull} (wd);
+	%\draw[arrow] (stage.west)  to[out=270, in=90] node[below] {git restore --staged} (wd.east);
+\draw[arrow] ([yshift=-0.2cm]stage.west) to[out=220, in=320,looseness=0.6] node[below] {git restore --staged} ([yshift=-0.2cm]wd.east);
+\draw[arrow] (localrepo) to[out=250,in=300,looseness=0.4] node[below] {git restore} (wd);
+
+\end{tikzpicture}
+
+%\end{document}

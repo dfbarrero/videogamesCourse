@@ -35,6 +35,7 @@
 \usecolortheme{UAH}
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{caption}[numbered]
+\usepackage{graphicx} % Para scalebox
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Presentation Info
@@ -217,7 +218,6 @@ It is typically used as central repository:
 
 \subsection{Git vs. SVN}
 
-
 \begin{frame}{Git}{Git vs. SVN (I)}
 \begin{center}
 \begin{columns}
@@ -234,9 +234,6 @@ It is typically used as central repository:
 	Disclaimer: Do not pay attention to the labels of these diagrams
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 \begin{frame}{Git}{Git vs. SVN (II)}
 \begin{center}
 \begin{columns}
@@ -244,25 +241,115 @@ It is typically used as central repository:
 	\centering Fully distributed (Git)\\\smallskip
 	\includegraphics[width=\linewidth]{figs/fulldistributed.png}
 	\tiny \href{http://softwareengineering.stackexchange.com/questions/35074/im-a-subversion-geek-why-should-i-consider-or-not-consider-mercurial-or-git-or}{(Source)}
-
-	\column{.50\linewidth}
-	\begin{block}{Key Git concepts to know}
-	\begin{itemize}
-	\item \texttt{repository} (local or not)
-	\item \texttt{clone}
-	\item \texttt{commit}, \texttt{push}
-	\item \texttt{pull}, \texttt{fetch} 
-	\item \texttt{remote}, \texttt{origin}
-	\item \texttt{merge}
-	\end{itemize}
-	\end{block}
-\end{columns}
+	\end{columns}
 \end{center}
 \end{frame}
 
+\subsection{Local and remote repositories}
+\begin{frame}{Git}{Local and remote repositories}
+	Git concepts to know
+	\begin{itemize}
+	\item \texttt{Working directory}: The files we work on
+	\item \texttt{Repository}: Project files + a database with history of all changes (or \alert{commits})
+		\begin{itemize}
+			\item \texttt{Local repository}: A repository located in our computer
+			\item \texttt{Remote repository}: A repository located in a server
+		\end{itemize}
+	\item \texttt{Staging area}: Intermediary space to prepare changes
+	\end{itemize}
+\end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Git operations}
+\begin{frame}{Git}{Git operations}
+	\begin{columns}
+		\hspace{-8cm}\column{.99\linewidth}
+			\scalebox{0.7}{\input{figs/git-overview.tex}}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Git}{Git overview (III)}
+	\begin{columns}
+		\column{.50\linewidth}
+		\begin{block}{Key Git concepts to know}
+		\begin{itemize}
+		\item \texttt{clone}
+		\item \texttt{commit}, \texttt{push}
+		\item \texttt{pull}, \texttt{fetch} 
+		\item \texttt{remote}, \texttt{origin}
+		\item \texttt{merge}
+		\end{itemize}
+		\end{block}
+	\end{columns}
+\end{frame}
+
 \section{Using Git}
+\subsection{Git basic workflow}
+\begin{frame}{Using Git}{Git basic workflow}
+	Given initialized local and remote repositories
+	\begin{columns}
+		\column{.50\linewidth}
+		\begin{block}{Basic Git workflow}
+		\begin{enumerate}
+		\item Pull changes from the remote
+		\item Edit your files
+		\item Add changes to staging area
+		\item Commit the staged changes
+		\item Push commits to the remote 
+		\end{enumerate}
+		\end{block}
+	\end{columns}
+\end{frame}
+
+\subsection{Initializing a repository}
+\begin{frame}{Using Git}{Initializing a repository}
+	Using plain Git: \texttt{Git init}
+		\begin{itemize}
+		\item Creates a \texttt{.git} hidden in the working directory
+		\item Safe operation: All Git data is contained in \texttt{.git}
+		\item By default, there are no remote
+		\end{itemize}
+	Using GitHub
+		\begin{enumerate}
+		\item We create a new repository in GitHub (which will be our remote)
+		\item Clone the remote repository
+		\end{enumerate}
+	Given a GitHub repository
+		\begin{itemize}
+		\item \alert{Clone} the remote repository
+		\end{itemize}
+\end{frame}
+
+
+
+\subsection{Commits}
+\begin{frame}[fragile]{Using Git}{Commits}
+
+Each commit has ...
+\begin{itemize}
+    \item ... an author
+    \item ... a comment: "Fix deprecated py36 black option"
+    \item ... a date
+    % \item Merge commits record where parallel development unified
+    % \item How does Git keep track of things when parallel development
+%happens?
+    \item ... an ID (or \textit{hash})
+    %	, which is a 40 character SHA-1
+    %hash based on the commit's content. Not guaranteed to be
+    %unique; but it probably is
+
+\end{itemize}
+
+\begin{verbatim}
+commit 44161dde6ea234f8cb997644f8e187123c3cc4af
+Author: David <foo@foo.com>
+Date:   Fri Mar 9 14:57:32 2018 +0100
+
+    Issue with syntax highlighting solved
+\end{verbatim}
+
+\end{frame}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\subsection{Repository initialization and clonning}
@@ -372,23 +459,6 @@ It is typically used as central repository:
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Conflicts}
-\begin{frame}{Using Git}{Conflicts}
-
-If two people both modify the same file, the first to push \emph{wins}.
-The second person will have to pull and merge before pushing.
-
-\begin{itemize}
-	\item Changes in different parts of a file are automatically merged
-	\item Changes in the same part of a file cause conflicts
-	\begin{itemize}
-		\item Select either your changes or remote, or a mix of the two
-	\end{itemize}
-%\item Two merging cases: have / haven't committed
-\end{itemize}
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\begin{frame}{Using Git}{Merge and conflicts: \texttt{diff}}
 
 %\texttt{diff -u <old file> <new file>}
@@ -479,37 +549,9 @@ The second person will have to pull and merge before pushing.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Commits}
-\begin{frame}[fragile]{Using Git}{Commits}
-
-Each commit has ...
-\begin{itemize}
-    \item ... an author
-    \item ... a comment: "Fix deprecated py36 black option"
-    \item ... a date
-    % \item Merge commits record where parallel development unified
-    % \item How does Git keep track of things when parallel development
-%happens?
-    \item ... an ID (or \textit{hash})
-    %	, which is a 40 character SHA-1
-    %hash based on the commit's content. Not guaranteed to be
-    %unique; but it probably is
-
-\end{itemize}
-
-\begin{verbatim}
-commit 44161dde6ea234f8cb997644f8e187123c3cc4af
-Author: David <foo@foo.com>
-Date:   Fri Mar 9 14:57:32 2018 +0100
-
-    Issue with syntax highlighting solved
-\end{verbatim}
-
-\end{frame}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Branches}
-\begin{frame}{Using Git}{Branches (I)}
+\begin{frame}{Using Git}{Branches}
 
 \centering \includegraphics[width=.8\textwidth]{figs/branching}
 
@@ -517,15 +559,18 @@ Date:   Fri Mar 9 14:57:32 2018 +0100
 
 \begin{itemize}
  \item A repository (local and remote) can have explicit branches
- \item The default branch is called \alert{master}
+ \item The default branch is called \alert{master} or \alert{main}
  %		\texttt{git branch <name>} creates branches\\
  % 		\texttt{git checkout <branch name>} switch branches\\
- \item A \alert{merge} is a fusion between two branches
-%(i.e. you say “I want to merge another branch into me”)
+  \item A \alert{merge} is a fusion between two branches
+  \item There is a branch with name: HEAD
+	\begin{itemize}
+		\item Pointer to the active branch
+		\item ... sometimes, it may point to a commit, but do not worry about it
+	\end{itemize}
 \end{itemize}
 
 Do no use branches in the project!
-
 \end{frame}
 
 
@@ -551,13 +596,49 @@ A tag is a pointer to a specific point in the repository history
 
 \end{frame}
 
+\subsection{Conflicts}
+\begin{frame}[fragile]{Using Git}{Conflicts}
+     Merging is quite a common operation in Git
+	\begin{itemize}
+		\item Changes in different parts of a file are automatically merged
+	\end{itemize}
+
+     Merging changes in the same part of a file cause \alert{conflicts}
+	\begin{itemize}
+		\item Git is no longer able to automatically merge
+		\item Human intervention is required
+	\end{itemize}
+
+	\vspace{-0.3cm}
+	\begin{columns}
+		\column{.6\textwidth}
+		\begin{block}{Conflict resolution}
+			\begin{enumerate}
+				\item Identify conflicted files
+				\item Open files and choose changes to keep
+				\item Remove markers
+				\item Stage resolved files and commit
+			\end{enumerate}
+		\end{block}
+
+		\column{.4\textwidth}
+		\begin{exampleblock}{Merging HEAD and feature}
+			\vspace{-0.3cm}
+			\begin{lstlisting}[mathescape]
+def greet():
+<<<<<<< HEAD
+    return "Hello"
+=======
+    return "Hola"
+>>>>>>> feature
+\end{lstlisting}
+			\vspace{-0.2cm}
+		\end{exampleblock}
+	\end{columns}
+
+\end{frame}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \subsection{Tags}
-% \begin{frame}{Using Git}{Tags}
-% 	TODO
-% \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\subsection{Advanced Git}
@@ -602,7 +683,7 @@ Best practices
 
 Remember: Git never overwrites local changes without an explicit order
 \begin{itemize}
-  \item .. even with a \texttt{git pull}
+  \item ... even with a \texttt{git pull}
 \end{itemize}
 
 \end{frame}
