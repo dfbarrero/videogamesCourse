@@ -11,7 +11,7 @@ FILENAME=$(NAME).tex
 all: $(TARGETS)
 
 $(TARGETS):
-	echo $(TEX) -jobname=$(NAME)-$@ "\newcommand{\modo}{$@} \input{$(FILENAME)}" > $(NAME)-$@.log
+	$(TEX) -jobname=$(NAME)-$@ "\newcommand{\modo}{$@} \input{$(FILENAME)}" > $(NAME)-$@.log
 
 clean:
 	rm -f *.out *aux *bbl *blg *log *toc *.ptb *.tod *.fls *.fdb_latexmk *.lof *.nav *.snm *.vrb
