@@ -37,7 +37,7 @@
 \draw[arrow] (remote) to[out=225,in=90] node[left,xshift=-0.3cm] {git pull} (wd);
 	%\draw[arrow] (stage.west)  to[out=270, in=90] node[below] {git restore --staged} (wd.east);
 \draw[arrow] ([yshift=-0.2cm]stage.west) to[out=220, in=320,looseness=0.6] node[below] {git restore --staged} ([yshift=-0.2cm]wd.east);
-\draw[arrow] (localrepo) to[out=250,in=300,looseness=0.4] node[below] {git restore} (wd);
+\draw[arrow] (localrepo) to[out=250,in=300,looseness=0.4] node[below] {git restore / git checkout} (wd);
 
 \end{tikzpicture}
 

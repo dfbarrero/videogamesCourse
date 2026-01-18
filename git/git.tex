@@ -267,21 +267,6 @@ It is typically used as central repository:
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Git}{Git overview (III)}
-	\begin{columns}
-		\column{.50\linewidth}
-		\begin{block}{Key Git concepts to know}
-		\begin{itemize}
-		\item \texttt{clone}
-		\item \texttt{commit}, \texttt{push}
-		\item \texttt{pull}, \texttt{fetch} 
-		\item \texttt{remote}, \texttt{origin}
-		\item \texttt{merge}
-		\end{itemize}
-		\end{block}
-	\end{columns}
-\end{frame}
-
 \section{Using Git}
 \subsection{Git basic workflow}
 \begin{frame}{Using Git}{Git basic workflow}
@@ -306,17 +291,18 @@ It is typically used as central repository:
 		\begin{itemize}
 		\item Creates a \texttt{.git} hidden in the working directory
 		\item Safe operation: All Git data is contained in \texttt{.git}
-		\item By default, there are no remote
+		\item By default, there are no remotes
+        \item Add remote 
 		\end{itemize}
 	Using GitHub
 		\begin{enumerate}
 		\item We create a new repository in GitHub (which will be our remote)
-		\item Clone the remote repository
-		\end{enumerate}
-	Given a GitHub repository
-		\begin{itemize}
 		\item \alert{Clone} the remote repository
-		\end{itemize}
+		\end{enumerate}
+%	Given a GitHub repository
+%		\begin{itemize}
+%		\item \alert{Clone} the remote repository
+%		\end{itemize}
 \end{frame}
 
 
@@ -603,7 +589,7 @@ A tag is a pointer to a specific point in the repository history
 		\item Changes in different parts of a file are automatically merged
 	\end{itemize}
 
-     Merging changes in the same part of a file cause \alert{conflicts}
+     Merging changes in the same part of a file causes \alert{conflicts}
 	\begin{itemize}
 		\item Git is no longer able to automatically merge
 		\item Human intervention is required
