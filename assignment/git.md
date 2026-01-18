@@ -49,185 +49,6 @@ Felicidades, acabas de realizar tu primer flujo de trabajo completo con Git. Lo 
 >[!CAUTION] Regla de oro
 > Nunca, nunca, nunca, "commitees" cambios al respositorio que no hayas testeado previamente. 
 
-
-```mermaid
-graph LR
-    subgraph "Remote Repository (GitHub/GitLab)"
-        Remote[Remote Repository]
-    end
-    
-    subgraph "Local Environment"
-        subgraph "Working Directory"
-            WD[Working Directory<br/>Your actual files]
-        end
-        
-        subgraph "Staging Area"
-            Stage[Staging Area/Index<br/>Files ready to commit]
-        end
-        
-        subgraph "Local Repository"
-            LocalRepo[Local Repository<br/>.git directory]
-        end
-    end
-    
-    WD -->|git add| Stage
-    Stage -->|git restore --staged| WD
-    Stage -->|git commit| LocalRepo
-    LocalRepo -->|git push| Remote
-    Remote -->|git fetch| LocalRepo
-    Remote -->|git pull| WD
-    LocalRepo -->|git checkout or git restore | WD
-    
-    
-    style Remote fill:#e1f5ff
-    style WD fill:#fff4e1
-    style Stage fill:#ffe1f5
-    style LocalRepo fill:#e1ffe1
-```
-
-```mermaid
-graph LR   
-    subgraph "Local Environment"
-        subgraph "Working Directory"
-            WD[Working Directory<br/>Your actual files]
-        end
-        
-        subgraph "Staging Area"
-            Stage[Staging Area/Index<br/>Files ready to commit]
-        end
-        
-        subgraph "Local Repository"
-            LocalRepo[Local Repository<br/>.git directory]
-        end
-    end
-    
-    WD -->|git add| Stage
-    Stage -->|git restore --staged| WD
-    Stage -->|git commit| LocalRepo   
-    LocalRepo -->|git checkout or git restore | WD
-    
-    
-    style Remote fill:#e1f5ff
-    style WD fill:#fff4e1
-    style Stage fill:#ffe1f5
-    style LocalRepo fill:#e1ffe1
-```
-
-
-```mermaid
-graph LR
-    subgraph "Remote Repository (GitHub/GitLab)"
-        Remote[Remote Repository]
-    end
-    
-    subgraph "Local Environment"
-        subgraph "Working Directory"
-            WD[Working Directory<br/>Your actual files]
-        end
-        
-        subgraph "Staging Area"
-            Stage[Staging Area/Index<br/>Files ready to commit]
-        end
-        
-        subgraph "Local Repository"
-            LocalRepo[Local Repository<br/>.git directory]
-        end
-    end
-    
-    WD -->|git add| Stage
-    Stage -->|git restore --staged| WD
-    Stage -->|git commit| LocalRepo
-    LocalRepo -->|git push| Remote
-    Remote -->|git fetch| LocalRepo
-    Remote -->|git pull| WD
-    LocalRepo -->|git checkout or git restore | WD
-    
-    
-    style Remote fill:#e1f5ff
-    style WD fill:#fff4e1
-    style Stage fill:#ffe1f5
-    style LocalRepo fill:#e1ffe1
-```
-
-
-```mermaid
-graph TB
-    subgraph "Remote Repository (GitHub/GitLab)"
-        Remote[Remote Repository]
-        RemoteBranches[Remote Branches<br/>origin/main, origin/dev]
-    end
-    
-    subgraph "Local Environment"
-        subgraph "Working Directory"
-            WD[Working Directory<br/>Your actual files]
-        end
-        
-        subgraph "Staging Area"
-            Stage[Staging Area/Index<br/>Files ready to commit]
-        end
-        
-        subgraph "Local Repository"
-            LocalRepo[Local Repository<br/>.git directory]
-            LocalBranches[Local Branches<br/>main, dev, feature]
-        end
-    end
-    
-    WD -->|git add| Stage
-    Stage -->|git commit| LocalRepo
-    LocalRepo -->|git push| Remote
-    Remote -->|git fetch| LocalRepo
-    Remote -->|git pull| WD
-    LocalRepo -->|git checkout| WD
-    Stage -->|git restore --staged| WD
-    LocalRepo -->|git merge/rebase| LocalBranches
-    RemoteBranches -.->|tracked by| LocalBranches
-    
-    style Remote fill:#e1f5ff
-    style WD fill:#fff4e1
-    style Stage fill:#ffe1f5
-    style LocalRepo fill:#e1ffe1
-```
-
-
-``` mermaid
-architecture-beta
-    group api(cloud)[API]
-
-    service db(database)[Database] in api
-    service disk1(disk)[Storage] in api
-    service disk2(disk)[Storage] in api
-    service server(server)[Server] in api
-
-    db:L -- R:server
-    disk1:T -- B:server
-    disk2:T -- B:db
-    
-    group api2(cloud2)[API2]
-
-    service db2(database)[Database] in api2
-    service disk12(disk)[Storage] in api2
-    service disk22(disk)[Storage] in api2
-    service server2(server)[Server] in api2
-
-    db2:L -- R:server2
-    disk12:T -- B:server2
-    disk22:T -- B:db2
-```
-
-### Blablabla
-asdfasdf
-
-``` mermaid
-flowchart LR
-    A(etiqueta)-->B
-    B-->C
-    C-->D
-    D-->E
-    
-    A-->E
-```
-
-
 ## Escenario 2: Clonar un repositorio existente en GitHub
 El escenario más sencillo, frecuente, y el que usaremos en la asigantura, es empezar a trabajar a partir de un repositorio ya disponible en GitHub. Este escenario se da, por ejemplo, cuando se accede a una plantilla para hacer una práctica, o se quiere colaborar en un proyecto de software libre.
 
@@ -261,9 +82,25 @@ La dinámica de trabajo en este escenario es la misma que en el caso individual,
 Uno de los motivos por los que se utiliza Git incluso cuando se trabaja individualmente es que, al mantener un control de versiones, facilita que nos recuperemos ante fallos que, sí o sí, van a suceder mientras programamos. Siempre podemos borrar accidentalmente un archivo crítico en algún momento, y es recomendable que estemos preparados para cuando se nos de una situación así. Y esto sucederá.
 
 ### Borrado accidental de archivos
+1.- ¡CATÁSTROFE! Se acaba de borrar el contenido del subdirectorio lab01-git. Utiliza un navegador de archivos u otra herramienta externa a tu IDE para borrar dicho directorio. Ten cuidado de borrar sólo el subdirectorio.
 
-4.- ¡CATÁSTROFE! Se acaba de borrar el contenido del directorio lab01-git. Utiliza un navegador de archivos u otra herramienta externa a tu IDE para borrar dicho directorio.
+2.- Recupera el directorio borrado. El procedimiento de recuperación depende de si has commiteado, o no, los últimos cambios. En caso de que NO lo hayas commiteado, ejecuta una operación *git restore*.
 
-5.- Recupera el directorio borrado. El procedimiento de recuperación depende de si has commiteado, o no, los últimos cambios. En caso de que NO lo hayas commiteado, ejecuta una operación *restore*.
+### Vuelta a una versión anterior
+Algo muy común en el desarrollo del software (y de la vida en general), es tomar alguna decisión que a la postre resulta insatisfactoria. Muchas veces, desarrollamos código y nos damos cuenta de que el camino elegido no es el más adecuado, y se hace interesante dar una "marcha atrás" a una versión anterior del código. Esto con Git es bastante sencillo.
 
-### Regreso a una versión anterior del código
+1. Anota el *hash* del último commit que hayas hecho.
+2. Introduce un cambio en el proyecto, y commitea.
+3. Repite el punto 2 varias veces.
+4. Investiga en tu IDE cómo volver al commit inicial de esta sección.
+
+>[!TIP] Identifica fácilmente tu *hash*
+> Uno de los motivos por los que es obligatorio (y conveniente) poner un comentario a cada commit, es que facilita en gran medida encontrar el commit.
+
+### Resolución de un conflicto
+Los conflictos son uno de los problemas más habituales que nos encontramos en el trabajo diario tanto si operamos sobre un repositorio compartido como si no. Es muy habitual que se generen conflictos, por ejemplo, cuando uno trabaja individualmente pero en distintas ubicaciones (por ejemplo, en un ordenador del laboratorio y un ordenador portátil personal). Saber resolver conflictos es una habilidad que nos facilitará bastante nuestra vida como programadores.
+
+Vamos a simular la creación de un conflicto para practicar la recuperación.
+
+1.
+
