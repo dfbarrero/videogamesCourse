@@ -249,8 +249,8 @@ It is typically used as central repository:
 \begin{frame}{Git}{Local and remote repositories}
 	Git concepts to know
 	\begin{itemize}
-	\item \texttt{Working directory}: The files we work on
-	\item \texttt{Repository}: Project files + a database with history of all changes (or \alert{commits})
+		\item \texttt{Working directory}: Our project folder (mostly)
+		\item \texttt{Repository}: A database with the history of all changes (or \alert{commits})
 		\begin{itemize}
 			\item \texttt{Local repository}: A repository located in our computer
 			\item \texttt{Remote repository}: A repository located in a server
@@ -270,7 +270,7 @@ It is typically used as central repository:
 \section{Using Git}
 \subsection{Git basic workflow}
 \begin{frame}{Using Git}{Git basic workflow}
-	Given initialized local and remote repositories
+	Given initialized local and remote repositories ...
 	\begin{columns}
 		\column{.50\linewidth}
 		\begin{block}{Basic Git workflow}
@@ -292,33 +292,33 @@ It is typically used as central repository:
 		\item Creates a \texttt{.git} hidden in the working directory
 		\item Safe operation: All Git data is contained in \texttt{.git}
 		\item By default, there are no remotes
-        \item Add remote 
 		\end{itemize}
-	Using GitHub
+	Using GitHub:
 		\begin{enumerate}
-		\item We create a new repository in GitHub (which will be our remote)
+		\item Create a new repository in GitHub (which will be our remote)
 		\item \alert{Clone} the remote repository
 		\end{enumerate}
-%	Given a GitHub repository
-%		\begin{itemize}
-%		\item \alert{Clone} the remote repository
-%		\end{itemize}
+	Given a GitHub repository
+		\begin{enumerate}
+		\item \textit{\alert{Fork} the repository}
+		\item Create a new repository in GitHub (which will be our remote)
+		\item Clone the remote repository
+		\end{enumerate}
+	\alert{Origin} is the default remote (i.e., it uses to be GitHub)
 \end{frame}
-
-
 
 \subsection{Commits}
 \begin{frame}[fragile]{Using Git}{Commits}
 
 Each commit has ...
 \begin{itemize}
+    \item ... an ID (or \textit{hash})
     \item ... an author
-    \item ... a comment: "Fix deprecated py36 black option"
     \item ... a date
+    \item ... a comment: "Fix deprecated py36 black option"
     % \item Merge commits record where parallel development unified
     % \item How does Git keep track of things when parallel development
 %happens?
-    \item ... an ID (or \textit{hash})
     %	, which is a 40 character SHA-1
     %hash based on the commit's content. Not guaranteed to be
     %unique; but it probably is
@@ -549,7 +549,7 @@ Date:   Fri Mar 9 14:57:32 2018 +0100
  %		\texttt{git branch <name>} creates branches\\
  % 		\texttt{git checkout <branch name>} switch branches\\
   \item A \alert{merge} is a fusion between two branches
-  \item There is a branch with name: HEAD
+  \item There is a branch with name: \alert{HEAD}
 	\begin{itemize}
 		\item Pointer to the active branch
 		\item ... sometimes, it may point to a commit, but do not worry about it
@@ -584,18 +584,19 @@ A tag is a pointer to a specific point in the repository history
 
 \subsection{Conflicts}
 \begin{frame}[fragile]{Using Git}{Conflicts}
-     Merging is quite a common operation in Git
+     Merging is a quite common operation in Git
 	\begin{itemize}
 		\item Changes in different parts of a file are automatically merged
 	\end{itemize}
 
-     Merging changes in the same part of a file causes \alert{conflicts}
+     Sometimes, Git is unable to merge changes: \alert{conflicts}
 	\begin{itemize}
-		\item Git is no longer able to automatically merge
-		\item Human intervention is required
+		\item Changes to the same part of the same file
+		\item One file is deleted while that file is modified in another branch
 	\end{itemize}
+	Git is no longer able to automatically merge $\Rightarrow$ Human intervention is required
 
-	\vspace{-0.3cm}
+	%\vspace{-0.3cm}
 	\begin{columns}
 		\column{.6\textwidth}
 		\begin{block}{Conflict resolution}
@@ -659,7 +660,7 @@ Learn on the job: the best way to learn it is by using it.
 Best practices
 \begin{itemize}
   \item Regularly push and pull (at least daily, in general)
-  \item $\Rightarrow$ Test before pushing! $\Leftarrow$
+  \item $\Rightarrow$ \textbf{Test before pushing!} $\Leftarrow$
   \item Don't push half-baked changes 
   \item Don't pull if you're in the middle of a task
   \item Never commit temporal/intermediate files
@@ -681,27 +682,27 @@ Remember: Git never overwrites local changes without an explicit order
 \begin{frame}{GitHub}{Features}
 	\begin{columns}
 	\column{.10\textwidth}
-	\column{.50\textwidth}
+	\column{.35\textwidth}
 		Free Git hosting provider
 		\begin{itemize}
 			\item Free public repositories
+			\item Belongs to Microsoft
 		\end{itemize}
 		Added value features
 		\begin{itemize}
 			\item Social network
-			\item Collaborative tools
 			\item Repository browser
 			\item Pull requests	
 			\item Issue tracking
 			\item Web hosting
 			\item Markdown integration
-			\item Organizations
 		\end{itemize}
-	\column{.30\textwidth}
+	\column{.55\textwidth}
 	\begin{center}
- 		\includegraphics[width=.8\textwidth]{figs/github-logo}
+ 		\includegraphics[width=.6\textwidth]{figs/github-logo}\\
+		\vspace{0.5cm}
+ 		\includegraphics[width=\textwidth]{figs/github-screenshot}
 	\end{center}
-	\column{.10\textwidth}
 	\end{columns}
 \end{frame}
 
@@ -781,49 +782,7 @@ printf("Hello, world");
 	\column{.4\textwidth}
  		\includegraphics[width=0.6\textwidth]{figs/md.png}
 	\end{columns}
+	\centering Try it in Whatsapp!
 \end{frame}
-
-
-
-%\subsection{GitHub Pages}
-
-%\begin{frame}{GitHub}{GitHub Pages}
-%	Pages integrate web site in the GitHub workflow
-%	\begin{itemize}
-%		\item Creation of full web sites
-%		\item Project web site
-%		\item Documentation
-%		\item Based on Markdown (and something named \textit{Jekyll}
-%	\end{itemize}
-
-%	GitHub locates the content to publish in three places:
-%	\begin{itemize}
-%		\item A branch named \texttt{gh-pages}
-%		\item master itself
-%		\item A folder \texttt{docs} in master
-%		\item \textbf{Page available on \url{https://<username>.github.io/<repository>}}
-%	\end{itemize}
-
-%	By default, Pages are disabled 
-%	\begin{itemize}
-%		\item Enable them in settings
-%	\end{itemize}
-
-%	User Page. Site accesible in \url{https://<username>.github.io}
-%	\begin{itemize}
-%		\item The repository must be named \texttt{<username>.github.io}
-%		\item master branch
-%	\end{itemize}
-%\end{frame}
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \begin{frame}{}
-%
-% \end{frame}
-%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 \end{document}
