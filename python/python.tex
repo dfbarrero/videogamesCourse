@@ -26,7 +26,8 @@
 \usepackage{xstring}
 \usepackage{listings}
 
-% Custom pñackages
+% Custom packages
+\usepackage{dirtree}
 \usepackage{multicol}
 \usepackage{tikz}
 \usetikzlibrary{matrix,chains,positioning,decorations.pathreplacing,arrows,shapes}
@@ -194,7 +195,8 @@
 \subsection{Using modules: Example}
 
 \begin{frame}[fragile]{Modules}{Using modules: Example}
-	\vspace{-0.2cm}
+	Modules usually are used as libraries\\
+
 	\begin{exampleblock}{List zip file contents (file.zip must exist. Open in read mode)}
 	\vspace{-0.2cm}
 	\lstinputlisting[numbers=left]{code/zip.py}
@@ -215,6 +217,9 @@
 		\item It serves to initialize the module
 		\end{itemize}
 	Very useful to use modules as programs and libraries
+		\begin{itemize}
+		\item Good to reuse code
+		\end{itemize}
 \end{frame}
 
 \begin{frame}[shrink,plain,fragile]{Modules}{Modules as scripts (II)}
@@ -232,12 +237,11 @@
     \medskip
 
 	\vspace{-0.5cm}
-	\begin{columns}
+	\begin{columns}[t]
  	   \column{0.5\textwidth}
-	\begin{exampleblock}{}
+	\begin{exampleblock}{Linux/PowerShell console}
 	\vspace{-0.2cm}
 	\begin{verbatim}
-    (In Linux console)
 $ python3 fibo2.py 50
 1 1 2 3 5 8 13 21 34
 \end{verbatim}
@@ -245,12 +249,11 @@ $ python3 fibo2.py 50
 	\end{exampleblock}
 
  	   \column{0.5\textwidth}
-	\begin{exampleblock}{}
+	\begin{exampleblock}{Python interpreter}
 	\vspace{-0.2cm}
 	\begin{verbatim}
-    (In Python interpreter)
 >>> import fibo2
->>> fibo2.fib(50)
+>>> fibo2.fib(100)
 1 1 2 3 5 8 13 21 34
 \end{verbatim}
 	\vspace{-0.2cm}
@@ -262,7 +265,7 @@ $ python3 fibo2.py 50
 
 \subsection{The \texttt{dir()} function}
 
-\begin{frame}[fragile]{Module}{The dir() function}
+\begin{frame}[fragile]{Modules}{The dir() function}
 	\texttt{dir()}: Built-in function that returns the names defined in a module
 	\begin{itemize}
 		\item Without arguments, it returns your names
@@ -303,52 +306,106 @@ $ python3 fibo2.py 50
 			\begin{itemize}
 			\item Executed when the package is imported for the first time
 			\end{itemize}
+		A package may be distributed with \alert{pip}
+			\begin{itemize}
+				\item \alert{Arcade} is an example of package
+			\end{itemize}
 \end{frame}
 
-\begin{frame}[shrink,plain]{Packages}{Package concept (II)}
-	\centering \textit{Sound module structure}\\
-	\lstinputlisting{code/module.txt}
+\begin{frame}[plain]{Packages}{Package concept (II)}
+	\begin{columns}
+ 	   \column{0.2\textwidth}
+ 	   \column{0.2\textwidth}
+	\dirtree{%
+.1 arcade/.
+.2 \_\_init\_\_.py.
+.2 \_\_main\_\_.py.
+.2 sprites/.
+.3 \_\_init\_\_.py.
+.3 sprite.py.
+.3 animated.py.
+.3 $...$ .
+.2 types/.
+.3 \_\_init\_\_.py.
+.3 color.py.
+.3 $...$ .
+.2 color/.
+.3 \_\_init\_\_.py.
+.2 $...$ .
+}
+ 	   \column{0.6\textwidth}
+	\end{columns}
+	\centering \href{https://github.com/pythonarcade/arcade/tree/3.3.3}{(Arcade 3.3.3 source code)}
 \end{frame}
 
 \subsection{Importing a package}
 \begin{frame}[fragile]{Packages}{Importing a package (I)}
-	Importing an individual module
+	\begin{columns}
+ 	   \column{0.35\textwidth}
+	\dirtree{%
+.1 arcade/.
+.2 \_\_init\_\_.py.
+.2 \_\_main\_\_.py.
+.2 sprites/.
+.3 \_\_init\_\_.py.
+.3 sprite.py.
+.3 animated.py.
+.3 $...$ .
+.2 types/.
+.3 \_\_init\_\_.py.
+.3 color.py.
+.3 $...$ .
+.2 color/.
+.3 \_\_init\_\_.py.
+.2 $...$ .
+}
+ 	   \column{0.65\textwidth}
+
+	Importing the whole package
 	\begin{verbatim}
-import sound.effects.echo
-sound.effects.echo.echofilter(input, output)
+import arcade
+red = arcade.types.Color(255, 0, 0, 255)
 \end{verbatim}
 
 	Alternative way to import an individual module
 	\begin{verbatim}
-from sound.effects import echo
-echo.echofilter(input, output)
+from arcade.types import Color
+red = Color(255, 0, 0, 255)
 \end{verbatim}
 
-	Alternative way to import an individual module
+	Give an alias to a namespace
 	\begin{verbatim}
-from sound.effects.echo import echofilter
-echofilter(input, output)
+import arcade.types as foo
+red = foo.Color(255, 0, 0, 255)
 \end{verbatim}
+	\end{columns}
 
 \end{frame}
 
 \begin{frame}{Packages}{Importing a package (II)}
-	Imagine we run \texttt{from sound import *}
+	Imagine we run \texttt{from arcade.tilemap import *}
 		\begin{itemize}
 		\item In theory, it would import the whole package
 		\item In practice, it would take too much time
+		\item ... and mess the namespace
 		\end{itemize}
-	There is a convention to avoid waste of resources
+	
+	\texttt{\_\_init\_\_.py} may define a list named \texttt{\_\_all\_\_}
 		\begin{itemize}
-		\item There may be a list \texttt{\_\_all\_\_} defined in \texttt{\_\_init\_\_.py}
-		\item \texttt{\_\_all\_\_} contains the modules to be imported
+		\item It contains the names that will be exposed by that package
+		\begin{itemize}
+		\item Functions, variables, modules and classes
+		\end{itemize}
 		\end{itemize}
 
-	\begin{exampleblock}{sounds/effects/\_\_init\_\_.py}
+	\begin{columns}
+ 	   \column{0.6\textwidth}
+	\begin{exampleblock}{arcade/tilemap/\_\_init\_\_.py}
 	\vspace{-0.2cm}
 	\lstinputlisting{code/package.py}
 	\vspace{-0.2cm}
 	\end{exampleblock}
+	\end{columns}
 \end{frame}
 
 \subsection{The \texttt{\_\_main\_\_.py} file}
@@ -361,37 +418,35 @@ echofilter(input, output)
 
 	\begin{columns}
  	   \column{0.5\textwidth}
-	\begin{exampleblock}{}
+		\begin{block}{Linux/PowerShell console}
 	\vspace{-0.2cm}
 	\begin{verbatim}
-(In Linux console)
 $ python3 -m mymodule
 \end{verbatim}
 	\vspace{-0.2cm}
-	\end{exampleblock}
+		\end{block}
 	\end{columns}
+	\medskip
 
-    \medskip
-    IDEs allow the configuration of multiple entry points\\
-    \smallskip
-	    \includegraphics[width=0.8\linewidth]{figs/main-configuration}
+	Try to run \texttt{python -m arcade}!
+		\begin{itemize}
+			\item \href{https://github.com/pythonarcade/arcade/blob/3.3.3/arcade/\_\_main\_\_.py}{(arcade/\_\_main\_\_.py source code)}
+		\end{itemize}
 \end{frame}
 
 
 \subsection{Installing packages}
-\begin{frame}[fragile]{Packages}{Installing packages (I)}
+\begin{frame}[fragile]{Packages}{Installing packages}
 	Command-line automatic tool: \texttt{pip} (sometimes \texttt{pip3})
 		\begin{itemize}
 			\item Very similar to \texttt{apt-get} in Linux
+			\item Automatic dependencies management
 		\end{itemize}
 
+	\begin{columns}
+ 	   \column{0.5\textwidth}
 	\begin{block}{pip usage (from OS terminal)}
 	\vspace{-0.2cm}
-	\begin{verbatim}
-$ python -m pip install SomePackage
-\end{verbatim}
-
-or
 	\begin{verbatim}
 $ pip install SomePackage
 \end{verbatim}
@@ -404,44 +459,52 @@ $ pip install SomePackage
 $ pip install Pillow
 \end{verbatim}
 	\vspace{-0.2cm}
-\end{exampleblock}
-    %List of dependences in \texttt{requirements.txt}
-\end{frame}
-
-\begin{frame}[fragile]{Packages}{Installing packages (II)}
-	    \includegraphics[width=0.8\linewidth]{figs/packages}
+	\end{exampleblock}
+	\end{columns}
+	\bigskip
+	In VS Code, you should use pip in the terminal
 \end{frame}
 
 \subsection{\texttt{requirements.txt}}
 
-\begin{frame}[fragile]{Packages}{\texttt{requirements.txt} (I)}
-	We need a tool to automatize our dependences: \texttt{requirements.txt}
-		\begin{itemize}
-		\item Plain text file with dependences
-		\item Can use fixed or minimum version
-		\end{itemize}
-	\texttt{requirements.txt} can be used by different tools
-		\begin{itemize}
-		\item \texttt{pip install -r requirements.txt}
-		\end{itemize}
-
+\begin{frame}[fragile]{Packages}{\texttt{requirements.txt}}
 
 	\begin{columns}
+ 	   \column{0.6\textwidth}
+	A project may contain a \texttt{requirements.txt} file
+		\begin{itemize}
+		\item It recreates an environment
+		\item Plain text file with dependences
+		\item Can define fixed or minimum version
+		\end{itemize}
+	Supported by different tools
+		\begin{itemize}
+		\item ... including VS Code
+		\end{itemize}
+
  	   \column{0.4\textwidth}
+
 	\begin{exampleblock}{requirements.txt}
 	\vspace{-0.2cm}
 	\lstinputlisting{code/requirements.txt}
 	\vspace{-0.2cm}
 	\end{exampleblock}
+
     \end{columns}
-\end{frame}
 
-\begin{frame}[fragile]{Packages}{\texttt{requirements.txt} (II)}
-    \centering
-	\includegraphics[width=0.7\linewidth]{figs/requirements}\\
-    \centering \tiny{\href{https://github.com/pythonarcade/arcade/blob/development/doc/get_started/install/images/requirements.png}{(Source)}}
-\end{frame}
+	\vspace{0.5cm}
 
+	\begin{columns}
+ 	   \column{0.6\textwidth}
+	\begin{block}{pip usage (from OS terminal)}
+	\vspace{-0.2cm}
+	\begin{verbatim}
+$ pip install -r requirements.txt
+\end{verbatim}
+	\vspace{-0.2cm}
+\end{block}
+	\end{columns}
+\end{frame}
 
 
 \section{Virtual environments}
@@ -464,7 +527,7 @@ $ pip install Pillow
 	        \includegraphics[width=\linewidth]{figs/venv.png}\\
 	\end{columns}
     \bigskip
-	\centering Great tool with \texttt{requirements.txt}!!!
+	\centering Great with \texttt{requirements.txt}!!!
 \end{frame}
 
 \section{Other cool code examples}
@@ -565,7 +628,7 @@ $ pip install Pillow
 \begin{frame}{Arcade}{Introduction}
 	\begin{columns}
  	   \column{0.60\textwidth}
-		Arcade is an easy-to-use 2D motor engine (i.e. a Python package)
+		Arcade is an easy-to-use 2D \alert{motor engine} (i.e. a Python package)
             \begin{itemize}
 		\item Created by Paul Vincent Craven
                 \item Based on Python
@@ -576,7 +639,7 @@ $ pip install Pillow
 
         	Requires
             \begin{itemize}
-                \item Python 3.6+
+                \item Python 3.9+
                 \item OpenGL capable hardware
             \end{itemize}
 
@@ -621,10 +684,9 @@ $ pip install Pillow
 \subsection{Drawing}
 
 \begin{frame}{Arcade}{Drawing (I)}
-	\centering \includegraphics[width=0.5\linewidth]{figs/smile.png}
+	\centering \includegraphics[width=0.5\linewidth]{figs/smile.png}\\
     \bigskip
-
-    \href{https://api.arcade.academy/en/latest/examples/happy_face.html}{(Source code)}
+	\href{https://api.arcade.academy/en/stable/example\_code/happy\_face.html}{(Source code)}
 \end{frame}
 
 \begin{frame}{Arcade}{Drawing (II)}
@@ -644,25 +706,24 @@ $ pip install Pillow
 \begin{frame}{Arcade}{Drawing primitives (I)}
 	\centering \includegraphics[width=0.7\linewidth]{figs/primitives.png} \\
     \bigskip
-
     \href{https://api.arcade.academy/en/latest/examples/drawing_primitives.html}{(Source code)}
 \end{frame}
 
 \begin{frame}[shrink]{Arcade}{Drawing primitives (II)}
   	\begin{multicols}{2}
-		\texttt{draw\_rectangle\_filled()}\\	
-		\texttt{draw\_rectangle\_outline()}\\
-		\texttt{draw\_lrtb\_rectangle\_filled()}\\
-		\texttt{draw\_lrtb\_rectangle\_outline()}\\
-		\texttt{draw\_xywh\_rectangle\_filled()}\\
-		\texttt{draw\_xywh\_rectangle\_outline()}\\
+		\texttt{ }\\
+		\texttt{draw\_text()}\\
+		\texttt{ }\\
+		\texttt{draw\_rect\_filled()}\\	
+		\texttt{draw\_rect\_outline()}\\
+		\texttt{draw\_lrbt\_rectangle\_filled()}\\
+		\texttt{draw\_lrbt\_rectangle\_outline()}\\
 		\texttt{ }\\
 		\texttt{draw\_polygon\_filled()}\\
 		\texttt{draw\_polygon\_outline()}\\
 		\texttt{ }\\
 		\texttt{load\_texture()}\\
-		\texttt{draw\_texture\_rectangle()}\\
-		\texttt{draw\_xywh\_rectangle\_textured()}\\
+		\texttt{draw\_texture\_rect()}\\
 		\texttt{ }\\
 		\texttt{draw\_triangle\_filled()}\\
 		\texttt{draw\_triangle\_outline()}\\
@@ -683,14 +744,15 @@ $ pip install Pillow
 		\texttt{draw\_point()}\\
 		\texttt{draw\_points()}
 	\end{multicols}
+	\centering \href{https://api.arcade.academy/en/stable/api\_docs/quick\_index.html}{(Arcade API)}
 \end{frame}
 
 \subsection{Colors}
 \begin{frame}{Arcade}{Colors}
-	How can I know which colors has Arcade available?
+	How can we know which colors has Arcade available?
 	\begin{itemize}
 		\item The reference API is your friend!
-		\item \href{https://api.arcade.academy/en/2.6.17/arcade.color.html}{(\texttt{arcade.color} reference documentation)}
+		\item \href{https://api.arcade.academy/en/stable/api_docs/arcade.color.html}{(\texttt{arcade.color} reference documentation)}
 	\end{itemize}
 \end{frame}
 
