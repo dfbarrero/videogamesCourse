@@ -434,6 +434,40 @@ $ python3 -m mymodule
 		\end{itemize}
 \end{frame}
 
+\subsection{Imports good practices}
+
+\begin{frame}[fragile]{Modules}{Imports good practices}
+	\begin{columns}
+ 	   \column{0.5\textwidth}
+		\begin{block}{Imports style convention}
+		\begin{enumerate}
+			\item Standard library \\ Build-in Python modules
+			\item Third-party libraries \\ Installed with pip
+			\item Local modules \\ Modules you created
+		\end{enumerate}
+		\end{block}
+
+		Good practices
+		\begin{itemize}
+			\item Avoid wildcards
+				\\ \texttt{from module import *}
+			\item Alphabetic order within each subgroup
+		\end{itemize}
+
+
+ 	   \column{0.5\textwidth}
+
+	\vspace{-2cm}
+	\begin{exampleblock}{arcade/tilemap/\_\_init\_\_.py}
+	\vspace{-0.2cm}
+	\lstinputlisting{code/imports.py}
+	\vspace{-0.2cm}
+	\end{exampleblock}
+
+	\end{columns}
+
+\end{frame}
+
 
 \subsection{Installing packages}
 \begin{frame}[fragile]{Packages}{Installing packages}
