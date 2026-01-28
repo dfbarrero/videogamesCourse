@@ -21,7 +21,10 @@
 8.- [Design patterns in videogames](patterns/)
 
 ## Assignments
-
+- Puesta a punto del entorno de trabajo [[GitHub](assignment/entorno.md), [HackMD](https://hackmd.io/@dfbarrero/entorno-trabajo-videojuegos)]
+- Práctica 1: Primer contacto con Git [[GitHub](assignment/git.md), [HackMD](https://hackmd.io/@dfbarrero/lab-git)]
+- Práctica 2: Dibujar y animar con Arcade [[GitHub](assignment/animacion/animacion.md), [HackMD](https://hackmd.io/@dfbarrero/dibujar-animar)]
+- Práctica 3: Preguntas y respuestas [[GitHub](assignment/archivos/archivos.md), [HackMD](https://hackmd.io/@dfbarrero/preguntas-y-respuestas)]
 - Ejemplo de tareas [[GitHub](assignment/tareas.md), [HackMD](https://hackmd.io/@dfbarrero/tareas)]
 - Toma de contacto con la plantilla [[GitHub](assignment/proyecto.md), [HackMD](https://hackmd.io/@dfbarrero/proyecto-101)]
 
