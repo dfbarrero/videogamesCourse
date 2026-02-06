@@ -60,7 +60,7 @@
 %% Descomentar para habilitar logotipo en pié de página de portada
 %\renewcommand{\logoDos}{Images/CCLogo.png}
 %% Descomentar para habilitar logotipo en pié de página de portada
-\renewcommand{\logoTres}{Images/ALogo.png}
+%\renewcommand{\logoTres}{Images/ALogo.png}
 %% Descomentar para habilitar logotipo en pié de página de portada
 %\renewcommand{\logoCuatro}{Images/ELogo.png}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -124,6 +124,20 @@
   % You might wish to add the option [pausesections]
 \end{frame}
 }
+
+\begin{frame}[plain]
+\begin{center}
+\vspace{-0.2cm}
+%\begin{columns}
+%	\column{.20\linewidth}
+    \includegraphics[width=0.3\linewidth]{figs/meme1.png}\\
+	%\column{.050\linewidth}
+%    \column{.80\linewidth}
+    \includegraphics[width=0.9\linewidth]{figs/meme2.png}\\
+%\end{columns}
+\end{center}
+\end{frame}
+
 
 \section{Introduction}
 \begin{frame}{Introduction}
@@ -312,7 +326,7 @@ $ python3 fibo2.py 50
 			\end{itemize}
 \end{frame}
 
-\begin{frame}[plain]{Packages}{Package concept (II)}
+\begin{frame}{Packages}{Package concept (II)}
 	\begin{columns}
  	   \column{0.2\textwidth}
  	   \column{0.2\textwidth}
@@ -458,7 +472,7 @@ $ python3 -m mymodule
  	   \column{0.5\textwidth}
 
 	\vspace{-2cm}
-	\begin{exampleblock}{arcade/tilemap/\_\_init\_\_.py}
+	\begin{exampleblock}{}
 	\vspace{-0.2cm}
 	\lstinputlisting{code/imports.py}
 	\vspace{-0.2cm}
@@ -473,7 +487,7 @@ $ python3 -m mymodule
 \begin{frame}[fragile]{Packages}{Installing packages}
 	Command-line automatic tool: \texttt{pip} (sometimes \texttt{pip3})
 		\begin{itemize}
-			\item Very similar to \texttt{apt-get} in Linux
+			\item Very similar to \texttt{apt-get} in Linux or \texttt{brew} in MacOS
 			\item Automatic dependencies management
 		\end{itemize}
 
@@ -599,10 +613,28 @@ $ pip install -r requirements.txt
 	\centering \tiny{\href{http://www.pythonforbeginners.com/gui/how-to-use-pillow}{(Source)}}
 \end{frame}
 
-\subsection{Example 3: Send an email with Gmail}
-\begin{frame}{Cool code examples}{Example 3: Send an email with Gmail}
+\subsection{Example 3: List the contents of a directory}
+\begin{frame}{Cool code examples}{Example 3: List the contents of a directory}
 	\begin{columns}
- 	   \column{1.1\textwidth}
+ 	   \column{0.7\textwidth}
+		\begin{exampleblock}{}
+		\vspace{-0.2cm}
+		\lstinputlisting[numbers=left]{code/list-os.py}
+		\end{exampleblock}
+
+        \bigskip
+
+		\begin{exampleblock}{}
+		\vspace{-0.2cm}
+		\lstinputlisting[numbers=left]{code/list-pathlib.py}
+		\end{exampleblock}
+	\end{columns}
+\end{frame}
+
+\subsection{Example 4: Send an email with Gmail}
+\begin{frame}{Cool code examples}{Example 4: Send an email with Gmail}
+	\begin{columns}
+ 	   \column{\textwidth}
 		\vspace{-0.2cm}
 		\begin{exampleblock}{gmail.py}
 		\vspace{-0.2cm}
@@ -613,8 +645,8 @@ $ pip install -r requirements.txt
 	\centering \tiny{\href{http://www.pythonforbeginners.com/code-snippets-source-code/using-python-to-send-email/}{(Source)}}
 \end{frame}
 
-\subsection{Example 4: Plot}
-\begin{frame}{Modules}{Example 4: Plot}
+\subsection{Example 5: Plot}
+\begin{frame}{Modules}{Example 5: Plot}
 	\begin{columns}
  	   \column{.60\textwidth}
 
@@ -632,8 +664,8 @@ $ pip install -r requirements.txt
 		\vspace{-0.2cm}
 \end{frame}
 
-\subsection{Example 5: Arcade}
-\begin{frame}{Modules}{Example 5: Arcade}
+\subsection{Example 6: Arcade}
+\begin{frame}{Modules}{Example 6: Arcade}
 	\begin{columns}
  	   \column{0.60\textwidth}
 
