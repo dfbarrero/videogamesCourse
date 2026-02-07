@@ -1,3 +1,5 @@
+import sys
+
 def fib(n):
     """Print a Fibonacci series up to n """
     a, b = 0, 1
@@ -7,4 +9,4 @@ def fib(n):
     print()
 
 if __name__ == "__main__":
-    fib(100)
+    fib(int(sys.argv[1]))
