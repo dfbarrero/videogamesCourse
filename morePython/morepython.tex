@@ -430,7 +430,7 @@ with open('file') as file:
 
 \end{frame}
 
-\subsection{The pickle module}
+\subsection{The \texttt{pickle} module}
 
 \begin{frame}[fragile]{Serialization}{The \texttt{pickle} module}
 	 \includegraphics[width=0.8\linewidth]{figs/pickle.png} \\
@@ -447,6 +447,8 @@ with open('file') as file:
  	 % \column{.50\textwidth}
 	%\end{columns}
 \end{frame}
+
+\subsection{The \texttt{pickle} module: Examples}
 
 \begin{frame}[plain]{Serialization}{The \texttt{pickle} module: Examples}
 
@@ -473,7 +475,25 @@ with open('file') as file:
 
 \subsection{The JSON module}
 
-\begin{frame}[fragile]{Serialization}{The \texttt{JSON} module: Introduction}
+\begin{frame}[fragile]{Serialization}{The \texttt{JSON} module}
+	 \includegraphics[width=0.8\linewidth]{figs/json.png} \\
+	 \bigskip
+	%\begin{columns}
+ 	%  \column{.50\textwidth}
+		Given an object \texttt{x} and a file object \texttt{f} ...
+		\begin{itemize}
+			\item \texttt{json.dump(x, f)}: Serializes object x and writes it to file f
+			\item \texttt{json.load(f)}: Reads and deserializes object from file f
+			\item \texttt{x} may be a dictionary but \textbf{not an object}
+		\end{itemize}
+		JSON is a text format
+ 	 % \column{.50\textwidth}
+	%\end{columns}
+\end{frame}
+
+\subsection{The JSON module: JSON format}
+
+\begin{frame}[fragile]{Serialization}{The \texttt{JSON} module: JSON format}
 	\begin{columns}
  	  \column{.40\textwidth}
 		JSON: \textit{JavaScript Object Notation}
@@ -504,6 +524,8 @@ with open('file') as file:
 	\end{columns}
 \end{frame}
 
+\subsection{The JSON module: Examples}
+
 \begin{frame}[fragile]{Serialization}{The \texttt{JSON} module: Examples}
 	\begin{exampleblock}{Save a list to a file}
 	\vspace{-0.2cm}
@@ -516,6 +538,11 @@ with open('file') as file:
 	\lstinputlisting[numbers=left]{code/json_example_list_load.py}
 	\vspace{-0.2cm}
 	\end{exampleblock}
+
+	\vspace{-2cm}
+	{\raggedright
+	\hfill \includegraphics[width=0.25\linewidth]{figs/json-meme.jpg}
+	}
 \end{frame}
 
 \section{Exceptions}
@@ -641,26 +668,26 @@ ValueError: invalid literal for int() with base 10: 'hola'
 		\end{itemize}
 \end{frame}
 
-\subsection{Clean-up actions}
-\begin{frame}{Exceptions}{Clean-up actions}
-	\vspace{-0.2cm}
-	Sometimes we need to execute code under all circumstances
-	\begin{itemize}
-		\item Typically clean-up actions: Close files, database connections, sockets, etc
-		\item The \textbf{finally} clause solves this problem
-	\end{itemize}
+%\subsection{Clean-up actions}
+%\begin{frame}{Exceptions}{Clean-up actions}
+%	\vspace{-0.2cm}
+%	Sometimes we need to execute code under all circumstances
+%	\begin{itemize}
+%		\item Typically clean-up actions: Close files, database connections, sockets, etc
+%		\item The \textbf{finally} clause solves this problem
+%	\end{itemize}
 
-	\vspace{-0.2cm}
-    \begin{columns}
- 	   \column{.60\textwidth}
-	\begin{exampleblock}{Example}
-	\vspace{-0.2cm}
-		\lstinputlisting[numbers=left]{code/try-finally.py}
-	\vspace{-0.2cm}
-	\end{exampleblock}
+%	\vspace{-0.2cm}
+%    \begin{columns}
+% 	   \column{.60\textwidth}
+%	\begin{exampleblock}{Example}
+%	\vspace{-0.2cm}
+%		\lstinputlisting[numbers=left]{code/try-finally.py}
+%	\vspace{-0.2cm}
+%	\end{exampleblock}
 
-	\end{columns}
-\end{frame}
+%	\end{columns}
+%\end{frame}
 
 %\section{Decorators}
 %\begin{frame}{Decorators}
