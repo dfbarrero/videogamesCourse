@@ -1,9 +1,9 @@
 import pickle
 
-list_number = [2, 5, 7, 8]
+numbers = [2, 5, 7, 8]
 
-f = open('list.pickle', 'wb')
+f = open('list.pkl', 'wb')
 
-pickle.dump(list_number, f)
+pickle.dump(numbers, f)
 
 f.close()

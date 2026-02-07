@@ -1,9 +1,9 @@
 import pickle
 
-f = open('list.pickle', 'rb')
+f = open('list.pkl', 'rb')
 
-list_number = pickle.load(f)
+my_numbers = pickle.load(f)
 
-print(list_number)
+print(my_numbers)
 
 f.close()

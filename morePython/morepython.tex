@@ -409,10 +409,15 @@ with open('file') as file:
     What happens if we need to transmit complex data structures?
 
 	\begin{columns}
-	\column{.6\textwidth}
+	\column{.5\textwidth}
 	\begin{block}{Serialization}
     Converting a data object into a sequence of bytes
 	\end{block}
+	\column{.5\textwidth}
+	\begin{block}{Deserialization}
+    Converting a sequence of bytes into a data object
+	\end{block}
+
     \end{columns}
 
     \bigskip
@@ -421,33 +426,49 @@ with open('file') as file:
 	\begin{itemize}
         \item ... and also reconstruct our original data
 	\end{itemize}
-	There are several serialization technologies: Pickles, JSON, XML, ...
+	There are several serialization technologies: Pickles, JSON, XML, YAML, ...
 
 \end{frame}
 
 \subsection{The pickle module}
 
 \begin{frame}[fragile]{Serialization}{The \texttt{pickle} module}
-	Given an object \texttt{x} and a file object \texttt{f} ...
-\begin{verbatim}
->>> pickle.dump(x, f) 
->>> x = pickle.load(f)
-\end{verbatim}
+	 \includegraphics[width=0.8\linewidth]{figs/pickle.png} \\
+	 \bigskip
+	%\begin{columns}
+ 	%  \column{.50\textwidth}
+		Given an object \texttt{x} and a file object \texttt{f} ...
+		\begin{itemize}
+			\item \texttt{pickle.dump(x, f)}: Serializes object x and writes it to file f
+			\item \texttt{pickle.load(f)}: Reads and deserializes object from file f
+			\item \texttt{x} may be a dictionary, list or even an object
+		\end{itemize}
+		Pickle uses a binary format
+ 	 % \column{.50\textwidth}
+	%\end{columns}
 \end{frame}
-% byte of p. 93 -- cPickle más rápido
 
 \begin{frame}[plain]{Serialization}{The \texttt{pickle} module: Examples}
+
+
+	\begin{columns}
+ 	  \column{.50\textwidth}
 	\begin{exampleblock}{Save a list  to a file}
 	\vspace{-0.2cm}
 	\lstinputlisting[numbers=left]{code/pickle_example_list_dump.py}
 	\vspace{-0.2cm}
 	\end{exampleblock}
 
+ 	  \column{.50\textwidth}
 	\begin{exampleblock}{Load a list from a file}
 	\vspace{-0.2cm}
 	\lstinputlisting[numbers=left]{code/pickle_example_list_load.py}
 	\vspace{-0.2cm}
 	\end{exampleblock}
+	\end{columns}
+	
+	\bigskip
+	\centering \includegraphics[width=0.25\linewidth]{figs/meme-pickle.jpg} \includegraphics[width=0.25\linewidth]{figs/meme-pickle.png} 
 \end{frame}
 
 \subsection{The JSON module}
