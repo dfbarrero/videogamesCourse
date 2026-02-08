@@ -770,6 +770,7 @@ with open('file') as file:
 		\item Interoperable (pickles only for Python)
 	        \item Complex data structures
 		\end{itemize}
+		Tile Map Editor generates JSON files!
 
  	  \column{.60\textwidth}
         \begin{exampleblock}{filename.json}
@@ -814,75 +815,27 @@ with open('file') as file:
 \section{Exceptions in I/O}
 \subsection{Motivation}
 
-\begin{frame}[fragile]{Exceptions}{Motivation}
-	Errors happen
+\begin{frame}{Exceptions in I/O}{Motivation}
+    Errors happen ... more often in I/O operations
 	\begin{itemize}
-		\item We need a mechanism to handle errors
-	    \item Some errors happen before execution (\textit{syntax errors})
-
-\begin{verbatim}
->>> while True print('Hello world')
-  File "<stdin>", line 1
-    while True print('Hello world')
-                   ^
-  SyntaxError: invalid syntax
-\end{verbatim}
-
-		\item Others are only detected in execution (\textit{runtime errors})
-
-\begin{verbatim}
->>> int("hola")
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-ValueError: invalid literal for int() with base 10: 'hola'
-\end{verbatim}
-
+	\item File does not exist
+	\item No permission to read/write
+	\item Disk full
+	\item Incorrect type of file
     \end{itemize}
-    $\Rightarrow$We need tools to handle errors: \alert{Exceptions}
+    $\Rightarrow$ We need tools to handle errors: \alert{Exceptions}
 \end{frame}
 
-\subsection{Definition}
+\subsection{Common I/O exceptions}
 
-\begin{frame}[fragile]{Exceptions}{Exception definition (I)}
-	\alert{Exception}: An error that disrupts the normal execution flow
-	\begin{itemize}
-		\item File not found, division by zero, invalid argument, etc
-		\item Code cannot be executed
-		\item Elegant solution to handle errors
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Exceptions}{Exception definition (II)}
-    \begin{columns}
- 	   \column{.50\textwidth}
-		\centering Call stack
-		\centering \includegraphics[width=0.8\linewidth]{figs/exceptions-callstack.png}
-
-  	\column{.50\textwidth}
-		\textit{Call stack}: Sequence of invoked methods
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Exceptions}{Exception definition (III)}
-    \begin{columns}
- 	   \column{.60\textwidth}
-		\centering Exception handling
-		\includegraphics[width=0.8\linewidth]{figs/exceptions-errorOccurs.png}
-
-  	\column{.60\textwidth}
-		When an error happens ...
-		\begin{enumerate}
-		\item Code execution is stopped
-		\item An exception is thrown
-		\item The interpreter goes back in the call stack
-		\item When the interpreter finds an exception handler, it is executed
-		\end{enumerate}
-		The exception handler catches the exception, the program finishes otherwise
-	\end{columns}
-\end{frame}
-
-\begin{frame}{Exceptions}{Exception definition (IV)}
-	\lstinputlisting{code/stack.txt}
+\begin{frame}{Exceptions in I/O}{Common I/O exceptions}
+    I/O operations use to catch exceptions
+    \begin{itemize}
+	\item \texttt{FileNotFoundError}\\ File does not exist
+	\item \texttt{PermissionError} \\No permission to read/write
+	\item \texttt{IOError} \\Disk full
+	\item \texttt{IsADirectoryError} and \texttt{NotADirectoryError}\\ Incorrect type of file
+    \end{itemize}
 \end{frame}
 
 \subsection{Handling exceptions}
@@ -903,36 +856,89 @@ ValueError: invalid literal for int() with base 10: 'hola'
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Exceptions}{Handling exceptions (II)}
-    \begin{columns}
- 	   \column{.90\textwidth}
-	\begin{exampleblock}{try-except example}
-	\vspace{-0.2cm}
-		\lstinputlisting[numbers=left]{code/try-example.py}
-	\vspace{-0.2cm}
-	\end{exampleblock}
-	\end{columns}
-	\bigskip
-	The exception type contains the error
-\end{frame}
 
-\begin{frame}{Exceptions}{Handling exceptions (III)}
-	\vspace{-0.2cm}
-    \begin{columns}
- 	   \column{.90\textwidth}
-	\begin{exampleblock}{try-except example}
-	\vspace{-0.2cm}
-		\lstinputlisting[numbers=left]{code/try-example2.py}
-	\vspace{-0.2cm}
-	\end{exampleblock}
-	\end{columns}
-	\bigskip
-	New Python elements
-		\begin{itemize}
-		\item Raise
-        \item Exception as object
-		\end{itemize}
-\end{frame}
+
+%\begin{frame}{Exceptions}{Exception definition (II)}
+%    \begin{columns}
+% 	   \column{.50\textwidth}
+%		\centering Call stack
+%		\centering \includegraphics[width=0.8\linewidth]{figs/exceptions-callstack.png}
+
+%  	\column{.50\textwidth}
+%		\textit{Call stack}: Sequence of invoked methods
+%	\end{columns}
+%\end{frame}
+
+%\begin{frame}{Exceptions}{Exception definition (III)}
+%    \begin{columns}
+% 	   \column{.60\textwidth}
+%		\centering Exception handling
+%		\includegraphics[width=0.8\linewidth]{figs/exceptions-errorOccurs.png}
+
+%  	\column{.60\textwidth}
+%		When an error happens ...
+%		\begin{enumerate}
+%		\item Code execution is stopped
+%		\item An exception is thrown
+%		\item The interpreter goes back in the call stack
+%		\item When the interpreter finds an exception handler, it is executed
+%		\end{enumerate}
+%		The exception handler catches the exception, the program finishes otherwise
+%	\end{columns}
+%\end{frame}
+
+%\begin{frame}{Exceptions}{Exception definition (IV)}
+%	\lstinputlisting{code/stack.txt}
+%\end{frame}
+
+%\subsection{Handling exceptions}
+%\begin{frame}{Exceptions}{Handling exceptions (I)}
+%	Handling an exception requires a try-except statement
+%	\begin{itemize}
+%		\item \texttt{try}: Encloses the vulnerable code
+%		\item \texttt{except}: Code that handles the exception (\textit{catch} in Java/C++)
+%	\end{itemize}
+
+%    \begin{columns}
+% 	   \column{.60\textwidth}
+%	\begin{block}{try-except statement}
+%	\vspace{-0.2cm}
+%		\lstinputlisting{code/try.py}
+%	\vspace{-0.2cm}
+%	\end{block}
+%	\end{columns}
+%\end{frame}
+
+%\begin{frame}{Exceptions}{Handling exceptions (II)}
+%    \begin{columns}
+% 	   \column{.90\textwidth}
+%	\begin{exampleblock}{try-except example}
+%	\vspace{-0.2cm}
+%		\lstinputlisting[numbers=left]{code/try-example.py}
+%	\vspace{-0.2cm}
+%	\end{exampleblock}
+%	\end{columns}
+%	\bigskip
+%	The exception type contains the error
+%\end{frame}
+
+%\begin{frame}{Exceptions}{Handling exceptions (III)}
+%	\vspace{-0.2cm}
+%    \begin{columns}
+% 	   \column{.90\textwidth}
+%	\begin{exampleblock}{try-except example}
+%	\vspace{-0.2cm}
+%		\lstinputlisting[numbers=left]{code/try-example2.py}
+%	\vspace{-0.2cm}
+%	\end{exampleblock}
+%	\end{columns}
+%	\bigskip
+%	New Python elements
+%		\begin{itemize}
+%		\item Raise
+%        \item Exception as object
+%		\end{itemize}
+%\end{frame}
 
 %\subsection{Clean-up actions}
 %\begin{frame}{Exceptions}{Clean-up actions}
