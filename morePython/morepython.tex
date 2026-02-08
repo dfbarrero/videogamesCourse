@@ -26,6 +26,8 @@
 \usepackage{xstring}
 \usepackage{multicol}
 \usepackage{listings}
+\usepackage{dirtree}
+\usepackage[absolute,overlay]{textpos}
 \usepackage{tikz}
 \usetikzlibrary{matrix,chains,positioning,decorations.pathreplacing,arrows,shapes}
 
@@ -121,38 +123,160 @@
 \end{frame}
 }
 
+\section{Path}
+\subsection{Definition}
+\begin{frame}[fragile]{Path}{Definition}
+	\begin{columns}
+ 	   \column{0.35\textwidth}
+	\dirtree{%
+.1 root.
+.2 home.
+.3 rick.
+.4 foo.py.
+.4 music.mp3.
+.3 morthy.
+.5 $...$ .
+.2 bin .
+.2 $...$ .
+}
+ 	   \column{0.65\textwidth}
 
-\section{Reading and writing files}
-
-\subsection{Path}
-
-\begin{frame}[fragile]{Reading and writing files}{Path}
     \begin{block}{Path}
 	A string that identifies a file in a file system
     \end{block}
+	Two types of paths:
+		\begin{itemize}
+			\item Absolute: Address from the root directory
+			\item Relative: Address from the \alert{working directory}
+		\end{itemize}
+	Working directory: Folder where your program is running from
+	\end{columns}
+
+	\bigskip
+
+	The path separator is operating system dependent
+	\begin{itemize}
+		\item Linux/macOS/Android: Uses forward slash: \texttt{/}
+		\item Windows: Uses backslash: \texttt{$\backslash$}
+	\end{itemize}
+\end{frame}
+
+\subsection{Paths in Linux}
+
+\begin{frame}[fragile]{Path}{Paths in Linux}
 
 	\begin{columns}
- 	  \column{.50\textwidth}
-		On \textbf{Linux}, the path is denoted by: \\
+ 	  \column{.40\textwidth}
+	\dirtree{%
+.1 /.
+.2 home/.
+.3 rick/.
+.4 foo.py.
+.4 music.mp3.
+.3 morthy/.
+.5 $...$ .
+.2 bin/ .
+.2 $...$ .
+}
+ 	  \column{.60\textwidth}
+		On Linux, the absolute path is: \\
 \begin{verbatim}
-path = '/tmp/prueba.txt'
+path = '/home/rick/music.mp3'
 \end{verbatim}
- 	  \column{.50\textwidth}
-		On \textbf{Windows}, the path is denoted by: \\
+		If we are in \texttt{/home/}, the relative path is: \\
 \begin{verbatim}
-path = 'C:\Windows\Temp'
+path = 'rick/music.mp3'
 \end{verbatim}
-		And it is represented  in Python by:\\
+
+	\end{columns}
+\end{frame}
+
+\subsection{Paths in Windows}
+
+\begin{frame}[fragile]{Path}{Paths in Windows}
+
+	\begin{columns}
+ 	  \column{.40\textwidth}
+	\dirtree{%
+.1 C:\textbackslash.
+.2 Users\textbackslash.
+.3 rick\textbackslash.
+.4 foo.py.
+.4 music.mp3.
+.3 morthy\textbackslash.
+.5 $...$ .
+.2 $...$ .
+}
+ 	  \column{.60\textwidth}
+		On \textbf{Windows}, the absolute path is: \\
 \begin{verbatim}
-path = 'C:\\Windows\\Temp'
+'C:\Users\rick\music.mp3'
+\end{verbatim}
+		If we are in \texttt{C:\textbackslash Users\textbackslash}, the relative path is: \\
+\begin{verbatim}
+'rick\music.mp3'
+\end{verbatim}
+		And it is represented in Python by:\\
+\begin{verbatim}
+path = 'C:\\Users\\rick\\music.mp3'
 \end{verbatim}
 		But by also using \textit{raw string}:
 \begin{verbatim}
-path = r'C:\Windows\Temp'
+path = r'C:\Users\rick\music.mp3'
 \end{verbatim}
 	\end{columns}
 \end{frame}
 
+\begin{frame}{Path}{Portable code with the os module}
+	
+	The \texttt{os} module provides old fashioned tools to deal with paths
+	\begin{itemize}
+		\item \texttt{os.path.join("folder", "subfolder", "file.txt")}
+		\item \texttt{os.sep}
+	\end{itemize}
+
+	\vspace{-0.5cm}
+	\begin{columns}
+ 	  \column{.50\textwidth}
+	\begin{exampleblock}{Recommened}
+	\vspace{-0.2cm}
+	\lstinputlisting[numbers=left]{code/os1.py}
+	\vspace{-0.2cm}
+	\end{exampleblock}
+
+ 	  \column{.50\textwidth}
+	\begin{exampleblock}{Not recommended}
+	\vspace{-0.2cm}
+	\lstinputlisting[numbers=left]{code/os2.py}
+	\vspace{-0.2cm}
+	\end{exampleblock}
+
+	\begin{alertblock}{Use with caution}
+	\vspace{-0.2cm}
+	\lstinputlisting[numbers=left]{code/os3.py}
+	\vspace{-0.2cm}
+	\end{alertblock}
+
+	\end{columns}
+	\bigskip
+	Pathlib provides a modern (i.e. object-oriented) solution
+\end{frame}
+
+\subsection{The \texttt{\_\_file\_\_} variable}
+
+\begin{frame}{Path}{The \texttt{\_\_file\_\_} variable}
+	Python defines the variable \alert{\texttt{\_\_file\_\_}}
+	\begin{itemize}
+		\item Contains the absolute path to the file
+		\item Not defined if there is no file
+		\item Useful to locate our project location
+	\end{itemize}
+	\begin{textblock*}{3cm}(8cm, 4cm)
+		\includegraphics[width=\linewidth]{figs/meme-path.jpg}
+	\end{textblock*}
+\end{frame}
+
+\section{Reading and writing files}
 \subsection{Opening files}
 \begin{frame}[fragile]{Reading and writing files}{Opening files}
 	All file operations are made through a \textit{file object}
@@ -399,6 +523,15 @@ with open('file') as file:
 	
 \end{frame}
 
+\section{Pathlib}
+
+\subsection{Sound file formats}
+\begin{frame}{Pathlib}{Sound file formats}
+	TODO
+\end{frame}
+
+
+
 \section{Serialization}
 
 \begin{frame}[fragile]{Serialization}{Introduction}
@@ -545,7 +678,7 @@ with open('file') as file:
 	}
 \end{frame}
 
-\section{Exceptions}
+\section{Exceptions in I/O}
 \subsection{Motivation}
 
 \begin{frame}[fragile]{Exceptions}{Motivation}
@@ -712,4 +845,17 @@ ValueError: invalid literal for int() with base 10: 'hola'
 %	\end{columns}
 %\end{frame}
 
+
+
+\section{Sound in Arcade}
+
+\subsection{Sound file formats}
+\begin{frame}{Sound in Arcade}{Sound file formats}
+	TODO
+\end{frame}
+
+\subsection{Arcade sound API}
+\begin{frame}{Sound in Arcade}{Sound file formats}
+	TODO
+\end{frame}
 \end{document}
