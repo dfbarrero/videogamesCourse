@@ -59,7 +59,7 @@
 %% Descomentar para habilitar logotipo en pié de página de portada
 %\renewcommand{\logoDos}{Images/CCLogo.png}
 %% Descomentar para habilitar logotipo en pié de página de portada
-\renewcommand{\logoTres}{Images/ALogo.png}
+%\renewcommand{\logoTres}{Images/ALogo.png}
 %% Descomentar para habilitar logotipo en pié de página de portada
 %\renewcommand{\logoCuatro}{Images/ELogo.png}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -277,13 +277,26 @@ path = r'C:\Users\rick\music.mp3'
 \end{frame}
 
 \section{Reading and writing files}
-\subsection{Opening files}
-\begin{frame}[fragile]{Reading and writing files}{Opening files}
-	All file operations are made through a \textit{file object}
-		\begin{itemize}
-		\item \small{First of all: Call the \texttt{open()} function}
-		\end{itemize}
+\subsection{Introduction}
+\begin{frame}[fragile]{Reading and writing files}{Introduction}
+	\begin{block}{File operation overview}
+	\begin{enumerate}
+	\item Open the file in a specific mode
+	\item Perform operations on the file (read/write, among others)
+        \item Close the file
+	\end{enumerate}
+	\end{block}
 
+	All file operations are performed through a \textit{file object}
+		\begin{itemize}
+		\item First: call the \texttt{open()} function
+		\item It returns the file object
+		\item Always close the file, even in the event of failure
+		\end{itemize}
+\end{frame}
+
+\subsection{Opening files}
+\begin{frame}[fragile]{Reading and writing files}{Opening files (I)}
 	\begin{block}{\texttt{open()}}
 	\vspace{-0.2cm}
 \begin{verbatim}
@@ -293,7 +306,7 @@ open(filename[, mode])
 	Return: An object file\\
 	\vspace{-0.2cm}
 	\begin{itemize}
-	\item \textit{filename}: Path
+	\item \textit{filename}: Path string
 	\item \textit{mode}: Characters describing how the file will be used
 		\begin{itemize}
 		\item \textit{r}: Read mode, \textit{w}: Write mode (overwrites file)% lectura por defecto. W: borra el contenido anterior, r+: lectura y escritura; a: append
@@ -311,8 +324,26 @@ open(filename[, mode])
 	\end{alertblock}
 \end{frame}
 
+\begin{frame}[fragile]{Reading and writing files}{Opening files (II)}
+	\begin{columns}
+ 	  \column{.50\textwidth}
+	\begin{exampleblock}{Text mode}
+	\vspace{-0.2cm}
+	\lstinputlisting[numbers=left]{code/open1.py}
+	\vspace{-0.2cm}
+	\end{exampleblock}
+
+ 	  \column{.50\textwidth}
+	\begin{exampleblock}{Binary mode}
+	\vspace{-0.2cm}
+	\lstinputlisting[numbers=left]{code/open2.py}
+	\vspace{-0.2cm}
+	\end{exampleblock}
+	\end{columns}
+\end{frame}
+
 \subsection{Reading files}
-\begin{frame}[fragile]{Reading files (I)}
+\begin{frame}[fragile]{Reading and writing files}{Reading files (I)}
 	\begin{block}{The \texttt{read()} function}
 	\vspace{-0.2cm}
 \begin{verbatim}
@@ -337,7 +368,7 @@ f.read([size])
 	
 \end{frame}
 
-\begin{frame}[fragile]{Reading files (II)}
+\begin{frame}[fragile]{Reading and writing files}{Reading files (II)}
 	\textbf{Option 2}: Read a single line (\texttt{f.readline()})
 \begin{verbatim}
 >>> f = open("/tmp/file2", 'r')
@@ -352,7 +383,7 @@ f.read([size])
 
 \end{frame}
 
-\begin{frame}[fragile]{Reading files (III)}
+\begin{frame}[fragile]{Reading and writing files}{Reading files (III)}
 	\textbf{Option 3}: Read lines as list (\texttt{f.readlines()})
 \begin{verbatim}
 >>> f = open("/tmp/file2", 'r')
@@ -371,8 +402,10 @@ f.close()
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[fragile]{Example}{}
-	\begin{exampleblock}{Calculating the average of characters per line of file \texttt{example.txt}}
+\subsection{Reading files: Example}
+
+\begin{frame}[fragile]{Reading and writing files}{Example}{}
+	\begin{exampleblock}{Number of lines and characters in file \texttt{example.txt}}
 	\vspace{-0.2cm}
 	\lstinputlisting[numbers=left]{code/char_average_line.py}
 	\vspace{-0.2cm}
@@ -381,7 +414,7 @@ f.close()
 
 \subsection{Writing files}
 
-\begin{frame}[fragile]{Writing files (I)}
+\begin{frame}[fragile]{Reading and writing files}{Writing files (I)}
 	\begin{block}{The \texttt{write()} function}
 	\vspace{-0.2cm}
 \begin{verbatim}
@@ -409,9 +442,7 @@ f.write(string)
 
 \end{frame}
 
-\begin{frame}[fragile]{Writing files (II)}
-	
-
+\begin{frame}[fragile]{Reading and writing files}{Writing files (II)}
 	\textbf{Example 2}: Write a number % se tiene que pasar a string el número
 \begin{verbatim}
 >>> f = open("/tmp/file", 'w+')
@@ -421,14 +452,25 @@ f.write(string)
 \end{verbatim}
 \end{frame}
 
-\subsection{Useful methods}
-\begin{frame}[fragile]{Useful methods}
+
+\subsection{Writing files: Example}
+
+\begin{frame}[fragile]{Reading and writing files}{Writing files: Example}
+	\begin{exampleblock}{}
+	\vspace{-0.2cm}
+	\lstinputlisting[numbers=left]{code/write.py}
+	\vspace{-0.2cm}
+	\end{exampleblock}
+\end{frame}
+
+
+\subsection{Random access}
+\begin{frame}[fragile]{Reading and writing files}{Random access (I)}
 
 	\begin{tabular}{c|l}\hline
   	\sc Method & \sc Description  \\\hline
   	\texttt{f.tell()} & Returns the pointer's position \\
-  	\texttt{f.seek(n)} & Moves the pointer \texttt{n} bytes \\
-  	\texttt{f.close()} & Closes a file. Use it always! \\\hline
+  	\texttt{f.seek(n)} & Moves the pointer to position \texttt{n} \\\hline
   	\end{tabular}
 
 \begin{verbatim}
@@ -442,13 +484,16 @@ b'5'
 >>> f.close()
 \end{verbatim}
 \end{frame}
-% que hagan: obtener el número de bytes de un archivo, el archivo es muy, muy largo: léalo no completo sino en fragmentos de 64 bytes, leer de línea en línea (lo más frecuente), 
-% o todas las líneas de una vez, bucles sobre, directamente, las líneas del archivo. Escribir usando write y writelines (porporcionar finales de línea adecuadamente). Copia de un archivo (del todo o por líneas), de 1024 en 1024, 
 
-% CADENA UNICODE!
+\begin{frame}[plain]{Reading and writing files}{Random access (II)}
+	\begin{columns}
+		\includegraphics[width=\linewidth]{figs/pointer.pdf}
+	\end{columns}
+\end{frame}
+
 \subsection{With}
 
-\begin{frame}[fragile]{\texttt{With} (I)}
+\begin{frame}[fragile]{Reading and writing files}{\texttt{With} (I)}
 	\begin{columns}
 	\column{.6\textwidth}
 	\begin{block}{The \texttt{with} clause}
@@ -493,7 +538,7 @@ with open('file') as file:
     \end{columns}
 \end{frame}
 
-\begin{frame}[fragile]{With (II)}
+\begin{frame}[fragile]{Reading and writing files}{With (II)}
 	\begin{exampleblock}{Hello, world}
 	\vspace{-0.2cm}
 	\lstinputlisting[numbers=left]{code/hello-with.py}
@@ -501,7 +546,7 @@ with open('file') as file:
 	\end{exampleblock}
 \end{frame}
 
-\begin{frame}[fragile]{With (III)}
+\begin{frame}[fragile]{Reading and writing files}{With (III)}
 	\begin{exampleblock}{Reading a line each time}
 	\vspace{-0.2cm}
 	\lstinputlisting[numbers=left]{code/cierreautomatico.py}
@@ -524,16 +569,104 @@ with open('file') as file:
 \end{frame}
 
 \section{Pathlib}
+\subsection{Introduction}
+\begin{frame}{Pathlib}{Introduction}
+	Pathlib is a module for working with paths
+	\begin{itemize}
+		\item Built-in module from Python 3.4
+		\item Object-oriented
+		\item Intuitive path operations
+		\item Methods for common operations
+		\item \href{https://docs.python.org/3/library/pathlib.html}{(Pathlib reference documentation)}
+	\end{itemize}
 
-\subsection{Sound file formats}
-\begin{frame}{Pathlib}{Sound file formats}
-	TODO
+	\begin{columns}
+	\column{.40\textwidth}
+		\begin{exampleblock}{os.path}
+		\lstinputlisting[basicstyle=\scriptsize, numbers=left]{code/ospath.py}
+		\end{exampleblock}
+	\column{.50\textwidth}
+		\begin{exampleblock}{pathlib}
+		\lstinputlisting[basicstyle=\scriptsize, numbers=left]{code/pathlib1.py}
+		\end{exampleblock}
+	\end{columns}
+\end{frame}
+
+\subsection{Creating paths}
+\begin{frame}{Pathlib}{Creatings paths}
+	Basic Path
+	\begin{itemize}
+		\item[] \texttt{path = Path('folder/subfolder/file.txt')}
+	\end{itemize}
+
+	Using / operator
+	\begin{itemize}
+		\item[] \texttt{path = Path('folder') / 'subfolder' / 'file.txt'}
+	\end{itemize}
+
+	Current directory
+	\begin{itemize}
+		\item[] \texttt{path = Path.cwd()}
+	\end{itemize}
+
+	Home directory
+	\begin{itemize}
+		\item[] \texttt{path = Path.home()}
+	\end{itemize}
+\end{frame}
+
+\subsection{Common operations}
+\begin{frame}{Pathlib}{Common operations}
+	\begin{columns}
+	\column{.50\textwidth}
+	Check if path exists
+	\begin{itemize}
+		\item[] \texttt{path.exists()}
+	\end{itemize}
+
+	Check if path is a file
+	\begin{itemize}
+		\item[] \texttt{path.is\_file()}
+	\end{itemize}
+
+	Check if path is a directory
+	\begin{itemize}
+		\item[] \texttt{path.is\_dir()}
+	\end{itemize}
+
+	\column{.50\textwidth}
+	Create directory
+	\begin{itemize}
+		\item[] \texttt{path.mkdir()}
+	\end{itemize}
+
+	Write to file
+	\begin{itemize}
+		\item[] \texttt{path.write\_text()}
+	\end{itemize}
+
+	Read file content
+	\begin{itemize}
+		\item[] \texttt{path.read\_text()}
+	\end{itemize}
+	\end{columns}
 \end{frame}
 
 
+\subsection{Example}
+
+\begin{frame}[fragile]{Reading and writing files}{Example}
+
+	\vspace{-0.5cm}
+	\begin{exampleblock}{}
+	\vspace{-0.2cm}
+	\lstinputlisting[numbers=left]{code/pathlib-example.py}
+	\vspace{-0.2cm}
+	\end{exampleblock}
+\end{frame}
+
 
 \section{Serialization}
-
 \begin{frame}[fragile]{Serialization}{Introduction}
     What happens if we need to store complex data structures?
 		\begin{itemize}

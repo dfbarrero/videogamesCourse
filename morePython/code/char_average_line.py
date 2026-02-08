@@ -1,10 +1,12 @@
-f = open('example.txt', 'r')
-num_total_char = 0
-count_line= 0
+characters = 0
+lines= 0
 
-for line in f:
-	count_line += 1
-	num_total_char += len(line)
+file = open('example.txt', 'r')
 
-file_ex.close()
-print('average', float(num_total_char) / float(count_line))
+for line in file:
+	characters+= 1
+	lines += len(line)
+
+file.close()
+
+print(f"Characters: {characters}, number of lines: {lines}")
