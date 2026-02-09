@@ -103,7 +103,8 @@
 	\begin{block}{Bibliography}
 		\begin{itemize}
 			\item The Python Tutorial. \textit{Section 7.2: Reading and writing files}. \href{https://docs.python.org/3/tutorial/inputoutput.html\#reading-and-writing-files}{(Link)}
-			\item The Python Tutorial. \textit{Chapter 8: Errors and Exceptions}. \href{https://docs.python.org/3/tutorial/errors.html}{(Link)}
+			\item The Arcade Library. \textit{Sound}. \href{https://api.arcade.academy/en/3.3.3/programming\_guide/sound.html}{(Link)}
+			\item Learn Arcade. \textit{Chapter 20: Sound}. \href{https://learn.arcade.academy/en/latest/chapters/20_sounds/sounds.html}{(Link)}
 		\end{itemize}
 	\end{block}
 \end{frame}
@@ -577,6 +578,7 @@ with open('file') as file:
 		\item Object-oriented
 		\item Intuitive path operations
 		\item Methods for common operations
+		\item Supported by Arcade 3.x
 		\item \href{https://docs.python.org/3/library/pathlib.html}{(Pathlib reference documentation)}
 	\end{itemize}
 
@@ -829,33 +831,48 @@ with open('file') as file:
 \subsection{Common I/O exceptions}
 
 \begin{frame}{Exceptions in I/O}{Common I/O exceptions}
-    I/O operations use to catch exceptions
+    I/O operations may raise the following exceptions
     \begin{itemize}
 	\item \texttt{FileNotFoundError}\\ File does not exist
 	\item \texttt{PermissionError} \\No permission to read/write
-	\item \texttt{IOError} \\Disk full
+	\item \texttt{IOError} \\Disk full and other I/O errors
 	\item \texttt{IsADirectoryError} and \texttt{NotADirectoryError}\\ Incorrect type of file
     \end{itemize}
 \end{frame}
 
-\subsection{Handling exceptions}
-\begin{frame}{Exceptions}{Handling exceptions (I)}
-	Handling an exception requires a try-except statement
-	\begin{itemize}
-		\item \texttt{try}: Encloses the vulnerable code
-		\item \texttt{except}: Code that handles the exception (\textit{catch} in Java/C++)
-	\end{itemize}
-
+\subsection{Examples}
+\begin{frame}{Exceptions in I/O}{Examples (I)}
     \begin{columns}
- 	   \column{.60\textwidth}
-	\begin{block}{try-except statement}
+ 	   \column{\textwidth}
+	\begin{exampleblock}{try-except}
 	\vspace{-0.2cm}
-		\lstinputlisting{code/try.py}
+		\lstinputlisting{code/try-example3.py}
 	\vspace{-0.2cm}
-	\end{block}
+	\end{exampleblock}
 	\end{columns}
 \end{frame}
 
+\begin{frame}{Exceptions in I/O}{Examples (II)}
+    \begin{columns}
+ 	   \column{\textwidth}
+	\begin{exampleblock}{try-except statement}
+	\vspace{-0.2cm}
+		\lstinputlisting{code/try-example4.py}
+	\vspace{-0.2cm}
+	\end{exampleblock}
+	\end{columns}
+\end{frame}
+
+\begin{frame}{Exceptions in I/O}{Examples (III)}
+    \begin{columns}
+ 	   \column{\textwidth}
+	\begin{exampleblock}{try-except statement}
+	\vspace{-0.2cm}
+		\lstinputlisting{code/try-example5.py}
+	\vspace{-0.2cm}
+	\end{exampleblock}
+	\end{columns}
+\end{frame}
 
 
 %\begin{frame}{Exceptions}{Exception definition (II)}
@@ -988,13 +1005,93 @@ with open('file') as file:
 
 \section{Sound in Arcade}
 
-\subsection{Sound file formats}
-\begin{frame}{Sound in Arcade}{Sound file formats}
-	TODO
+\subsection{Introduction}
+\begin{frame}{Sound in Arcade}{Introduction}
+	Two steps:
+	\begin{enumerate}
+		\item Load the sound 
+		\item Play the sound 
+	\end{enumerate}
+	Two ways to provide a path
+	\begin{itemize}
+		\item String\\ \texttt{path = 'laser.wav'}
+		\item Path\\ \texttt{path = Path('laser.wav')}
+	\end{itemize}
+
 \end{frame}
 
-\subsection{Arcade sound API}
-\begin{frame}{Sound in Arcade}{Sound file formats}
-	TODO
+\subsection{Loading sounds}
+\begin{frame}{Sound in Arcade}{Loading sounds}
+	Arcade supports two APIs
+	\begin{itemize}
+		\item Functional API: \\ \texttt{laser\_sound = arcade.load\_sound("laser.wav")}
+		\item Object oriented API: \\ \texttt{laser\_sound = Sound("laser.wav")}
+		\item [] Both return a \texttt{Sound} object
+	\end{itemize}
+	Boolean \texttt{streaming} argument
+	\begin{itemize}
+		\item True: Streams from disk. Long files
+		\item False: Loads the whole file. Short files
+	\end{itemize}
 \end{frame}
-\end{document}
+
+\subsection{Playing sounds}
+\begin{frame}{Sound in Arcade}{Playing sounds}
+	Two ways to play a sound:
+	\begin{itemize}
+		\item The \texttt{arcade.play\_sound()} function\\ \texttt{arcade.play\_sound(laser\_sound)}
+		\item The \texttt{play()} method (object oriented)
+	\end{itemize}
+
+	Both return a \texttt{Player} object
+	\begin{itemize}
+		\item It controls the playback
+	\end{itemize}
+
+\end{frame}
+
+\subsection{Built-in sounds}
+\begin{frame}{Sound in Arcade}{Built-in sounds}
+    \begin{columns}
+ 	   \column{0.4\textwidth}
+	Arcade comes along a collection of built-in resources
+	\begin{itemize}
+		\item Sounds, music, sprites, ...
+		\item Good for testing
+	\end{itemize}
+	Identified by \texttt{":resources:<path>"}
+	    \begin{itemize}
+		    \item \href{https://api.arcade.academy/en/3.3.3/api\_docs/resources.html}{(Link)}
+	    \end{itemize}
+
+ 	   \column{0.6\textwidth}
+	\begin{exampleblock}{Terminal}
+	\vspace{-0.2cm}
+		\lstinputlisting{code/sound.py}
+	\vspace{-0.2cm}
+	\end{exampleblock}
+    \end{columns}
+
+	Use this in your scripts with caution!
+\end{frame}
+
+\begin{frame}{Sound in Arcade}{Example}
+    \begin{columns}
+ 	   \column{\textwidth}
+	\begin{exampleblock}{}
+	\vspace{-0.2cm}
+		\lstinputlisting{code/music.py}
+	\vspace{-0.2cm}
+	\end{exampleblock}
+    \end{columns}
+
+\end{frame}
+
+
+
+
+%\subsection{Arcade sound API}
+%\begin{frame}{Sound in Arcade}{Sound file formats}
+%	TODO
+%\end{frame}
+%\end{document}
