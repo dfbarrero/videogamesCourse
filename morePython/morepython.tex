@@ -403,7 +403,7 @@ f.close()
 \end{verbatim}
 \end{frame}
 
-\subsection{Reading files: Example}
+%\subsection{Reading files: Example}
 
 \begin{frame}[fragile]{Reading and writing files}{Example}{}
 	\begin{exampleblock}{Number of lines and characters in file \texttt{example.txt}}
@@ -454,7 +454,7 @@ f.write(string)
 \end{frame}
 
 
-\subsection{Writing files: Example}
+%\subsection{Writing files: Example}
 
 \begin{frame}[fragile]{Reading and writing files}{Writing files: Example}
 	\begin{exampleblock}{}
@@ -716,7 +716,7 @@ with open('file') as file:
 	%\end{columns}
 \end{frame}
 
-\subsection{The \texttt{pickle} module: Examples}
+%\subsection{The \texttt{pickle} module: Examples}
 
 \begin{frame}[plain]{Serialization}{The \texttt{pickle} module: Examples}
 
@@ -793,7 +793,7 @@ with open('file') as file:
 	\end{columns}
 \end{frame}
 
-\subsection{The JSON module: Examples}
+%\subsection{The JSON module: Examples}
 
 \begin{frame}[fragile]{Serialization}{The \texttt{JSON} module: Examples}
 	\begin{exampleblock}{Save a list to a file}
@@ -1054,15 +1054,15 @@ with open('file') as file:
 \begin{frame}{Sound in Arcade}{Built-in sounds}
     \begin{columns}
  	   \column{0.4\textwidth}
-	Arcade comes along a collection of built-in resources
+	Arcade comes with a collection of built-in resources
 	\begin{itemize}
 		\item Sounds, music, sprites, ...
 		\item Good for testing
+		\item \href{https://api.arcade.academy/en/3.3.3/api\_docs/resources.html}{(Link)}
 	\end{itemize}
-	Identified by \texttt{":resources:<path>"}
-	    \begin{itemize}
-		    \item \href{https://api.arcade.academy/en/3.3.3/api\_docs/resources.html}{(Link)}
-	    \end{itemize}
+	    \begin{block}{Built-in resources}
+	 \centering \texttt{":resources:<path>"}
+	    \end{block}
 
  	   \column{0.6\textwidth}
 	\begin{exampleblock}{Terminal}
@@ -1070,17 +1070,18 @@ with open('file') as file:
 		\lstinputlisting{code/sound.py}
 	\vspace{-0.2cm}
 	\end{exampleblock}
+	\centering $\Uparrow$ Does not work as script!
     \end{columns}
-
-	Use this in your scripts with caution!
 \end{frame}
 
+\subsection{Example}
 \begin{frame}{Sound in Arcade}{Example}
+	\vspace{-0.5cm}
     \begin{columns}
  	   \column{\textwidth}
 	\begin{exampleblock}{}
 	\vspace{-0.2cm}
-		\lstinputlisting{code/music.py}
+		\lstinputlisting[numbers=left]{code/music.py}
 	\vspace{-0.2cm}
 	\end{exampleblock}
     \end{columns}
@@ -1094,4 +1095,4 @@ with open('file') as file:
 %\begin{frame}{Sound in Arcade}{Sound file formats}
 %	TODO
 %\end{frame}
-%\end{document}
+\end{document}
