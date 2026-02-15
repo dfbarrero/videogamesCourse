@@ -615,6 +615,110 @@ class GameOverView(arcade.View):
 	\end{columns}
 \end{frame}
 
+\section{The \texttt{Texture} class}
+\subsection{Introduction}
+\begin{frame}{The \texttt{Texture} class}{Introduction}
+	\vspace{-1.5cm}
+	\begin{center}
+		\includegraphics[width=2cm]{figs/mario.jpg}\includegraphics[width=2cm]{figs/zelda.png}\\
+	\end{center}
+    \begin{columns}
+ 	   \column{.450\textwidth}
+	    In Arcade, images are named \textbf{textures}
+        \begin{itemize}
+	\item Implemented by the \texttt{arcade.Texture} class
+	\end{itemize}
+    Two texture loading methods
+        \begin{itemize}
+		\item \texttt{arcade.load\_texture()}
+		\item \texttt{arcade.Texture()}
+	\end{itemize}
+ 	   \column{.55\textwidth}
+	   \begin{exampleblock}{Functional}
+		   \lstinline{mario = arcade.load\_texture("mario.png")}
+		   \lstinline{mario = arcade.load\_texture(Path("mario.png"))}
+	   \end{exampleblock}
+	   \begin{exampleblock}{Object-oriented}
+		   \lstinline{mario = arcade.Texture("mario.png")}
+		   \lstinline{mario = arcade.Texture(Path("mario.png"))}
+	   \end{exampleblock}
+	\end{columns}
+\end{frame}
+
+\subsection{Hitboxes}
+\begin{frame}{The \texttt{Texture} class}{Hitboxes}
+    \begin{columns}
+ 	   \column{.55\textwidth}
+	The \texttt{Texture} class provides
+	\begin{itemize}
+		\item Caching
+		\item Hitbox geometry, used in \alert{collision detection}
+	\end{itemize}
+ 	   \column{.35\textwidth}
+		\includegraphics[width=\textwidth]{figs/collision}\\
+	\end{columns}
+	\bigskip
+
+	\begin{columns}
+ 	   \column{.3\textwidth}
+		\includegraphics[width=\linewidth]{figs/hitbox1.jpg}\\
+ 	   \column{.3\textwidth}
+		\includegraphics[width=\linewidth]{figs/hitbox2.jpg}\\
+ 	   \column{.3\textwidth}
+		\includegraphics[width=\linewidth]{figs/hitbox3.jpg}\\
+	\end{columns}
+		\centering \tiny \href{https://askagamedev.tumblr.com/post/716313460605075457/a-question-on-hitboxes-why-are-hitboxes-a}{(Source)}
+
+\end{frame}
+
+
+
+\subsection{Data formats}
+
+\begin{frame}{The \texttt{Texture} class}{Data formats (I)}
+    In genenal, any data can be stored in three forms
+        \begin{itemize}
+        \item Not compressed
+        \item Compressed with loss
+        \item Compressed without loss
+	    \end{itemize}
+
+    \begin{table}
+    \centering
+    \begin{tabular}{l|c|c|c}
+                            & Image format & Sound format & Binary data\\\hline
+    Not compressed          & BMP          & WAV  &  \\
+    Compressed with loss    & JPG          & MP3  &  \\
+    Compressed without loss & PNG, GIF     & -    & ZIP, bzip, rar, ... 
+    \end{tabular}
+    \end{table}
+\end{frame}
+
+\begin{frame}{The \texttt{Texture} class}{Data formats (II)}
+    Attending to what information is stored in image format, there are two types of image formats:
+        \begin{itemize}
+            \item Bitmap: stores each pixel
+                \begin{itemize}
+                \item Scales bad
+                \item Formats: JPG, PNG, BMP, GIF
+                \end{itemize}
+
+            \item Vectorial: stores coordinates
+                \begin{itemize}
+                \item Scales well
+                \item Not supported by Arcade
+                \item Formats: SVG, EPS
+                \end{itemize}
+	    \end{itemize}
+
+    Many open assets for your games!
+        \begin{itemize}
+        \item \href{https://kenney.nl/assets}{(Kenney)}
+        \end{itemize}
+\end{frame}
+
+
+
 \section{Sprites}
 \subsection{Introduction}
 
@@ -667,50 +771,6 @@ class GameOverView(arcade.View):
  	   \column{.50\textwidth}
 		\includegraphics[width=\linewidth]{figs/blocks1.png}
    \end{columns}
-\end{frame}
-
-\subsection{Data formats}
-
-\begin{frame}{Sprites}{Data formats (I)}
-    In genenal, any data can be stored in three forms
-        \begin{itemize}
-        \item Not compressed
-        \item Compressed with loss
-        \item Compressed without loss
-	    \end{itemize}
-
-    \begin{table}
-    \centering
-    \begin{tabular}{l|c|c|c}
-                            & Image format & Sound format & Binary data\\\hline
-    Not compressed          & BMP          & WAV  &  \\
-    Compressed with loss    & JPG          & MP3  &  \\
-    Compressed without loss & PNG, GIF     & -    & ZIP, bzip, rar, ... 
-    \end{tabular}
-    \end{table}
-\end{frame}
-
-\begin{frame}{Sprites}{Data formats (II)}
-    Attending to what information is stored in image format, there are two types of image formats:
-        \begin{itemize}
-            \item Bitmap: stores each pixel
-                \begin{itemize}
-                \item Scales bad
-                \item Formats: JPG, PNG, BMP, GIF
-                \end{itemize}
-
-            \item Vectorial: stores coordinates
-                \begin{itemize}
-                \item Scales well
-                \item Not supported by Arcade
-                \item Formats: SVG, EPS
-                \end{itemize}
-	    \end{itemize}
-
-    Many open assets for your games!
-        \begin{itemize}
-        \item \href{https://kenney.nl/assets}{(Kenney)}
-        \end{itemize}
 \end{frame}
 
 \subsection{The \texttt{Sprite} class}
@@ -767,31 +827,6 @@ class GameOverView(arcade.View):
 
 \end{frame}
 
-\begin{frame}{Sprite}{The \texttt{Sprite} class (IV)}
-    Sprites in Arcade implement \alert{collision detection} and handling
-
-	\begin{columns}
- 	   \column{.5\textwidth}
-		\includegraphics[width=\linewidth]{figs/collision}\\
-		%\vspace{-0.3cm}\tiny \href{https://stackoverflow.com/questions/46268139/2d-collision-detection-without-axis-alignment}{(Source)}
-	\end{columns}
-
- 
-
-    Three values for \texttt{hit\_box\_algoritm}: `None`, `Simple` and `Detailed`
-
-    \begin{columns}
- 	   \column{.3\textwidth}
-		\includegraphics[width=\linewidth]{figs/hitbox-none}\\
-		\centering None'
-	   \column{.3\textwidth}
-		\includegraphics[width=\linewidth]{figs/hitbox-simple}\\
-		\centering 'Simple'
-	   \column{.3\textwidth}
-		\includegraphics[width=\linewidth]{figs/hitbox-detailed}\\
-		\centering 'Detailed'
-    \end{columns}
-\end{frame}
 
 \begin{frame}[plain]{Sprite}{The \texttt{Sprite} class (V)}
 	\begin{block}{\texttt{arcade.Sprite}}
@@ -850,6 +885,32 @@ class GameOverView(arcade.View):
 	%	\vspace{-0.2cm}
 	\end{block}	
 \end{frame}
+
+\subsection{Collision detection}
+\begin{frame}{The \texttt{Texture} class}{Collision detection}
+    Textures in Arcade implement \alert{collision detection} and handling
+
+	\begin{columns}
+ 	   \column{.5\textwidth}
+		\includegraphics[width=\linewidth]{figs/collision}\\
+		%\vspace{-0.3cm}\tiny \href{https://stackoverflow.com/questions/46268139/2d-collision-detection-without-axis-alignment}{(Source)}
+	\end{columns}
+
+    Three values for \texttt{hit\_box\_algoritm}: `None`, `Simple` and `Detailed`
+
+    \begin{columns}
+ 	   \column{.3\textwidth}
+		\includegraphics[width=\linewidth]{figs/hitbox-none}\\
+		\centering None'
+	   \column{.3\textwidth}
+		\includegraphics[width=\linewidth]{figs/hitbox-simple}\\
+		\centering 'Simple'
+	   \column{.3\textwidth}
+		\includegraphics[width=\linewidth]{figs/hitbox-detailed}\\
+		\centering 'Detailed'
+    \end{columns}
+\end{frame}
+
 
 \subsection{Other classes}
 
