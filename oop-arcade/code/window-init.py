@@ -1,8 +1,9 @@
 class arcade.Window(
-        width: int = 800, 
-        height: int = 600, 
+        width: int = 1280, 
+        height: int = 720, 
         title: Optional[str] = 'Arcade Window', 
         fullscreen: bool = False, 
-        resizable: bool = False, 
-        update_rate: Optional[float] = 0.016666666666666666, 
-        antialiasing: bool = True)
+        resizable: bool = False,
+        center_window: bool = False,
+        draw_rate: Optional[float] = 0.016666666666666666,
+        update_rate: Optional[float] = 0.016666666666666666)

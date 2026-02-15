@@ -58,7 +58,7 @@
 %% Descomentar para habilitar logotipo en pié de página de portada
 %\renewcommand{\logoDos}{Images/CCLogo.png}
 %% Descomentar para habilitar logotipo en pié de página de portada
-\renewcommand{\logoTres}{Images/ALogo.png}
+%\renewcommand{\logoTres}{Images/ALogo.png}
 %% Descomentar para habilitar logotipo en pié de página de portada
 %\renewcommand{\logoCuatro}{Images/ELogo.png}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -94,7 +94,7 @@
 		\begin{enumerate}
 		\item Understand the OO API in Arcade
 		\item Use sprites and sprites sheets with Arcade
-		\item Handle user input
+		\item Handle user input (mouse, keyboard and joysticks)
 		\item Understand some multimedia file formats
 		\item Introduce the \texttt{Window}, \texttt{View} and \texttt{Sprite} classes
 		\end{enumerate}
@@ -105,7 +105,7 @@
 			\item Paul Craven. \textit{The Arcade Book. Chapter 18: Using the Window class}. \href{https://learn.arcade.academy/en/latest/chapters/18\_window\_class/window\_class.html}{(link)}.
 			\item Paul Craven. \textit{The Arcade Book. Chapter 19: User control}. \href{https://learn.arcade.academy/en/latest/chapters/18\_window\_class/window\_class.html}{(link)}.
 			\item Paul Craven. \textit{The Arcade Book. Chapter 21: Spriters and collisions}. \href{https://learn.arcade.academy/en/latest/chapters/21\_sprites\_and\\_collisions/sprites.html}{(link)}.
-			\item Paul Craven. \textit{Using Views for Start/End Screens}. \href{https://api.arcade.academy/en/stable/tutorials/views/index.html}{(link)}.
+			\item Paul Craven. \textit{Using Views for Start/End Screens}. \href{https://api.arcade.academy/en/3.3.3/tutorials/views/index.html}{(link)}.
       		\end{enumerate} 
    	\end{block}
 \end{frame}
@@ -134,23 +134,66 @@
 		\item More features than structured API
 		\item Easy to use API
 	\end{itemize}
-\end{frame}
-
-\begin{frame}{The \texttt{Window} class}{Introduction (II)}
+	 This API is based on the \texttt{arcade.Window} class
+	\medskip
 	\begin{exampleblock}{}
 		\vspace{-0.2cm}
-		\lstinputlisting[numbers=left]{code/window.py}
+		\lstinputlisting[numbers=left]{code/window101.py}
 		\vspace{-0.2cm}
 	\end{exampleblock}
 \end{frame}
 
-\begin{frame}{The \texttt{Window} class}{Introduction (III)}
+\subsection{Extending the \texttt{Window} class}
+\begin{frame}{The \texttt{Window} class}{Extending the \texttt{Window} class}
 	\begin{exampleblock}{}
 		\vspace{-0.2cm}
-		\lstinputlisting[numbers=left]{code/window-main.py}
+		\lstinputlisting[numbers=left]{code/window102.py}
 		\vspace{-0.2cm}
 	\end{exampleblock}
 \end{frame}
+
+\subsection{Main methods and attributes}
+\begin{frame}{The \texttt{Window} class}{Main methods and attributes}
+	\begin{block}{\texttt{arcade.Window}}
+		\smallskip
+		\begin{columns}[t]
+ 	   \column{.5\textwidth}
+			\centering \textbf{Methods}
+		\begin{itemize}
+		%\item \footnotesize{\texttt{setup()}}. \\Initialization
+		\item \footnotesize{\texttt{on\_draw()}}. \\Drawing
+		\item \footnotesize{\texttt{on\_update(delta\_time: float)}}. \\Move everything. Perform collision checks. Do all the game logic here
+		\bigskip
+		\item \footnotesize{\texttt{clear()}}. \\Clear screen
+		\item \footnotesize{\texttt{set\_background\_color(color)}}. \\Set color used by \texttt{clear()}
+		\end{itemize}
+
+ 	   \column{.5\textwidth}
+		\centering \textbf{Attributes}
+		\begin{itemize}
+			\item \footnotesize{\texttt{background\_color}}. \\ Color used by \texttt{clear()}
+		\end{itemize}
+    	\end{columns}
+	\end{block}	
+\end{frame}
+
+\begin{frame}[plain]%{The \texttt{Window} class}{Main methods and attributes}
+	\begin{exampleblock}{Ball}
+		\vspace{-0.2cm}
+		\lstinputlisting[language=Python,numbers=left]{code/window103.py}
+		\vspace{-0.2cm}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}[plain]%{The \texttt{Window} class}{Main methods and attributes}
+	\begin{exampleblock}{Animated ball}
+		\vspace{-0.2cm}
+		\lstinputlisting[language=Python,numbers=left]{code/window104.py}
+		\vspace{-0.2cm}
+	\end{exampleblock}
+	It violates encapsulation, \href{https://learn.arcade.academy/en/latest/chapters/18_window_class/window_class.html}{(link to better solution)}
+\end{frame}
+
 
 \subsection{Basic methods}
 
@@ -164,134 +207,148 @@
     Remember to use reference documentation
 	\begin{itemize}
 		\item \href{https://api.arcade.academy/en/2.6.17/api/window.html\#arcade.Window}{(\texttt{arcade.Window} reference)}
-        \item $\frac{1}{0.016666666666666666} = 60 Hz$
-        \item Antialiasing: Smoothing transitions between colors and shapes
 	\end{itemize}
-
+        $\frac{1}{0.016666666666666666} = 60 Hz$
 \end{frame}
 
-\subsection{Main methods and attributes}
-\begin{frame}{The \texttt{Window} class}{Main methods and attributes}
-	\begin{block}{\texttt{arcade.Window}}
-		\smallskip
-		\begin{columns}[t]
- 	   \column{.5\textwidth}
-			\centering \textbf{Methods}
-		\begin{itemize}
-		\item \footnotesize{\texttt{setup()}}. \\Initialization
-		\item \footnotesize{\texttt{on\_draw()}}. \\Drawing
-		\item \footnotesize{\texttt{on\_update(delta\_time: float)}}. \\Move everything. Perform collision checks. Do all the game logic here
-		\end{itemize}
+\subsection{Other methods}
 
- 	   \column{.5\textwidth}
-		\centering \textbf{Attributes}
+\begin{frame}{The \texttt{Window} class}{Other methods}
+	Other methods
+	%	\vspace{-0.15cm}
 		\begin{itemize}
-		\item \footnotesize{\texttt{background\_color}}.
+		\item \footnotesize{\texttt{activate()}}
+		\item \footnotesize{\texttt{center\_window()}} 
+		\item \footnotesize{\texttt{close()}} 
+		\item \footnotesize{\texttt{get\_location()}}
+		\item \footnotesize{\texttt{get\_size()}}
+		\item \footnotesize{\texttt{maximize()} and \texttt{minimize()}}
+		\item \footnotesize{\texttt{set\_fullscreen(fullscreen: bool = True)}}
+		\item \footnotesize{\texttt{set\_location(x, y)}}
 		\end{itemize}
-    	\end{columns}
-	\end{block}	
+	%	\vspace{-0.2cm}
+	Adding a \texttt{setup()} method is recommended
 \end{frame}
 
-\subsection{Background}
 
-\begin{frame}{The \texttt{Window} class}{Background (I)}
-    \begin{exampleblock}{}
-	\vspace{-0.2cm}
-	\lstinputlisting[numbers=left]{code/background-1.py}
-	\vspace{-0.2cm}
-    \end{exampleblock}
 
-    \centering \href{https://api.arcade.academy/en/latest/arcade.color.html}{(List of colors)}
+%\subsection{Background}
 
-    \bigskip
+%\begin{frame}{The \texttt{Window} class}{Background (I)}
+%    \begin{exampleblock}{}
+%	\vspace{-0.2cm}
+%	\lstinputlisting[numbers=left]{code/background-1.py}
+%	\vspace{-0.2cm}
+%    \end{exampleblock}
+
+%    \centering \href{https://api.arcade.academy/en/latest/arcade.color.html}{(List of colors)}
+
+%    \bigskip
+
+%    \begin{columns}
+% 	   \column{.7\textwidth}
+%		\begin{exampleblock}{}
+%		\vspace{-0.2cm}
+%		\lstinputlisting[numbers=left]{code/background-2.py}
+%		\vspace{-0.2cm}
+%		\end{exampleblock}
+
+% 	   \column{.3\textwidth}
+%		\includegraphics[width=\linewidth]{figs/rgb}\\
+%    \end{columns}
+%\end{frame}
+
+%\begin{frame}[plain]{The \texttt{Window} class}{Background (II)}
+%	\centering \includegraphics[width=0.4\linewidth]{figs/colors}\\
+%	\tiny \href{https://www.rapidtables.com/convert/color/rgb-to-hex.html}{(Source)}
+%\end{frame}
+
+\section{User control}
+
+\begin{frame}{User control}{Introduction}
+    How does the player interact with the game?
+	\begin{itemize}
+	\item Mouse
+	\item Keyboard
+	\item Game controller (joystick or gamepad)
+	\end{itemize}
+	The key is to override Window methods
+	\bigskip
 
     \begin{columns}
- 	   \column{.7\textwidth}
-		\begin{exampleblock}{}
-		\vspace{-0.2cm}
-		\lstinputlisting[numbers=left]{code/background-2.py}
-		\vspace{-0.2cm}
-		\end{exampleblock}
-
+	   \column{.3\textwidth}
+		\includegraphics[width=\linewidth]{figs/keyboard.jpg}\\
  	   \column{.3\textwidth}
-		\includegraphics[width=\linewidth]{figs/rgb}\\
+		\includegraphics[width=\linewidth]{figs/mouse.jpg}\\
+ 	   \column{.3\textwidth}
+		\includegraphics[width=\linewidth]{figs/gamepad.jpg}\\
     \end{columns}
 \end{frame}
 
-\begin{frame}[plain]{The \texttt{Window} class}{Background (II)}
-	\centering \includegraphics[width=0.4\linewidth]{figs/colors}\\
-	\tiny \href{https://www.rapidtables.com/convert/color/rgb-to-hex.html}{(Source)}
-\end{frame}
-
-\subsection{User control methods}
-
-\begin{frame}{The \texttt{Window} class}{User control methods (I)}
-	\begin{block}{User control methods}
-	%	\vspace{-0.15cm}
+\subsection{Mouse}
+\begin{frame}{User control}{Mouse (I)}
+	Overriding the following \texttt{arcade.Window} methods
 		\begin{itemize}
-		\item \footnotesize{\texttt{on\_key\_press(symbol: int, modifiers: int)}} Called when the user presses key.
-		\item \footnotesize{\texttt{on\_key\_release(symbol: int, modifiers: int)}}. Called when the user presses key.
-		\item \footnotesize{\texttt{on\_mouse\_press(x: float, y: float, button: int, modifiers: int)}}. Called when the user presses a mouse button.
-		\item \footnotesize{\texttt{on\_mouse\_release(x: float, y: float, button: int, modifiers: int)}}.  Called when the user releases a mouse button.
-		\item \footnotesize{\texttt{on\_mouse\_motion(x, y, delta\_x, delta\_y)}}. Called whenever the mouse moves.
+		\item \footnotesize{\texttt{on\_mouse\_motion(x, y, delta\_x, delta\_y)}}. \\ Called whenever the mouse moves.
+		\item \footnotesize{\texttt{on\_mouse\_press(x: float, y: float, button: int, modifiers: int)}}. \\Called when the user presses a mouse button.
+		\item \footnotesize{\texttt{on\_mouse\_release(x: float, y: float, button: int, modifiers: int)}}.  \\Called when the user releases a mouse button.
 		\end{itemize}
-	%	\vspace{-0.2cm}
-	\end{block}	
+	Make the mouse pointer dissapear:
+	\begin{itemize}
+		\item Call \texttt{self.set\_mouse\_visible(False)} the constructor
+	\end{itemize}
 \end{frame}
 
-\begin{frame}[plain]{The \texttt{Window} class}{User control methods: Examples}
-	\begin{exampleblock}{Capturing a key}
-		\vspace{-0.2cm}
-		\lstinputlisting[numbers=left]{code/key.py}
-		\vspace{-0.2cm}
-	\end{exampleblock}
-
+\begin{frame}{User control}{Mouse (II)}
 	\begin{exampleblock}{Capturing a mouse click}
 		\vspace{-0.2cm}
 		\lstinputlisting[numbers=left]{code/button.py}
 		\vspace{-0.2cm}
 	\end{exampleblock}
 
-	\href{https://api.arcade.academy/en/2.6.17/arcade.key.html}{(More info about keys)}
+	\begin{exampleblock}{Moving a ball with a mouse}
+		\href{https://gist.github.com/dfbarrero/17aea7bc1377b54729eb31d91ac97815}{(Example)}
+	\end{exampleblock}
+
+	\href{https://api.arcade.academy/en/3.3.3/api\_docs/arcade.key.html\#key}{(More info about keys)}
 \end{frame}
 
-\subsection{Other methods}
-
-\begin{frame}{The \texttt{Window} class}{Other methods}
-	\begin{block}{Other methods}
-	%	\vspace{-0.15cm}
+\subsection{Keyboard}
+\begin{frame}{User control}{Keyboard}
+	Two events when we press a key
+	\begin{itemize}
+		\item Press and release
+	\end{itemize}
+	Overriding the following \texttt{arcade.Window} methods
 		\begin{itemize}
-		\item \footnotesize{\texttt{activate()}}. 
-		\item \footnotesize{\texttt{center\_window()}}. 
-		\item \footnotesize{\texttt{close()}}. 
-		\item \footnotesize{\texttt{get\_location()}}. 
-		\item \footnotesize{\texttt{maximize()} and \texttt{minimize()}}. 
-		\item \footnotesize{\texttt{set\_fullscreen(fullscreen: bool = True)}}. 
-		\item \footnotesize{\texttt{set\_location(x, y)}}. 
-		\item \footnotesize{\texttt{set\_viewport(left: float, right: float, bottom: float, top: float)}}. Set the coordinates we can see
+		\item \footnotesize{\texttt{on\_key\_press(symbol: int, modifiers: int)}} \\Called when the user presses key.
+		\item \footnotesize{\texttt{on\_key\_release(symbol: int, modifiers: int)}}. \\Called when the user releases key.
 		\end{itemize}
-	%	\vspace{-0.2cm}
-	\end{block}	
+
+	\begin{exampleblock}{Capturing a key}
+		\vspace{-0.2cm}
+		\lstinputlisting[numbers=left]{code/key.py}
+		\vspace{-0.2cm}
+	\end{exampleblock}
+
+	\href{https://gist.github.com/dfbarrero/c71fde8f0424e126403aba19f3a9fd8a}{(Example)}
 \end{frame}
 
-\section{Using a game controller}
+\subsection{Game controller}
+\begin{frame}{User control}{Game controller (I)}
+	A computer might not have any controller, or it might five game controllers
+	\begin{itemize}
+		\item \texttt{arcade.get\_joysticks()}
+	\end{itemize}
 
-\begin{frame}{The \texttt{Window} class}{Using a game controller (I)}
-	First, get the controllers with \texttt{arcade.get\_joysticks()}
-	\begin{exampleblock}{Get game controllers}
+	\begin{exampleblock}{Init controller in \_\_init\_\_}
 		\vspace{-0.2cm}
 		\lstinputlisting[numbers=left]{code/joystick-get.py}
 		\vspace{-0.2cm}
 	\end{exampleblock}
-
-	\begin{exampleblock}{Read game controller value}
-		\vspace{-0.2cm}
-		\lstinputlisting[numbers=left]{code/joystick-value.py}
-		\vspace{-0.2cm}
-	\end{exampleblock}	
 \end{frame}
 
-\begin{frame}{The \texttt{Window} class}{Using a game controller (II)}
+\begin{frame}{User control}{Game controller (II)}
 	\begin{exampleblock}{Read game controller value}
 	\vspace{-0.2cm}
 	\lstinputlisting[numbers=left]{code/joystick-value.py}
@@ -307,12 +364,12 @@
 	   \column{.25\textwidth}
 		\includegraphics[width=\linewidth]{figs/controller-down.jpg}\\
 		\centering Down $(0,1)$
-	   \column{.25\textwidth}
-		\includegraphics[width=\linewidth]{figs/controller-downleft.jpg}\\
-		\centering Down-left $(-1, 1)$
  	   \column{.25\textwidth}
 		\includegraphics[width=\linewidth]{figs/controller-up.jpg}\\
 		\centering Up $(0,-1)$
+	   \column{.25\textwidth}
+		\includegraphics[width=\linewidth]{figs/controller-downleft.jpg}\\
+		\centering Down-left $(-1, 1)$
     \end{columns}
 
 	\centering \tiny \href{https://learn.arcade.academy/en/latest/chapters/19\_user\_control/user\_control.html}{(Source)}
@@ -320,15 +377,165 @@
 	\bigskip
 
 	\normalsize
-	\href{https://api.arcade.academy/en/2.6.17/examples/sprite\_move\_joystick.html}{(Interesting example)}
+	\href{https://api.arcade.academy/en/2.6.17/examples/sprite\_move\_joystick.html}{(Interesting example - Arcade 2.6.17)}
 
 \end{frame}
 
-\section{Life-cycle management}
+\section{The \texttt{View} class}
+\subsection{The need for views}
+
+\begin{frame}{The \texttt{View} class (I)}{The need for views}
+	Videogames use to show several screens 
+	\begin{itemize}
+    		\item Start screens
+    		\item Instruction screens
+    		\item Game over screens
+    		\item Pause screens
+	\end{itemize}
+
+	Arcade provides the \texttt{View} class
+	\begin{itemize}
+		\item Very much like the Window class
+		\item It has the \texttt{on\_draw()} and \texttt{on\_update()} methods
+	\end{itemize}
+
+
+	\vspace{-3.5cm}
+    \hfill \includegraphics[width=0.3\linewidth]{figs/screens.png}
+	\tiny  \href{https://api.arcade.academy/en/stable/tutorials/views/index.html}{(Source)}
+\end{frame}
+
+\begin{frame}{The \texttt{View} class}{The \texttt{View} class (II)}
+
+	Our class must inherit from \texttt{arcade.View}
+	\begin{columns}
+ 	   %\column{.1\textwidth}
+ 	   \column{.4\textwidth}
+		\begin{exampleblock}{}
+		\lstinline{class MyGame(arcade.Window):}
+		\end{exampleblock}
+ 	   \column{.05\textwidth}
+		$\Rightarrow$
+ 	   \column{.4\textwidth}
+		\begin{exampleblock}{}
+		\lstinline{class GameView(arcade.View):}
+		\end{exampleblock}
+ 	   \column{.05\textwidth}
+	\end{columns}
+
+	\bigskip
+
+	The view does not control the window size, so
+	\begin{columns}
+ 	   %\column{.1\textwidth}
+ 	   \column{.5\textwidth}
+		\begin{exampleblock}{}
+		\lstinline{super().__init__(WIDTH, HEIGHT, TITLE)}
+		\end{exampleblock}
+ 	   \column{.05\textwidth}
+		$\Rightarrow$
+ 	   \column{.3\textwidth}
+		\begin{exampleblock}{}
+		\lstinline{super().__init__()}
+		\end{exampleblock}
+ 	   \column{.05\textwidth}
+	\end{columns}
+
+	\bigskip
+
+	The view does not control the window size, so
+	\begin{columns}
+ 	   %\column{.1\textwidth}
+ 	   \column{.4\textwidth}
+		\begin{exampleblock}{}
+			\lstinline[language=Python]{self.set_mouse_visible(False)}
+		\end{exampleblock}
+ 	   \column{.05\textwidth}
+		$\Rightarrow$
+ 	   \column{.45\textwidth}
+		\begin{exampleblock}{}
+		\lstinline{self.window.set_mouse_visible(False)}
+		\end{exampleblock}
+ 	   %\column{.05\textwidth}
+	\end{columns}
+
+\end{frame}
+
+\begin{frame}[fragile]{The \texttt{View} class}{The \texttt{View} class (III)}
+	Finally, we need to create a window, a view and show that view
+	\begin{columns}
+ 	   \column{\textwidth}
+		\begin{exampleblock}{}
+			\begin{lstlisting} 
+def main():
+    """ Main function """
+
+    window = arcade.Window(WIDTH, HEIGHT, TITLE)
+    start_view = GameView()
+    window.show_view(start_view)
+    start_view.setup()
+    arcade.run()
+\end{lstlisting}
+		\end{exampleblock}
+	\end{columns}
+\end{frame}
+
+\subsection{Changing views}
+\begin{frame}[fragile]{The \texttt{View} class}{Changing views}
+	\begin{columns}
+ 	   \column{.5\textwidth}
+		\texttt{on\_view\_draw()}
+		\begin{itemize}
+		\item Run once when we switch to the view
+		\end{itemize}
+		We can switch the view any time
+
+ 	   \column{.5\textwidth}
+		\begin{exampleblock}{From a view}
+			\begin{lstlisting} 
+def on_update(self, delta_time):
+  
+  [...]
+
+  if len(self.coin_list) == 0:
+    view = GameOverView()
+    self.window.show_view(view)
+\end{lstlisting}
+		\end{exampleblock}
+	\end{columns}
+\end{frame}
+
+\subsection{Examples}
+
+\begin{frame}[fragile, plain]{The \texttt{View} class}{Example: Game Over screen}
+		\begin{exampleblock}{GameOverView view}
+			\begin{lstlisting}[numbers=left]
+class GameOverView(arcade.View):
+    """ View to show when game is over """
+
+    def __init__(self):
+        """ This is run once when we switch to this view """
+        super().__init__()
+        self.texture = arcade.load_texture("game_over.png")
+
+    def on_draw(self):
+        """ Draw this view """
+        self.clear()
+        self.texture.draw_sized(WIDTH / 2, HEIGHT / 2, WIDTH, HEIGHT)
+
+    def on_mouse_press(self, _x, _y, _button, _modifiers):
+        """ If the user presses the mouse button, re-start the game. """
+        game_view = GameView()
+        game_view.setup()
+        self.window.show_view(game_view)
+\end{lstlisting}
+\end{exampleblock}
+\end{frame}
+
 
 \subsection{Graphs}
 
-\begin{frame}{Life-cycle management}{Graphs}
+\begin{frame}{The \texttt{View} class}{Graphs}
 	\begin{columns}
  	   \column{.50\textwidth}
 		\alert{Graph}: Data structure with \textbf{nodes} and \textbf{edges}
@@ -369,7 +576,7 @@
 
 \subsection{Finite States Machines}
 
-\begin{frame}{Life-cycle management}{Finite States Machines (I)}
+\begin{frame}{The \texttt{View} class}{Finite States Machines (I)}
 	\begin{columns}
  	  \column{.50\textwidth}
 		\begin{block}{Finite-State Machine (FSM)}
@@ -388,7 +595,7 @@
 	\end{columns}
 \end{frame}
 
-\begin{frame}{Life-cycle management}{Finite States Machines (II)}
+\begin{frame}{The \texttt{View} class}{Finite States Machines (II)}
 	FSMs have many applications
 	    \begin{itemize}
 	    \item Central role in Theory of Computation
@@ -403,130 +610,9 @@
 		\includegraphics[width=\linewidth]{figs/fsm-pacman.png}\\
 		\centering \tiny \href{http://bits.citrusbyte.com/state-design-pattern-with-ruby/}{(Source)}
  	   \column{.5\textwidth}
-		\centering Game life-cycle (also state) \\
+		\centering Game life-cycle \\
 		\includegraphics[width=\linewidth]{figs/states}\\
 	\end{columns}
-\end{frame}
-
-
-\subsection{The View class}
-
-\begin{frame}{Life-cycle management}{The \texttt{View} class (I)}
-	Videogames use several screens, or states
-	\begin{itemize}
-    		\item Start screens
-    		\item Instruction screens
-    		\item Game over screens
-    		\item Pause screens
-	\end{itemize}
-
-	Arcade provides the \texttt{View} class
-	\begin{itemize}
-		\item Very much like the Window class
-		\item It has the \texttt{on\_draw()} and \texttt{on\_update()} methods
-	\end{itemize}
-
-
-	\vspace{-3.5cm}
-    \hfill \includegraphics[width=0.3\linewidth]{figs/screens.png}
-	\tiny  \href{https://api.arcade.academy/en/stable/tutorials/views/index.html}{(Source)}
-\end{frame}
-
-\begin{frame}{Life-cycle management}{The \texttt{View} class (II)}
-	Our class must derive from \texttt{arcade.View}
-	\begin{columns}
- 	   %\column{.1\textwidth}
- 	   \column{.4\textwidth}
-		\begin{exampleblock}{}
-		\lstinline{class MyGame(arcade.Window):}
-		\end{exampleblock}
- 	   \column{.1\textwidth}
-		$\Rightarrow$
- 	   \column{.35\textwidth}
-		\begin{exampleblock}{}
-		\lstinline{class MyGame(arcade.View):}
-		\end{exampleblock}
- 	   \column{.05\textwidth}
-	\end{columns}
-
-	\bigskip
-
-	The view does not control the window size, so
-	\begin{columns}
- 	   %\column{.1\textwidth}
- 	   \column{.4\textwidth}
-		\begin{exampleblock}{}
-		\lstinline{super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)}
-		\end{exampleblock}
- 	   \column{.1\textwidth}
-		$\Rightarrow$
- 	   \column{.3\textwidth}
-		\begin{exampleblock}{}
-		\lstinline{super().__init__()}
-		\end{exampleblock}
- 	   \column{.1\textwidth}
-	\end{columns}
-\end{frame}
-
-\begin{frame}[fragile]{Life-cycle management}{The \texttt{View} class (III)}
-	Finally, we need to create a window, a view and show that view
-	\begin{columns}
- 	   %\column{.1\textwidth}
- 	   \column{\textwidth}
-		\begin{exampleblock}{}
-			\begin{lstlisting} 
-def main():
-    """ Main function """
-
-    window = arcade.Window(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
-    start_view = GameView()
-    window.show_view(start_view)
-    start_view.setup()
-    arcade.run()
-\end{lstlisting}
-		\end{exampleblock}
-	\end{columns}
-\end{frame}
-
-\subsection{The View class: Example}
-
-\begin{frame}[fragile]{Life-cycle management}{The \texttt{View} class: Example (I)}
-		\begin{exampleblock}{GameOverView view}
-			\begin{lstlisting}[numbers=left]
-class GameOverView(arcade.View):
-    """ View to show when game is over """
-
-    [...]
-
-    def on_draw(self):
-        """ Draw this view """
-        self.clear()
-        self.texture.draw_sized(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, SCREEN_WIDTH, SCREEN_HEIGHT)
-
-    def on_mouse_press(self, _x, _y, _button, _modifiers):
-        """ If the user presses the mouse button, re-start the game. """
-        game_view = GameView()
-        game_view.setup()
-        self.window.show_view(game_view)
-\end{lstlisting}
-\end{exampleblock}
-\end{frame}
-
-\begin{frame}[fragile]{Life-cycle management}{The \texttt{View} class: Example (II)}
-		\begin{exampleblock}{Game view}
-			\begin{lstlisting}[numbers=left]
-def on_update(self, delta_time):
-        """ Movement and game logic """
-
-        [ ... ]
-
-        # Check length of coin list. If it is zero, flip to the
-        # game over view.
-        if len(self.coin_list) == 0:
-            view = GameOverView()
-            self.window.show_view(view)
-\end{lstlisting}
-\end{exampleblock}
 \end{frame}
 
 \section{Sprites}
