@@ -10,8 +10,9 @@ FILENAME=$(NAME).tex
 
 all: $(TARGETS)
 
+# -shell-escape is needed by minted
 $(TARGETS):
-	$(TEX) -jobname=$(NAME)-$@ "\newcommand{\modo}{$@} \input{$(FILENAME)}" > $(NAME)-$@.log
+	$(TEX) -shell-escape -jobname=$(NAME)-$@ "\newcommand{\modo}{$@} \input{$(FILENAME)}" > $(NAME)-$@.log
 
 clean:
 	rm -f *.out *aux *bbl *blg *log *toc *.ptb *.tod *.fls *.fdb_latexmk *.lof *.nav *.snm *.vrb
