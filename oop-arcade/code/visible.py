@@ -1,9 +1,8 @@
 # Make the sprite invisible
-sprite.visible = False
+mario.visible = False
 
 # Change back to visible
-sprite.visible = True
+mario.visible = True
 
 # Toggle visible
-sprite.visible = not sprite.visible
-
+mario.visible = not sprite.visible

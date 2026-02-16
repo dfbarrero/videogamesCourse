@@ -651,8 +651,8 @@ class GameOverView(arcade.View):
  	   \column{.55\textwidth}
 	The \texttt{Texture} class provides
 	\begin{itemize}
-		\item Caching
 		\item Hitbox geometry, used in \alert{collision detection}
+		\item Caching
 	\end{itemize}
  	   \column{.35\textwidth}
 		\includegraphics[width=\textwidth]{figs/collision}\\
@@ -717,12 +717,10 @@ class GameOverView(arcade.View):
         \end{itemize}
 \end{frame}
 
-
-
-\section{Sprites}
+\section{The \texttt{Sprite} class}
 \subsection{Introduction}
 
-\begin{frame}{Sprites}{Introduction}
+\begin{frame}{The \texttt{Sprite} class}{Introduction}
     \begin{columns}
  	   \column{.50\textwidth}
 	   \begin{block}{Sprite}
@@ -742,9 +740,255 @@ class GameOverView(arcade.View):
    \end{columns}
 \end{frame}
 
+\subsection{Sprites in Arcade}
+
+\begin{frame}{The \texttt{Sprite} class}{Sprites in Arcade}
+    \begin{columns}
+ 	   \column{.40\textwidth}
+    In Arcade, a sprite contains ...
+        \begin{itemize}
+        \item One or more textures
+        \item Texture size
+        \item Image data
+	\item Collision detection
+	\end{itemize}
+    Acts as a base class for (our) derived classes
+
+ 	   \column{.60\textwidth}
+    Implemented in the \texttt{arcade.Sprite} class
+	\begin{exampleblock}{}
+		\lstinline{mario = arcade.Sprite('mario.png')}
+	\end{exampleblock}
+
+	\begin{exampleblock}{}
+		\lstinline{mario = arcade.Sprite(Path('mario.png'))}
+	\end{exampleblock}
+	Inherits from \texttt{arcade.BasicSprite}
+    \end{columns}
+\end{frame}
+
+\begin{frame}[fragile]{The \texttt{Sprite} class}{Constructor}
+	\begin{block}{Constructor}
+		\vspace{-0.2cm}
+		\lstinputlisting{code/sprite-init.py}
+		\vspace{-0.2cm}
+	\end{block}	
+	\href{https://api.arcade.academy/en/3.3.3/api_docs/api/sprites.html}{(Reference documentation)}
+\end{frame}
+
+\subsection{Methods and attributes}
+\begin{frame}[plain]{The \texttt{Sprite} class}{Methods and attributes (I)}
+	\begin{block}{\texttt{arcade.Sprite}}
+		\smallskip
+		\begin{columns}[t]
+ 	   \column{.5\textwidth}
+			\centering \textbf{Methods}
+		\begin{itemize}
+		\item \footnotesize{\texttt{update(delta\_time: float = 0.016)}}\\
+		\item \footnotesize{\texttt{append\_texture(texture: Texture)}}\\
+		\item \footnotesize{\texttt{set\_texture(texture\_no: int)}} \\
+		\item \footnotesize{\texttt{update(delta\_time: float = 0.016)}} \\
+		%\item \footnotesize{\texttt{update\_animation(delta\_time: float = 0.016)}} \\
+		\item \footnotesize{\texttt{stop()}}\\
+		\item \footnotesize{\texttt{kill()}}\\
+		\item \footnotesize{\texttt{draw\_hit\_box()}}\\
+		%\item \footnotesize{\texttt{update\_animation(delta\_time: float = 0.016)}} % BasicSprite
+		\end{itemize}
+
+ 	   \column{.5\textwidth}
+			\centering \textbf{Attributes}
+		\begin{itemize}
+		\item \footnotesize{center\_x: float} and \footnotesize{center\_y: float}.\\ Center of the sprite
+		\item \footnotesize{change\_x: float} and \footnotesize{change\_y: float}.\\ Velocity in X and Y
+		\item \footnotesize{texture: Texture}
+		\item \footnotesize{textures: list[Texture]}
+		\item \footnotesize{alpha: int [0-255]}
+		\item \footnotesize{angle: float}
+		\item \footnotesize{scale: tuple}
+		\item \footnotesize{bottom: float} and \footnotesize{top: float}
+		\item \footnotesize{left: float} and \footnotesize{right: float}
+		\item \footnotesize{visible: bool}
+		\end{itemize}
+    	\end{columns}
+	\end{block}	
+\end{frame}
+
+\begin{frame}{The \texttt{Sprite} class}{Methods and attributes (II)}
+    \begin{columns}
+ 	   \column{.50\textwidth}
+		\begin{exampleblock}{Placing a sprite}
+			\lstinline{mario.center\_x = 300}\\
+			\lstinline{mario.center\_y = 200}
+		\end{exampleblock}
+
+	   \column{.50\textwidth}
+		\begin{exampleblock}{Moving a sprite}
+			\lstinline{mario.change\_x = 10}\\
+			\lstinline{mario.change\_y = 1}
+		\end{exampleblock}
+    \end{columns}
+
+    \begin{exampleblock}{Chaging visibility}
+	\lstinputlisting[numbers=left]{code/visible.py}
+    \end{exampleblock}
+\end{frame}
+
+\subsection{Animation example}
+\begin{frame}[plain]%{The \texttt{Sprite} class}{Example: Explosion animation}
+	\vspace{-1cm}
+    \begin{columns}
+ 	   \column{\textwidth}
+		\begin{exampleblock}{}
+			\lstinputlisting[numbers=left]{code/explosion.py}
+		\end{exampleblock}
+    \end{columns}
+
+    \centering \tiny \href{https://api.arcade.academy/en/3.3.3/example\_code/sprite\_explosion\_bitmapped.html\#sprite-explosion-bitmapped}{(Source)}
+\end{frame}
+
+\subsection{Collision detection}
+
+\begin{frame}{The \texttt{Sprite} class}{Collision detection}
+	Methods in \texttt{arcade.Sprite} to detect collisions
+		\begin{itemize}
+			\item \footnotesize{\texttt{collides\_with\_list(sprite\_list: SpriteList) $\rightarrow$ list(SpriteType)}} 
+		\item \footnotesize{\texttt{collides\_with\_point(point: Union[Tuple[float, float], List[float]]) $\rightarrow$ bool}} 
+		\item \footnotesize{\texttt{collides\_with\_sprite(point: BasicSprite) $\rightarrow$ bool}} 
+		\item \footnotesize{\texttt{draw\_hit\_box()}}
+		\end{itemize}
+
+	Functions in Arcade to detect collisions
+		\begin{itemize}
+		\item \footnotesize{\texttt{arcade.check\_for\_collision(sprite1: BasicSprite, sprite2: BasicSprite) $\rightarrow$ bool}} 
+		\item \footnotesize{\texttt{arcade.check\_for\_collision\_with\_list(sprite: BasicSprite, sprite\_list: SpriteList) $\rightarrow$ bool}} 
+		\end{itemize}
+
+\end{frame}
+
+%\subsection{Collision detection}
+%\begin{frame}{The \texttt{Texture} class}{Collision detection}
+%    Textures in Arcade implement \alert{collision detection} and handling
+%
+%	\begin{columns}
+% 	   \column{.5\textwidth}
+%		\includegraphics[width=\linewidth]{figs/collision}\\
+%		%\vspace{-0.3cm}\tiny \href{https://stackoverflow.com/questions/46268139/2d-collision-detection-without-axis-alignment}{(Source)}
+%	\end{columns}
+
+%    Three values for \texttt{hit\_box\_algoritm}: `None`, `Simple` and `Detailed`
+
+%    \begin{columns}
+% 	   \column{.3\textwidth}
+%		\includegraphics[width=\linewidth]{figs/hitbox-none}\\
+%		\centering None'
+%	   \column{.3\textwidth}
+%		\includegraphics[width=\linewidth]{figs/hitbox-simple}\\
+%		\centering 'Simple'
+%	   \column{.3\textwidth}
+%		\includegraphics[width=\linewidth]{figs/hitbox-detailed}\\
+%		\centering 'Detailed'
+%    \end{columns}
+%\end{frame}
+
+
+\subsection{Class hierarchy}
+
+\begin{frame}{The \texttt{Sprite} class}{Class hierarchy}
+	\begin{tikzpicture}
+      \begin{class}[text width=3cm]{BasicSprite}{0,0}
+      \end{class}
+
+      \begin{class}[text width=3cm]{Sprite}{0,-2}
+	      \inherit{BasicSprite}
+      \end{class}
+
+      \begin{class}[text width=3cm]{SpriteCircle}{-3,-4}
+	\inherit{Sprite}
+      \end{class}
+
+	%\begin{class}[text width=3cm]{SpriteSolidColor}{0,-4}
+	%\inherit{Sprite}
+      %\end{class}
+
+       \begin{class}[text width=3cm]{SpriteSolidColor}{3, -4}
+	\inherit{Sprite}
+      \end{class}
+    \end{tikzpicture}
+
+	\begin{itemize}
+		\item \href{https://api.arcade.academy/en/3.3.3/api\_docs/api/sprites.html\#arcade.SpriteCircle}{(SpriteCircle documentation)}
+		\item \href{https://api.arcade.academy/en/3.3.3/api\_docs/api/sprites.html\#arcade.SpriteSolidColor}{(SpriteSolidColor documentation)}
+		%\item \href{https://api.arcade.academy/en/2.6.17/api/sprites.html\#arcade-animatedtimebasedsprite}{(SpriteAnimatedTimeBasedSprite documentation)}
+	\end{itemize}
+\end{frame}
+
+\section{Sprite lists}
+\subsection{Motivation}
+
+\begin{frame}[fragile]{Sprite lists}{Motivation}
+    \begin{columns}
+	 	   \column{0.5\textwidth}
+	    Arcade heavily uses \textbf{sprite lists}
+	\begin{itemize}
+		\item Batch drawing (GPU optimization)
+		\item Collision detection
+		\item Debug drawing for hit boxes
+	\end{itemize}
+    
+ 	   \column{0.5\textwidth}
+	\begin{exampleblock}{}
+		\lstinline{for sprite in sprites:}
+		\lstinline{    sprite.draw() # Not in 3.X}
+		
+		\lstinline{sprite_list.draw()}
+	\end{exampleblock}
+    \end{columns}
+
+	    Drawing with sprite lists
+	\begin{enumerate}
+		\item Create a \texttt{SpriteList}
+		\item Create and append \texttt{Sprite} instances
+		\item Call \texttt{draw()}
+	\end{enumerate}
+\end{frame}
+
+\subsection{Drawing with sprite lists}
+\begin{frame}{Sprite lists}{Drawing with sprite lists}
+	First, we create a sprite list
+	\begin{exampleblock}{}
+		\lstinputlisting[numbers=left]{code/lists.py}
+	\end{exampleblock}
+
+       and then we draw it
+
+	\begin{exampleblock}{}
+		\lstinline{wall_list.draw()}
+	\end{exampleblock}
+
+\end{frame}
+
+\begin{frame}[fragile]{Sprite lists}{Collision detection}
+    	Sprites can be removed from a list
+	\begin{exampleblock}{}
+		\lstinline{wall.remove_from_sprite_lists()}
+	\end{exampleblock}
+
+    Lists in Arcade also implement collision detection 
+	\begin{exampleblock}{}
+		\lstinline{hit_list = arcade.check_for_collision_with_list(player_sprite, coin_list)}
+    	\end{exampleblock}
+	Complete example in \href{https://github.com/pythonarcade/arcade/blob/3.3.3/arcade/examples/sprite\_minimal.py}{(python -m arcade.examples.sprite\_minimal)}
+
+    %Functional example in \href{https://gist.github.com/dfbarrero/83294a5ea218ca866b68558d4d64ba46}{(example)}
+\end{frame}
+
+
+\section{Resources management}
+
 \subsection{Spritesheets}
 
-\begin{frame}{Sprites}{Spritesheets}
+\begin{frame}{Resources management}{Spritesheets (I)}
+\vspace{-1cm}
     \begin{columns}
  	   \column{.50\textwidth}
     A videogame contains many sprites
@@ -753,235 +997,46 @@ class GameOverView(arcade.View):
         \item Solution: Spritesheets
 	    \end{itemize}
 
- 	   \column{.50\textwidth}
     Advantages
         \begin{itemize}
         \item One file contains many sprites
         \item Less I/O operations $\Rightarrow$ Better performance
         \item Less memory consumption
 	    \end{itemize}
-   \end{columns}
-
-    \centering
-
-    \begin{columns}
  	   \column{.50\textwidth}
 		\includegraphics[width=\linewidth]{figs/mario-spritesheet.png}
 
- 	   \column{.50\textwidth}
 		\includegraphics[width=\linewidth]{figs/blocks1.png}
    \end{columns}
 \end{frame}
 
-\subsection{The \texttt{Sprite} class}
-
-\begin{frame}{Sprites}{The \texttt{Sprite} class (I)}
-    You will need to provide a \alert{path} to the file
-    \begin{itemize}
-        \item \textit{Absolute path}: Starts from the root directory
-            \begin{itemize}
-            \item Example (Windows): \texttt{c:\textbackslash\textbackslash Users\textbackslash atreides\textbackslash Desktop\textbackslash mygame\textbackslash assets\textbackslash sprites\textbackslash mario.png}
-            \item Example (Linux): \texttt{/home/atreides/mygame/assets/sprites/mario.png}
-            \end{itemize}
-        \item \textit{Relative path}: Relative to the project's directory
-            \begin{itemize}
-            \item Example (Windows): \texttt{assets\textbackslash sprites\textbackslash mario.png}
-            \item Example (linux): \texttt{assets/sprites/mario.png}
-            \end{itemize}
-    \end{itemize}
-
-    \textbf{Always} use relative paths in your projects!!!
-\end{frame}
-
-\begin{frame}{Sprites}{The \texttt{Sprite} class (II)}
-	Sprites are a fundamental concept in Arcade
-    
-    \begin{columns}
- 	   \column{\textwidth}
-		\begin{exampleblock}{Creating a sprite}
-        \texttt{
-        character = arcade.Sprite('images/character.png')
-        }
-		\end{exampleblock}
-    \end{columns}
-
-    \begin{columns}
- 	   \column{.50\textwidth}
-		\begin{exampleblock}{Placing a sprite}
-        \texttt{
-        character.center\_x = 300\\
-        character.center\_y = 200}
-		\end{exampleblock}
-
-    \end{columns}
-\end{frame}
-
-\begin{frame}{Sprite}{The \texttt{Sprite} class (III)}
-	\href{https://api.arcade.academy/en/latest/api/sprites.html}{(Reference documentation)}
-
-	\begin{block}{Constructor}
-		\vspace{-0.2cm}
-		\lstinputlisting{code/sprite-init.py}
-		\vspace{-0.2cm}
-	\end{block}	
-
-\end{frame}
-
-
-\begin{frame}[plain]{Sprite}{The \texttt{Sprite} class (V)}
-	\begin{block}{\texttt{arcade.Sprite}}
-		\smallskip
-		\begin{columns}[t]
- 	   \column{.5\textwidth}
-			\centering \textbf{Methods}
-		\begin{itemize}
-		\item \footnotesize{\texttt{on\_update(delta\_time: float = 0.016)}}. 
-		\item \footnotesize{\texttt{draw()}}. 
-		\item \footnotesize{\texttt{append\_texture(Texture: arcade.texture.Texture}}. \\ Appends a new texture (image)
-		\item \footnotesize{\texttt{set\_texture(texture\_no: int)}}. \\
-		\item \footnotesize{\texttt{update\_animation(delta\_time: float = 0.016))}}. \\
-		\item \footnotesize{\texttt{set\_position(center\_x: float, center\_y: float)}}. \\
-		\item \footnotesize{\texttt{turn\_left(theta: float = 90.0)}} 
-		\item \footnotesize{\texttt{turn\_right(theta: float = 90.0)}} 
-		\item \footnotesize{\texttt{stop()}} 
-		\end{itemize}
-
- 	   \column{.5\textwidth}
-			\centering \textbf{Attributes}
-		\begin{itemize}
-		\item \footnotesize{alpha: int}.
-		\item \footnotesize{angle: float}. 
-		\item \footnotesize{bottom: float} and \footnotesize{bottom: float}. 
-		\item \footnotesize{center\_x: float} and \footnotesize{center\_y: float}.\\ Center of the sprite
-		\item \footnotesize{change\_x: float} and \footnotesize{change\_y: float}.\\ Velocity in X and Y
-		\item \footnotesize{height: float}. 
-		\item \footnotesize{visible: bool}. 
-		\end{itemize}
-			\vfill
-	    \href{https://api.arcade.academy/en/2.6.17/api/sprites.html\#arcade-sprite}{(Reference documentation)}
-    	\end{columns}
-	\end{block}	
-
-\end{frame}
-
-\subsection{Examples}
-
-\begin{frame}[fragile]{Sprites}{The \texttt{Sprite} class: Examples}
-	\begin{exampleblock}{}
-	\lstinputlisting[numbers=left]{code/visible.py}
-	\end{exampleblock}
-\end{frame}
-
-\subsection{Collision detection}
-
-\begin{frame}{Sprites}{Collision detection}
-	\begin{block}{Collision detection methods}
-	%	\vspace{-0.15cm}
-		\begin{itemize}
-		\item \footnotesize{\texttt{collides\_with\_point(point: Union[Tuple[float, float], List[float]]) $\rightarrow$ bool}} 
-		\item \footnotesize{\texttt{draw\_hit\_box()}}. 
-		\item \footnotesize{\texttt{collides\_with\_list(sprite\_list: SpriteList) $\rightarrow$ bool}} 
-		\end{itemize}
-	%	\vspace{-0.2cm}
-	\end{block}	
-\end{frame}
-
-\subsection{Collision detection}
-\begin{frame}{The \texttt{Texture} class}{Collision detection}
-    Textures in Arcade implement \alert{collision detection} and handling
-
-	\begin{columns}
- 	   \column{.5\textwidth}
-		\includegraphics[width=\linewidth]{figs/collision}\\
-		%\vspace{-0.3cm}\tiny \href{https://stackoverflow.com/questions/46268139/2d-collision-detection-without-axis-alignment}{(Source)}
-	\end{columns}
-
-    Three values for \texttt{hit\_box\_algoritm}: `None`, `Simple` and `Detailed`
-
-    \begin{columns}
- 	   \column{.3\textwidth}
-		\includegraphics[width=\linewidth]{figs/hitbox-none}\\
-		\centering None'
-	   \column{.3\textwidth}
-		\includegraphics[width=\linewidth]{figs/hitbox-simple}\\
-		\centering 'Simple'
-	   \column{.3\textwidth}
-		\includegraphics[width=\linewidth]{figs/hitbox-detailed}\\
-		\centering 'Detailed'
-    \end{columns}
-\end{frame}
-
-
-\subsection{Other classes}
-
-\begin{frame}[fragile]{Sprite}{Other classes}
-	\begin{tikzpicture}
-      \begin{class}[text width=4cm]{Sprite}{0,0}
-      \end{class}
-
-      \begin{class}[text width=3cm]{SpriteCircle}{-4,-2}
-	\inherit{Sprite}
-      \end{class}
-
-	\begin{class}[text width=3cm]{SpriteSolidColor}{0,-2}
-	\inherit{Sprite}
-      \end{class}
-
-       \begin{class}[text width=4cm]{AnimatedTimeBasedSprite}{4, -2}
-	\inherit{Sprite}
-      \end{class}
-    \end{tikzpicture}
-	\begin{itemize}
-		\item \href{https://api.arcade.academy/en/2.6.17/api/sprites.html\#arcade-spritecircle}{(SpriteCircle documentation)}
-		\item \href{https://api.arcade.academy/en/2.6.17/api/sprites.html\#arcade-spritesolidcolor}{(SpriteSolidColor documentation)}
-		\item \href{https://api.arcade.academy/en/2.6.17/api/sprites.html\#arcade-animatedtimebasedsprite}{(SpriteAnimatedTimeBasedSprite documentation)}
+\begin{frame}{Resources management}{Spritesheets (II)}
+    Arcade provides the \texttt{arcade.SpriteSheet} class
+        \begin{itemize}
+        \item Gets sprites from a spritesheet
 	\end{itemize}
+
+    \bigskip
+    \centering
+
+    \begin{columns}
+ 	   \column{.40\textwidth}
+		\includegraphics[width=\linewidth]{figs/explosion.png}
+
+ 	   \column{.40\textwidth}
+		\includegraphics[width=\linewidth]{figs/tiles.png}
+   \end{columns}
 \end{frame}
 
-\subsection{Sprite lists}
+\subsection{Tile maps}
 
-\begin{frame}{Sprites}{Sprite lists (I)}
-	Arcade stores sprites in lists
-    
-	\begin{exampleblock}{}
-	\lstinputlisting{code/lists.py}
-	\end{exampleblock}
-
-       Lists can be manipulated as a whole
-
-	\begin{exampleblock}{}
-        \texttt{
-        wall\_list.draw()
-        }
-	\end{exampleblock}
-
-    	And sprites can be removed from a list
-	\begin{exampleblock}{}
-        \texttt{
-        wall.remove\_from\_sprite\_lists()
-        }
-	\end{exampleblock}
-\end{frame}
-
-\begin{frame}{Sprites}{Sprite lists (II)}
-    Lists in Arcade also implement collision detection 
-	\begin{exampleblock}{}
-        \texttt{
-            hit\_list = arcade.check\_for\_collision\_with\_list(player\_sprite,
-                                                              coin\_list)
-        }
-    \end{exampleblock}
-
-    %Functional example in \href{https://gist.github.com/dfbarrero/83294a5ea218ca866b68558d4d64ba46}{(example)}
-\end{frame}
-
-\subsection{Locating sprites}
-
-\begin{frame}{Sprites}{Locating sprites}
+\begin{frame}{Resources management}{Tile maps}
     Locating sprites in the game is a tought work
     \begin{itemize}
         \item Closely related to \alert{level design}
         \item There are tools that ease this task
+	\item Stores maps as JSON files
+	\item Supported by \texttt{arcade.TileMap}
     \end{itemize}
     \href{https://www.mapeditor.org/}{(Tiled Map Editor)}
 
@@ -989,9 +1044,8 @@ class GameOverView(arcade.View):
     \hfill \includegraphics[width=0.3\linewidth]{figs/tiled}
 \end{frame}
 
-\section{Resources management}
 
-\begin{frame}{Resources management (I)}
+\begin{frame}{Resources management}{Resources handlers}
     \includegraphics[width=0.07\linewidth]{figs/bumper}
     \includegraphics[width=0.07\linewidth]{figs/laserBlue01}
     \includegraphics[width=0.07\linewidth]{figs/tileGrass_roadSplitE}
@@ -1013,24 +1067,39 @@ class GameOverView(arcade.View):
         \item No need of files in disk
 	\item Images, music, sounds, tiled maps and video
     \end{itemize}
+
     The path is something like ':resources:/path/to/resource'
 
     \begin{exampleblock}{}
 	    \texttt{ arcade.Sprite(":resources:images/items/coinGold.png") }
     \end{exampleblock}
 
-    \href{https://api.arcade.academy/en/2.6.17/resources.html?highlight=resources}{(List of resources)}\\
-    \href{https://github.com/pythonarcade/arcade/tree/development/arcade/resources/assets}{(Arcade source code)}
 \end{frame}
 
-\begin{frame}{Resources management (II)}
-	\begin{exampleblock}{Adding new resources handlers}
-	\lstinputlisting[numbers=left]{code/resources-1.py}
-	\end{exampleblock}
+%\begin{frame}{Resources management (II)}
+%	\begin{exampleblock}{Adding new resources handlers}
+%	\lstinputlisting[numbers=left]{code/resources-1.py}
+%	\end{exampleblock}
 
-	\begin{exampleblock}{Using resources handlers}
-	\lstinputlisting[numbers=left]{code/resources-2.py}
-	\end{exampleblock}
+%	\begin{exampleblock}{Using resources handlers}
+%	\lstinputlisting[numbers=left]{code/resources-2.py}
+%	\end{exampleblock}
+%\end{frame}
+
+\subsection{Built-in resources}
+
+\begin{frame}{Resources management}{Built-in resources}
+    Type of built-in resources
+    \begin{itemize}
+	\item Images (characters, backgrounds, etc)
+        \item Sounds and music
+	\item Fonts
+	\item GUI basic assets (such as bottons and checkboxes)
+    \end{itemize}
+
+    \href{https://api.arcade.academy/en/3.3.3/api_docs/resources.html\#resources}{(List of resources)}\\
 \end{frame}
+
+
 
 \end{document}
