@@ -239,7 +239,7 @@ path = r'C:\Users\rick\music.mp3'
 	\vspace{-0.5cm}
 	\begin{columns}
  	  \column{.50\textwidth}
-	\begin{exampleblock}{Recommened}
+	\begin{exampleblock}{Recommended}
 	\vspace{-0.2cm}
 	\lstinputlisting[numbers=left]{code/os1.py}
 	\vspace{-0.2cm}
@@ -301,13 +301,13 @@ path = r'C:\Users\rick\music.mp3'
 	\begin{block}{\texttt{open()}}
 	\vspace{-0.2cm}
 \begin{verbatim}
-open(filename[, mode])
+open(path[, mode])
 \end{verbatim}
 	\vspace{-0.2cm}
 	Return: An object file\\
 	\vspace{-0.2cm}
 	\begin{itemize}
-	\item \textit{filename}: Path string
+	\item \textit{path}: Path string
 	\item \textit{mode}: Characters describing how the file will be used
 		\begin{itemize}
 		\item \textit{r}: Read mode, \textit{w}: Write mode (overwrites file)% lectura por defecto. W: borra el contenido anterior, r+: lectura y escritura; a: append
@@ -345,7 +345,7 @@ open(filename[, mode])
 
 \subsection{Reading files}
 \begin{frame}[fragile]{Reading and writing files}{Reading files (I)}
-	\begin{block}{The \texttt{read()} function}
+	\begin{block}{The \texttt{read()} method}
 	\vspace{-0.2cm}
 \begin{verbatim}
 f.read([size])
@@ -416,7 +416,7 @@ f.close()
 \subsection{Writing files}
 
 \begin{frame}[fragile]{Reading and writing files}{Writing files (I)}
-	\begin{block}{The \texttt{write()} function}
+	\begin{block}{The \texttt{write()} method}
 	\vspace{-0.2cm}
 \begin{verbatim}
 f.write(string)
@@ -752,7 +752,7 @@ with open('file') as file:
 		\begin{itemize}
 			\item \texttt{json.dump(x, f)}: Serializes object x and writes it to file f
 			\item \texttt{json.load(f)}: Reads and deserializes object from file f
-			\item \texttt{x} may be a dictionary but \textbf{not an object}
+			\item More limited than pickles
 		\end{itemize}
 		JSON is a text format
  	 % \column{.50\textwidth}
@@ -772,7 +772,7 @@ with open('file') as file:
 		\item Interoperable (pickles only for Python)
 	        \item Complex data structures
 		\end{itemize}
-		Tile Map Editor generates JSON files!
+		%Tile Map Editor generates JSON files!
 
  	  \column{.60\textwidth}
         \begin{exampleblock}{filename.json}

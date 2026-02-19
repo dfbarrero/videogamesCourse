@@ -4,8 +4,8 @@ lines= 0
 file = open('example.txt', 'r')
 
 for line in file:
-	characters+= 1
-	lines += len(line)
+	lines+= 1
+	characters += len(line)
 
 file.close()
 
